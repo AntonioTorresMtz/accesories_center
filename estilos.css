@@ -1,0 +1,138 @@
+body{
+    background-color: whitesmoke;
+    font-family: "Source Sans Pro", sans-serif;
+
+}
+
+.formulario{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 300px;
+    height: 500px;
+    background: rgb(241, 229, 229);
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 15px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+/*
+form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}*/
+
+
+.form-linea{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 300px;
+
+    justify-content: center;
+    margin-bottom: 10px;
+    align-items: center;
+    font-size: 15px;
+}
+
+input{
+    margin-left: 10px ;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid #d9dad9;
+}
+
+select{
+    margin-left: 10px ;
+    width: 100px;
+    height: 30px;
+}
+
+.buscar{
+    height: 60px;
+    width: 900px;
+    background: cyan;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-buscador{
+    background: hotpink;
+    width: 90%;
+    text-align: center;
+    height: 70%;
+}
+
+.buscador{
+    width: 55%;
+    margin-right: auto;
+    margin-left: auto;
+    height: 100%;
+}
+
+.buscador-select{
+    width: 15%;
+    height: 100%;
+}
+
+.buscador-btn{
+    width: 15%;
+    height: 100%;
+}
+
+.resultado{
+    margin-right: auto;
+    margin-left: auto;
+    width: 330px;
+    height: 200px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: solid 1px rgb(231, 211, 211);
+    border-radius: 20px;
+}
+
+.modelos{
+    width: 150px;
+    height: 180px;
+}
+
+.detalles{
+    
+    width: 170px;
+    height: 180;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.posicion{
+    margin-top: 10px;
+    background: yellow;
+}
+
+.cantidad{
+    
+}
+
+p{
+    margin: 3px;
+}
+
