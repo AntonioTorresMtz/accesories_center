@@ -1,5 +1,6 @@
 
     <?php
+        include("db.php");
         include("includes/header.php");
         if(isset($_SESSION['exito_mica'])){
             echo "<script type='text/javascript'>Swal.fire(

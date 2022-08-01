@@ -136,3 +136,13 @@ p{
     margin: 3px;
 }
 
+
+.modelo{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100px;
+    background: cyan;
+    text-align: center;
+    align-items: center;
+}

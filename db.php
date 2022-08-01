@@ -6,6 +6,8 @@ $conn = mysqli_connect(
     'tienda3'
 );
 
+
+
 /*if(isset($conn)){
     echo 'Base de datos conectada';
 } */
