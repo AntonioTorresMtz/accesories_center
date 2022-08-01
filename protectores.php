@@ -1,5 +1,6 @@
 <?php
     include("includes/header.php");
+    include("db.php");
     if(isset($_SESSION['exito_protector'])){
         echo "<script type='text/javascript'>Swal.fire(
                     'Registro exitoso!',
@@ -10,9 +11,9 @@
     }
 ?>
 
-<div class="formulario">
+<div class="formulario container text-center border border-dark bg-light w-25 p-3 mt-2 rounded-5">
     <form action="registros/nuevoProtector.php" method="POST">
-        <div class="form-linea">
+        <div class="form-linea mt-2">
             <label for="marca">Marca</label>
             <select name="marca" id="marca">
                 <option value="Iphone">Iphone</option>
@@ -26,7 +27,7 @@
             </select>
         </div>
 
-        <div class="form-linea">
+        <div class="form-linea mt-2">
         <label for="largo">Posicion</label>
             <select name="posicion" id="posicion">
                 <?php
@@ -39,7 +40,7 @@
                 
             </select>
         </div>
-        <table class="table bg-info form-linea"  id="tablaTipo">
+        <table class="mx-auto table-borderless form-linea mt-2"  id="tablaTipo">
             <tr class="fila-fija">
                 <td> 
                     <select name="tipo[]" id="tipo" required>
@@ -51,20 +52,20 @@
                     </select>
                 </td>
                 <td> <input type="text" name="cantidad[]" placeholder="cantidad"> </td>
-                <td class="eliminarTipo"><button value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
+                <td class="eliminarTipo"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
             </tr>
         </table>
-        <button id="adicionalTipo" name="adicional" type="button" class="btn btn-warning"> <i class="far fa-plus-square"></i> </button>
+        <button id="adicionalTipo" name="adicional" type="button" class="btn btn-dark"> <i class="far fa-plus-square"></i> </button>
 
         <label for="">Modelo</label>
-        <table class="table bg-info form-linea"  id="tabla">
+        <table class="mx-auto table-borderless form-linea mt-2"  id="tabla">
             <tr class="fila-fija">
                 <td> <input type="text" name="modelo[]" placeholder="modelo"> </td>
-                <td class="eliminar"><button value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
+                <td class="eliminar"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
             </tr>
         </table>
-        <button id="adicional" name="adicional" type="button" class="btn btn-warning"> <i class="far fa-plus-square"></i> </button>
-        <input type="submit" value="Guardar">
+        <button id="adicional" name="adicional" type="button" class="btn btn-dark"> <i class="far fa-plus-square"></i> </button>
+        <input type="submit" value="Guardar" class="btn btn-dark">
     </form>        
 </div>
 

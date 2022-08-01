@@ -22,7 +22,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Center Accessories</a>
+    <a class="navbar-brand" href="#">
+      <img src="img/logo.svg" alt="logo" width="200">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -41,7 +43,7 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="micas9h.php">Mica Normal</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Protector</a></li>
+            <li><a class="dropdown-item" href="protectores.php">Protector</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -50,7 +52,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#"></a></li>
-            <li><a class="dropdown-item" href="#">Mica Completa</a></li>
+            <li><a class="dropdown-item" href="buscarMica9d.php">Mica Completa</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="buscaMica9h.php">Mica Normal</a></li>
             <li><hr class="dropdown-divider"></li>

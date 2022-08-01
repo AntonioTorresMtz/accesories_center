@@ -12,10 +12,11 @@
         }
     ?>
 
-    <div class="formulario">
+    <div class="formulario container text-center border border-dark bg-light w-25 p-3 mt-2 rounded-5">
+        <h2 class="text-light bg-dark p-2">Nueva mica completa</h2>
         <form action="nuevaMica9d.php" method="POST">
-            <div class="form-linea">
-                <label for="marca">Marca</label>
+            <div class="form-linea mt-2">
+                <label for="marca">Marca:</label>
                 <select name="marca" id="marca">
                     <option value="Iphone">Iphone</option>
                     <option value="Samsung">Samsung</option>
@@ -27,21 +28,21 @@
                     <option value="Universal">Universal</option>
                 </select>
             </div>
-            <div class="form-linea">
-                <label for="cantidad">Cantidad</label>
-                <input type="number" min="0" name="cantidad"  id="cantidad">
+            <div class="form-linea mt-2">
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" min="0" name="cantidad"  id="cantidad" required>
             </div>
-            <div class="form-linea">
-                <label for="ancho">Ancho</label>
-                <input type="number" name="ancho" step="any" id="ancho">
+            <div class="form-linea mt-2">
+                <label for="ancho">Ancho:</label>
+                <input type="number" name="ancho" step="any" id="ancho" required>
             </div>
-            <div class="form-linea">
-                <label for="largo">Largo</label>
-                <input type="number" name="largo" step="any" id="largo"> 
+            <div class="form-linea mt-2">
+                <label for="largo">Largo:</label>
+                <input type="number" name="largo" step="any" id="largo" required> 
             </div>
 
-            <div class="form-linea">
-            <label for="largo">Posicion</label>
+            <div class="form-linea mt-2">
+            <label for="largo">Posicion:</label>
                 <select name="posicion" id="posicion">
                     <?php
                         $pos="SELECT id_posicion, nombre FROM posicion WHERE muro = '1' ";
@@ -53,15 +54,16 @@
                     
                 </select>
             </div>
-            <label for="">Modelo</label>
-            <table class="table bg-info form-linea"  id="tabla">
+            
+            <table class="table table-borderless form-linea mt-2"  id="tabla">
+                <label for="">Modelo:</label>
                 <tr class="fila-fija">
-                    <td> <input type="text" name="modelo[]" placeholder="modelo"> </td>
-                    <td class="eliminar"><button value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
+                    <td> <input type="text" name="modelo[]" placeholder="modelo" required> </td>
+                    <td class="eliminar"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
                 </tr>
             </table>
-            <button id="adicional" name="adicional" type="button" class="btn btn-warning"> <i class="far fa-plus-square"></i> </button>
-            <input type="submit" value="Guardar">
+            <button id="adicional" name="adicional" type="button" class="btn btn-dark"> <i class="far fa-plus-square"></i> </button>
+            <input type="submit" value="Guardar" class="btn btn-dark">
         </form>        
     </div>
 
