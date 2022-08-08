@@ -23,7 +23,7 @@
                 <option value="Xiaomi">Xiaomi</option>
                 <option value="OPPO">OPPO</option>
                 <option value="LG">LG</option>
-                <option value="Universal">Universal</option>
+                <option value="ZTE">ZTE</option>
             </select>
         </div>
 
@@ -31,7 +31,7 @@
         <label for="largo">Posicion</label>
             <select name="posicion" id="posicion">
                 <?php
-                    $pos="SELECT id_posicion, nombre FROM posicion WHERE muro = '2' ORDER BY nombre ASC";
+                    $pos="SELECT id_posicion, nombre FROM posicion WHERE muro = '3' ORDER BY nombre ASC";
                     $resultado = mysqli_query($conn, $pos);
                     while($row = mysqli_fetch_assoc($resultado)) {
                         $id_posicion = $row["id_posicion"]?>
@@ -51,7 +51,7 @@
                         <option value="popit">Pop it</option>
                     </select>
                 </td>
-                <td> <input type="text" name="cantidad[]" placeholder="cantidad"> </td>
+                <td> <input type="text" name="cantidad[]" placeholder="cantidad" required> </td>
                 <td class="eliminarTipo"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
             </tr>
         </table>
@@ -60,7 +60,7 @@
         <label for="">Modelo</label>
         <table class="mx-auto table-borderless form-linea mt-2"  id="tabla">
             <tr class="fila-fija">
-                <td> <input type="text" name="modelo[]" placeholder="modelo"> </td>
+                <td> <input type="text" name="modelo[]" placeholder="modelo" required> </td>
                 <td class="eliminar"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
             </tr>
         </table>

@@ -43,6 +43,8 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="micas9h.php">Mica Normal</a></li>
             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="micasPrivacidad.php">Mica privacidad</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="protectores.php">Protector</a></li>
           </ul>
         </li>
@@ -56,14 +58,29 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="buscaMica9h.php">Mica Normal</a></li>
             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="buscaMica9h.php">Mica privacidad</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="medidas9h.php">Mica Normal medidas</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="buscarProtector.php">Protector</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Venta
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#"></a></li>
+            <li><a class="dropdown-item" href="buscarMica9d.php">Mica Completa</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="ventaMenu_mica9h.php">Mica Normal</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="medidas9h.php">Mica Normal medidas</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="buscarProtector.php">Protector</a></li>
+          </ul>
         </li>
+
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

@@ -27,7 +27,7 @@
      
       // Evento que selecciona la fila y la elimina 
       $(document).on("click",".eliminarTipo",function(){
-        if(evitaTipo > 0){
+      if(evitaTipo > 0){
           var parent = $(this).parents().get(0);
           $(parent).remove();
           evitaTipo = evitaTipo - 1;

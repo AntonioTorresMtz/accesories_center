@@ -25,7 +25,7 @@
                     <option value="Xiaomi">Xiaomi</option>
                     <option value="OPPO">OPPO</option>
                     <option value="LG">LG</option>
-                    <option value="Universal">Universal</option>
+                    <option value="VIVO">VIVO</option>
                 </select>
             </div>
             <div class="form-linea mt-2">
@@ -42,7 +42,7 @@
             </div>
 
             <div class="form-linea mt-2">
-            <label for="largo">Posicion:</label>
+                <label for="largo">Posicion:</label>
                 <select name="posicion" id="posicion">
                     <?php
                         $pos="SELECT id_posicion, nombre FROM posicion WHERE muro = '1' ";

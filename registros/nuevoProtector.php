@@ -4,6 +4,7 @@ include '../db.php';
 $marca = $_POST["marca"];
 //$cantidad = $_POST["cantidad"];
 $posicion = $_POST["posicion"];
+$muro = $_POST['muro'];
 
 $protector = "INSERT INTO protectores (marca, cantidad, posicion) VALUES ('$marca', '0','$posicion')";
 
