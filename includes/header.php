@@ -45,6 +45,8 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="micasPrivacidad.php">Mica privacidad</a></li>
             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="micasCurva.php">Mica curva</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="protectores.php">Protector</a></li>
           </ul>
         </li>
@@ -61,6 +63,8 @@
             <li><a class="dropdown-item" href="buscaMica100d.php">Mica privacidad</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="medidas9h.php">Mica Normal medidas</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="buscaMicaCurva.php">Mica Curva</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="buscarProtector.php">Protector</a></li>
           </ul>
