@@ -27,6 +27,7 @@
                     <option value="ZTE">ZTE</option>
                     <option value="Alcatel">Alcatel</option>
                     <option value="LG">LG</option>
+                    <option value="Nokia">Nokia</option>
                     <option value="Universal">Universal</option>
                 </select>
             </div>

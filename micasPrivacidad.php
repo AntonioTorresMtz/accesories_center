@@ -1,19 +1,20 @@
 <?php
         include("db.php");
         include("includes/header.php");
-        if(isset($_SESSION['exito_mica'])){
+        if(isset($_SESSION['exito_mica100d'])){
             echo "<script type='text/javascript'>Swal.fire(
-                        'Exito en venta!',
+                        'Nueva mica de Privacidad!',
                         'Se ha guardado la mica exitosamente!',
                         'success'
                       )</script>";
-                unset($_SESSION['exito_mica']);
+                unset($_SESSION['exito_mica100d']);
         }
 ?>
 
 
     <div class="container">
-        <form action="" class="row g-3 mt-3">
+        <form action="registros/nuevaMica100d.php" method="POST" class="row g-3 mt-3">
+            <h3 class="display-5 text-dark text-center font-weight-bold">Nueva mica Privacidad</h3>
             <div class="col-6">
                 <label for="marca" class="form-label">Marca:</label>
                 <select name="marca" id="marca" class="form-select">
@@ -33,31 +34,20 @@
                 <label class="form-label" for="cantidad">Cantidad:</label>
                 <input class="form-control" type="number" min="0" name="cantidad"  id="cantidad" required>
             </div>
-            <div class="col-3">
-                <label class="form-label" for="ancho">Ancho:</label>
-                <input class="form-control" type="number" name="ancho" step="any" id="ancho" required>
-            </div>
-            <div class="col-3">
-                <label class="form-label" for="largo">Largo:</label>
-                <input class="form-control" type="number" name="largo" step="any" id="largo" required> 
-            </div>
-            <div class="col-3">
-                <label for="muro" class="form-label">Marca:</label>
+    
+            <div class="col-6">
+                <label class="form-label" for="largo">Muro:</label>
                 <select name="muro" id="muro" class="form-select">
-                    
+                    <option value="1" disabled selected>Selecciona un muro</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
                 </select>
             </div>
-            <div class="col-3">
+            <div class="col-6">
                 <label class="form-label" for="largo">Posicion:</label>
-                <select name="posicion" id="posicion" class="form-select">
-                    <?php
-                        $pos="SELECT id_posicion, nombre FROM posicion WHERE muro = '1' ";
-                        $resultado = mysqli_query($conn, $pos);
-                        while($row = mysqli_fetch_assoc($resultado)) {
-                            $id_posicion = $row["id_posicion"]?>
-                            <option value="<?php echo $id_posicion?>"> <?php echo $row["nombre"]?> </option>
-                    <?php  } ?>
-                    
+                <select name="posicion" id="posicion" class="form-select">    
                 </select>
             </div>
             <table class="table-borderless form-linea p-3"  id="tabla">
@@ -74,6 +64,8 @@
             </div>
         </form>
     </div>
+
+  <script src="js/selectPosicion.js"></script>  
 
 <?php
     include("includes/footer.php")

@@ -58,7 +58,7 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="buscaMica9h.php">Mica Normal</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="buscaMica9h.php">Mica privacidad</a></li>
+            <li><a class="dropdown-item" href="buscaMica100d.php">Mica privacidad</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="medidas9h.php">Mica Normal medidas</a></li>
             <li><hr class="dropdown-divider"></li>

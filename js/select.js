@@ -1,6 +1,6 @@
 $(document).ready(function (){
-    $('#producto').change(function (){
-        $('#producto option:selected').each(function (){
+    $('#marca').change(function (){
+        $('#marca option:selected').each(function (){
             producto = $(this).val();
             //console.log(producto)
             $.post('select/ventasSelect.php', {producto: producto},
