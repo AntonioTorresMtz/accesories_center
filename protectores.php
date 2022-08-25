@@ -11,25 +11,27 @@
     }
 ?>
 
-<div class="formulario container text-center border border-dark bg-light w-25 p-3 mt-2 rounded-5">
-    <form action="registros/nuevoProtector.php" method="POST">
-        <div class="form-linea mt-2">
-            <label for="marca">Marca</label>
-            <select name="marca" id="marca">
+<div class="container">
+    <form action="registros/nuevoProtector.php" method="POST" class="row g-3 mt-3">
+        <h3 class="display-5 text-dark text-center font-weight-bold">Protector Nuevo</h3>
+        <div class="col-6">
+            <label for="marca" class="form-label">Marca:</label>
+            <select name="marca" id="marca" class="form-select">
                 <option value="Iphone">Iphone</option>
                 <option value="Samsung">Samsung</option>
                 <option value="Motorola">Motorola</option>
                 <option value="Huawei">Huawei</option>
                 <option value="Xiaomi">Xiaomi</option>
                 <option value="OPPO">OPPO</option>
+                <option value="Alcatel">Alcatel</option>
                 <option value="LG">LG</option>
                 <option value="ZTE">ZTE</option>
             </select>
         </div>
 
-        <div class="form-linea mt-2">
-        <label for="largo">Posicion</label>
-            <select name="posicion" id="posicion">
+        <div class="col-6">
+        <label for="largo" class="form-label">Posicion:</label>
+            <select name="posicion" id="posicion" class="form-select">
                 <?php
                     $pos="SELECT id_posicion, nombre FROM posicion WHERE muro = '3' ORDER BY nombre ASC";
                     $resultado = mysqli_query($conn, $pos);
@@ -40,31 +42,44 @@
                 
             </select>
         </div>
-        <table class="mx-auto table-borderless form-linea mt-2"  id="tablaTipo">
+        <div class="col-12 text-centar">
+            <label for="">Tipo:</label>
+        </div>
+        <table class="table-borderless form-linea p-3"  id="tablaTipo">
             <tr class="fila-fija">
                 <td> 
-                    <select name="tipo[]" id="tipo" required>
-                        <option value="acrigel">Acrigel</option>
-                        <option value="original">Original</option>
-                        <option value="humo">Humo</option>
-                        <option value="diseno1">Diseño mica</option>
-                        <option value="popit">Pop it</option>
+                    <select name="tipo[]" id="tipo" class="form-select col-6" required>
+                        <option value="0" disabled selected>--Selecciona tipo de funda --</option>
+                        <?php
+                            $pos="SELECT id_nombreTipo, nombre FROM nombre_tipo_protector";
+                            $resultado = mysqli_query($conn, $pos);
+                            while($row = mysqli_fetch_assoc($resultado)) {
+                                $id_nombre = $row["id_nombreTipo"]?>
+                                <option value="<?php echo $id_nombre?>"> <?php echo $row["nombre"]?> </option>
+                        <?php  } ?>
                     </select>
                 </td>
-                <td> <input type="text" name="cantidad[]" placeholder="cantidad" required> </td>
+                <td> <input type="text" name="cantidad[]" placeholder="cantidad" class="form-control col-6" required> </td>
                 <td class="eliminarTipo"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
             </tr>
         </table>
-        <button id="adicionalTipo" name="adicional" type="button" class="btn btn-dark"> <i class="far fa-plus-square"></i> </button>
-
-        <label for="">Modelo</label>
-        <table class="mx-auto table-borderless form-linea mt-2"  id="tabla">
+        <div class="col text-center">
+            <label class="form-label" for="">Agregar tipo de funda</label>
+            <button id="adicionalTipo" name="adicional" type="button" class="btn btn-dark"> <i class="far fa-plus-square"></i> </button>
+        </div>
+        <div class="col-12 text-centar">
+            <label for="">Modelo:</label>
+        </div>
+        <table class="table-borderless form-linea p-3"  id="tabla">
             <tr class="fila-fija">
-                <td> <input type="text" name="modelo[]" placeholder="modelo" required> </td>
+                <td> <input type="text" name="modelo[]" class="col form-control" placeholder="Modelo:" required> </td>
                 <td class="eliminar"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
             </tr>
         </table>
-        <button id="adicional" name="adicional" type="button" class="btn btn-dark"> <i class="far fa-plus-square"></i> </button>
+        <div class="col text-center">
+            <label class="form-label" for="">Agregar tipo de modelo</label>
+            <button id="adicional" name="adicional" type="button" class="btn btn-dark"> <i class="far fa-plus-square"></i> </button>
+        </div>
         <input type="submit" value="Guardar" class="btn btn-dark">
     </form>        
 </div>

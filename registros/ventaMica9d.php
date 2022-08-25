@@ -22,7 +22,7 @@ if ($encontrado) {
 
     $query = "INSERT INTO `ventas` (`id_venta`, `id_producto`, `marca`, `fecha`, `id_tipo`, `cantidad`,
      `precio`, `descuento`, `nombre_modelo`)
-      VALUES (NULL, '1', '$marca', current_timestamp(), NULL, '$cantidad', '$precio', '$descuento', '$nombre_modelo')";
+      VALUES (NULL, '2', '$marca', current_timestamp(), NULL, '$cantidad', '$precio', '$descuento', '$nombre_modelo')";
 
     $resultado = mysqli_query($conn, $query);
 
@@ -31,21 +31,21 @@ if ($encontrado) {
         printf("Errormessage: %s\n", $conn->error);
     } else{
         echo 'Exito mica <br>' ;
-        $query2 = "UPDATE `micas9h` SET `cantidad` = cantidad -'$cantidad' WHERE `micas9h`.`id_mica9h` = '$id_modelo'";
+        $query2 = "UPDATE `micas9d` SET `cantidad` = cantidad -'$cantidad' WHERE `micas9d`.`id_mica9d` = '$id_modelo'";
         $resultado2 = mysqli_query($conn, $query2);
         if(!$resultado2){
             echo 'Error actualizar cantidad <br>';
         } else{
             $_SESSION['exito_ventaMica9h'] = "Mica guardada";
-            header("Location: ../ventaMenu_mica9h.php");
+            header("Location: ../ventaMenu_mica9d.php");
             exit(); 
         }
         
     } 
 } else {
     print "<p>No se han encontrado coincidencias.</p>\n";
-    $_SESSION['exito_ventaMica9h'] = "Mica guardada";
-    header("Location: ../ventaMenu_mica9h.php");
+    $_SESSION['exito_ventaMica9d'] = "Mica guardada";
+    header("Location: ../ventaMenu_mica9d.php");
     exit(); 
 }
 echo $modelo;

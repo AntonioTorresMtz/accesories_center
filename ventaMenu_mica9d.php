@@ -21,8 +21,8 @@
 
 ?>
     <div class="container">
-        <form action="registros/ventaMica9h.php" method="POST" class="row g-3 mt-3">
-            <h3 class="display-5 text-dark text-center font-weight-bold">Venta micas normales</h3>
+        <form action="registros/ventaMica9d.php" method="POST" class="row g-3 mt-3">
+            <h3 class="display-5 text-dark text-center font-weight-bold">Venta micas completa</h3>
             <div class="col-6">
                 <label for="marca" class="form-label">Marca</label>
                 <select class="form-select" name="marca" id="marca">
@@ -33,9 +33,9 @@
                     <option value="Huawei">Huawei</option>
                     <option value="Xiaomi">Xiaomi</option>
                     <option value="OPPO">OPPO</option>
+                    <option value="VIVO">VIVO</option>
                     <option value="LG">LG</option>
                     <option value="Alcatel">Alcatel</option>
-                    <option value="Nokia">Nokia</option>
                     <option value="ZTE">ZTE</option>
                     <option value="Universal">Universal</option>
                 </select>
@@ -56,7 +56,7 @@
             </div>
             <div class="col-4">
                 <label for="descuento" class="form-label">Descuento:</label>
-                <input class="form-control" type="number" name="descuento" placeholder="descuento" required id="precio">
+                <input class="form-control" type="number" name="descuento" placeholder="Descuento" required id="precio">
             </div>
             
             <div class="col text-center">
@@ -65,7 +65,7 @@
         </form>
     </div>
 
-<script src="js/select.js"></script>
+<script src="js/select9D.js"></script>
 
 <?php
     include("includes/footer.php")

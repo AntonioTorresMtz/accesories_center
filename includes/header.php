@@ -47,6 +47,8 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="micasCurva.php">Mica curva</a></li>
             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="micasCamara.php">Mica camara</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="protectores.php">Protector</a></li>
           </ul>
         </li>
@@ -66,6 +68,8 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="buscaMicaCurva.php">Mica Curva</a></li>
             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="buscarCamara.php">Mica Camara</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="buscarProtector.php">Protector</a></li>
           </ul>
         </li>
@@ -75,7 +79,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#"></a></li>
-            <li><a class="dropdown-item" href="buscarMica9d.php">Mica Completa</a></li>
+            <li><a class="dropdown-item" href="ventaMenu_mica9d.php">Mica Completa</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="ventaMenu_mica9h.php">Mica Normal</a></li>
             <li><hr class="dropdown-divider"></li>
