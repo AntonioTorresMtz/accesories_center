@@ -54,7 +54,7 @@ while(true) {
     //// RECUPERAR LOS VALORES DE LOS ARREGLOS ////////
    $modelo1 = current($modelo); //Modelo
    
-   $sql1 = "INSERT INTO modelo_funda (modelo, id_protector) VALUES ('$modelo1', '$id')";
+   $sql1 = "INSERT INTO modelo_funda (id_protector, tipo_modelo) VALUES ('$id', '$modelo1')";
 
    $sqlRes=$conn->query($sql1); //Consulta para el insert
    if(!$sql1){
@@ -64,7 +64,7 @@ while(true) {
    }
 
    // Up! Next Value
-   $modelo1 = next( $modelo );
+   $modelo1 = next( $modelo);
    // Check terminator
    if($modelo1 === false) break;
 }

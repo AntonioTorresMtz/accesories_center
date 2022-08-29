@@ -2,7 +2,7 @@
 include '../db.php';
 $producto = $_POST['producto'];
 
-$query = "SELECT a.nombre, b.id_mica9h, a.id_modelo FROM nombre_mica9h b
+$query = "SELECT a.nombre, c.id_mica9h FROM nombre_mica9h b
 INNER JOIN modelos a
 ON a.id_modelo = b.nombre_modelo
 INNER JOIN micas9h c
@@ -14,7 +14,7 @@ ORDER BY a.nombre ASC";
 
     $html = "<option value='vacio'>--Selecciona Modelo--</option>";
     while($row = $resultado->fetch_assoc()){
-        $valor = $row["id_mica9h"] . "-" . $row["id_modelo"];
+        $valor = $row["id_mica9h"];
         $html = $html . "<option value='".$valor ."'>".$row["nombre"] . "</option>"; 
     }
     echo $html;

@@ -6,9 +6,16 @@ $marca = $_POST['marca'];
 $modelo = $_POST['modelo'];
 $cantidad = $_POST['cantidad'];
 $precio = $_POST['precio'];
-$descuento = $_POST['descuento'];
 
-$patron = "/^([0-9]+)(-)([a-zA-Z0-9\'.\s]{1,30})$/";
+if(isset($_POST["descuento"])){
+    $descuento = $_POST['descuento'];
+} else{
+    $descuento = 0;
+}
+
+
+$patron = "/^([0-9]+)(-)([0-9]+)$/";
+//$patron = "/^([0-9]+)(-)([a-zA-Z0-9\'.\s]{1,30})$/";
 
 $encontrado = preg_match($patron, $modelo, $coincidencias, PREG_OFFSET_CAPTURE);;
 $id_modelo = 0;

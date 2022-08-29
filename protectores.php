@@ -17,6 +17,7 @@
         <div class="col-6">
             <label for="marca" class="form-label">Marca:</label>
             <select name="marca" id="marca" class="form-select">
+                <option value="1" disabled selected>Selecciona una marca</option>
                 <option value="Iphone">Iphone</option>
                 <option value="Samsung">Samsung</option>
                 <option value="Motorola">Motorola</option>
@@ -72,7 +73,8 @@
         </div>
         <table class="table-borderless form-linea p-3"  id="tabla">
             <tr class="fila-fija">
-                <td> <input type="text" name="modelo[]" class="col form-control" placeholder="Modelo:" required> </td>
+                
+                <td> <select type="text" name="modelo[]" id="modelo" class="col form-select" placeholder="Modelo:" required> </select> </td>
                 <td class="eliminar"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
             </tr>
         </table>
@@ -84,8 +86,7 @@
     </form>        
 </div>
 
-
-
+<script src="js/selectModelo.js"></script>  
 <?php
     include("includes/footer.php")
 ?>

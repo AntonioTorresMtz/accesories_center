@@ -31,7 +31,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="nuevoModelo.php">Home</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -83,10 +83,24 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="ventaMenu_mica9h.php">Mica Normal</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="medidas9h.php">Mica Normal medidas</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="buscarProtector.php">Protector</a></li>
+            <li><a class="dropdown-item" href="ventaMenu_protector.php">Protector</a></li>
           </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Actualizar
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#"></a></li>
+            <li><a class="dropdown-item" href="actualizarMica9d.php">Mica Completa</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="actualizarMica9H.php">Mica Normal</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="ventaMenu_protector.php">Protector</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="nuevoModelo.php">Nuevo Modelo</a>
         </li>
 
       </ul>

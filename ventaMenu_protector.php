@@ -21,9 +21,9 @@
 
 ?>
     <div class="container">
-        <form action="registros/ventaMica9d.php" method="POST" class="row g-3 mt-3">
-            <h3 class="display-5 text-dark text-center font-weight-bold">Venta micas completa</h3>
-            <div class="col-6">
+        <form action="registros/ventaMica9h.php" method="POST" class="row g-3 mt-3">
+            <h3 class="display-5 text-dark text-center font-weight-bold">Venta protectores</h3>
+            <div class="col-4">
                 <label for="marca" class="form-label">Marca</label>
                 <select class="form-select" name="marca" id="marca">
                     <option value="1" disabled selected>Selecciona una marca </option>
@@ -36,9 +36,15 @@
                     <?php  } ?>
                 </select>
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <label for="modelo" class="form-label">Modelo:</label>
                 <select class="form-select" name="modelo" id="modelo">
+                        
+                </select>
+            </div>
+            <div class="col-4">
+                <label for="Tipo" class="form-label">Tipo:</label>
+                <select class="form-select" name="tipo" id="tipo">
                         
                 </select>
             </div>
@@ -52,7 +58,7 @@
             </div>
             <div class="col-4">
                 <label for="descuento" class="form-label">Descuento:</label>
-                <input class="form-control" type="number" name="descuento" placeholder="Descuento"  id="precio">
+                <input class="form-control" type="number" name="descuento" placeholder="descuento"  id="precio">
             </div>
             
             <div class="col text-center">
@@ -61,7 +67,7 @@
         </form>
     </div>
 
-<script src="js/select9D.js"></script>
+<script src="js/selectProtector.js"></script>
 
 <?php
     include("includes/footer.php")

@@ -26,18 +26,14 @@
             <div class="col-6">
                 <label for="marca" class="form-label">Marca</label>
                 <select class="form-select" name="marca" id="marca">
-                    <option value="vacio">Selecciona la Marca</option>
-                    <option value="Iphone">Iphone</option>
-                    <option value="Samsung">Samsung</option>
-                    <option value="Motorola">Motorola</option>
-                    <option value="Huawei">Huawei</option>
-                    <option value="Xiaomi">Xiaomi</option>
-                    <option value="OPPO">OPPO</option>
-                    <option value="LG">LG</option>
-                    <option value="Alcatel">Alcatel</option>
-                    <option value="Nokia">Nokia</option>
-                    <option value="ZTE">ZTE</option>
-                    <option value="Universal">Universal</option>
+                    <option value="1" disabled selected>Selecciona una marca </option>
+                <?php
+                        $pos="SELECT id_marca, marca FROM marca ORDER BY id_marca ASC";
+                        $resultado = mysqli_query($conn, $pos);
+                        while($row = mysqli_fetch_assoc($resultado)) {
+                            $id_marca = $row["id_marca"]?>
+                            <option value="<?php echo $id_marca?>"> <?php echo $row["marca"]?> </option>
+                    <?php  } ?>
                 </select>
             </div>
             <div class="col-6">
@@ -56,7 +52,7 @@
             </div>
             <div class="col-4">
                 <label for="descuento" class="form-label">Descuento:</label>
-                <input class="form-control" type="number" name="descuento" placeholder="descuento" required id="precio">
+                <input class="form-control" type="number" name="descuento" placeholder="descuento"  id="precio">
             </div>
             
             <div class="col text-center">
