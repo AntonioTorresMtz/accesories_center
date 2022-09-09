@@ -12,81 +12,87 @@
         }
     ?>
 
-    <div class="formulario container text-center border border-dark bg-light w-25 p-3 mt-2 rounded-5">
-        <h2 class="text-light bg-dark p-2">Nueva mica normal</h2>
-        <form action="registros/nuevaMica9h.php" method="POST">
-            <div class="form-linea mt-2">
-                <label for="marca">Marca:</label>
-                <select name="marca" id="marca">
-                    <option value="Iphone">Iphone</option>
-                    <option value="Samsung">Samsung</option>
-                    <option value="Motorola">Motorola</option>
-                    <option value="Huawei">Huawei</option>
-                    <option value="Xiaomi">Xiaomi</option>
-                    <option value="OPPO">OPPO</option>
-                    <option value="ZTE">ZTE</option>
-                    <option value="Alcatel">Alcatel</option>
-                    <option value="LG">LG</option>
-                    <option value="Nokia">Nokia</option>
-                    <option value="Universal">Universal</option>
+    <div class="container">
+        <form action="registros/nuevaMica9h.php" method="POST" class="row g-3 mt-3">
+            <h3 class="display-5 text-dark text-center font-weight-bold">Nueva mica normal</h3>
+            <div class="col-4">
+                <label for="marca" class="form-label">Marca:</label>
+                <select name="marca" id="marca" class="form-select">
+                    <option value="0" selected disabled>Selecciona una marca</option>
+                    <?php
+                        $pos="SELECT id_marca, marca FROM marca ORDER BY id_marca ASC";
+                        $resultado = mysqli_query($conn, $pos);
+                        while($row = mysqli_fetch_assoc($resultado)) {
+                            $id_marca = $row["id_marca"]?>
+                            <option value="<?php echo $id_marca?>"> <?php echo $row["marca"]?> </option>
+                    <?php  } ?>
                 </select>
             </div>
-            <div class="form-linea mt-2">
-                <label for="camara">Camara:</label>
-                <select name="camara" id="camara">
+            <div class="col-4">
+                <label for="camara" class="form-label">Camara:</label>
+                <select name="camara" id="camara" class="form-select">
                     <option value="completa">Completa</option>
                     <option value="orilla">Orilla</option>
                     <option value="mitad">En medio</option>
                 </select>
             </div>
-            <div class="form-linea mt-2">
-                <label for="boton">Boton:</label>
-                <select name="boton" id="boton">
+            <div class="col-4">
+                <label for="boton" class="form-label">Boton:</label>
+                <select name="boton" id="boton" class="form-select">
                     <option value="no">No</option>
                     <option value="si">Si</option>
                 </select>
             </div>
-            <div class="form-linea mt-2">
-                <label for="cantidad">Cantidad:</label>
-                <input type="number" min="0" name="cantidad"  id="cantidad" required>
+            <div class="col-4">
+                <label for="cantidad" class="form-label">Cantidad:</label>
+                <input type="number" min="0" name="cantidad"  id="cantidad" class="form-control" required>
             </div>
-            <div class="form-linea mt-2">
-                <label for="ancho">Ancho:</label>
-                <input type="number" name="ancho" step="any" id="ancho" required>
+            <div class="col-4">
+                <label for="ancho" class="form-label">Ancho:</label>
+                <input type="number" name="ancho" step="any" id="ancho" class="form-control" required>
             </div>
-            <div class="form-linea mt-2">
-                <label for="largo">Largo:</label>
-                <input type="number" name="largo" step="any" id="largo" required> 
+            <div class="col-4">
+                <label for="largo" class="form-label">Largo:</label>
+                <input type="number" name="largo" step="any" id="largo" class="form-control" required> 
             </div>
-
-            <div class="form-linea mt-2">
-                <label for="largo">Posicion:</label>
-                <select name="posicion" id="posicion">
-                    <?php
-                        $pos="SELECT id_posicion, nombre FROM posicion WHERE muro = '2' ORDER BY nombre ASC";
-                        $resultado = mysqli_query($conn, $pos);
-                        while($row = mysqli_fetch_assoc($resultado)) {
-                            $id_posicion = $row["id_posicion"]?>
-                            <option value="<?php echo $id_posicion?>"> <?php echo $row["nombre"]?> </option>
-                    <?php  } ?>
-                    
+            <div class="col-6">
+                <label class="form-label" for="largo">Muro:</label>
+                <select name="muro" id="muro" class="form-select">
+                    <option value="1" disabled selected>Selecciona un muro</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
                 </select>
             </div>
-            <label for="">Modelo:</label>
-            <table class="table table-borderless form-linea mt-2"  id="tabla">
+
+            <div class="col-6">
+                <label for="largo" class="form-label">Posicion:</label>
+                <select name="posicion" id="posicion" class="form-select">    
+                </select>
+            </div>
+
+            <table class="table-borderless form-linea p-3"  id="tabla">
+                <label for="modelo" class="form-label">Modelo:</label>
                 <tr class="fila-fija">
-                    <td> <input type="text" name="modelo[]" placeholder="modelo" required> </td>
-                    <td class="eliminar"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
+                    <td >
+                        <select name="modelo[]" class="form-select col-11" id="modelo">
+
+                        </select>
+                    </td>
+                    <td class="eliminar"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>  
                 </tr>
             </table>
-            <button id="adicional" name="adicional" type="button" class="btn btn-dark"> <i class="far fa-plus-square"></i> </button>
-            <input type="submit" value="Guardar" class="btn btn-dark">
+            <div class="col text-center">
+                <button id="adicional" name="adicional" type="button" class="btn btn-dark"> <i class="far fa-plus-square"></i> </button>
+                <input type="submit" value="Guardar" class="btn btn-dark">
+            </div>
         </form>        
     </div>
 
 
-
-
+<script src="js/selectPosicion.js"></script>
+<script src="js/agregarModelo.js"></script>
 
 <?php
     include("includes/footer.php")

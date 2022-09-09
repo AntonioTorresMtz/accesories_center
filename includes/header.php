@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="css/estilos.css">
     <title>Micas</title>
 </head>
 <body>
@@ -83,6 +83,12 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="ventaMenu_mica9h.php">Mica Normal</a></li>
             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="ventaMenu_mica100d.php">Mica de privacidad</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="ventaMenu_micaCurva.php">Mica curva</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="ventaMenu_micaCamara.php">Mica camara</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="ventaMenu_protector.php">Protector</a></li>
           </ul>
         </li>
@@ -96,11 +102,16 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="actualizarMica9H.php">Mica Normal</a></li>
             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="actualizarMenu_camara.php">Mica camara</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="ventaMenu_protector.php">Protector</a></li>
           </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="nuevoModelo.php">Nuevo Modelo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="modeloGeneral.php">Modelo</a>
         </li>
 
       </ul>
@@ -114,3 +125,4 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    

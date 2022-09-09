@@ -12,61 +12,70 @@
         }
     ?>
 
-    <div class="formulario container text-center border border-dark bg-light w-25 p-3 mt-2 rounded-5">
-        <h2 class="text-light bg-dark p-2">Nueva mica completa</h2>
-        <form action="nuevaMica9d.php" method="POST">
-            <div class="form-linea mt-2">
-                <label for="marca">Marca:</label>
-                <select name="marca" id="marca">
-                    <option value="Iphone">Iphone</option>
-                    <option value="Samsung">Samsung</option>
-                    <option value="Motorola">Motorola</option>
-                    <option value="Huawei">Huawei</option>
-                    <option value="Xiaomi">Xiaomi</option>
-                    <option value="OPPO">OPPO</option>
-                    <option value="LG">LG</option>
-                    <option value="VIVO">VIVO</option>
-                </select>
-            </div>
-            <div class="form-linea mt-2">
-                <label for="cantidad">Cantidad:</label>
-                <input type="number" min="0" name="cantidad"  id="cantidad" required>
-            </div>
-            <div class="form-linea mt-2">
-                <label for="ancho">Ancho:</label>
-                <input type="number" name="ancho" step="any" id="ancho" required>
-            </div>
-            <div class="form-linea mt-2">
-                <label for="largo">Largo:</label>
-                <input type="number" name="largo" step="any" id="largo" required> 
-            </div>
-
-            <div class="form-linea mt-2">
-                <label for="largo">Posicion:</label>
-                <select name="posicion" id="posicion">
+    <div class="container">
+        <form action="nuevaMica9d.php" method="POST" class="row g-3 mt-3">
+            <h3 class="display-5 text-dark text-center font-weight-bold">Nueva mica de Completa</h3>
+            <div class="col-6">
+                <label for="marca" class="form-label">Marca:</label>
+                <select name="marca" id="marca" class="form-select">
+                    <option value="0" selected disabled>Selecciona una marca</option>
                     <?php
-                        $pos="SELECT id_posicion, nombre FROM posicion WHERE muro = '1' ";
+                        $pos="SELECT id_marca, marca FROM marca ORDER BY id_marca ASC";
                         $resultado = mysqli_query($conn, $pos);
                         while($row = mysqli_fetch_assoc($resultado)) {
-                            $id_posicion = $row["id_posicion"]?>
-                            <option value="<?php echo $id_posicion?>"> <?php echo $row["nombre"]?> </option>
+                            $id_marca = $row["id_marca"]?>
+                            <option value="<?php echo $id_marca?>"> <?php echo $row["marca"]?> </option>
                     <?php  } ?>
-                    
                 </select>
             </div>
-            
-            <table class="table table-borderless form-linea mt-2"  id="tabla">
-                <label for="">Modelo:</label>
+            <div class="col-6">
+                <label for="cantidad" class="form-label">Cantidad:</label>
+                <input type="number" min="0" name="cantidad"  id="cantidad" required class="form-control">
+            </div>
+            <div class="col-3">
+                <label for="ancho" class="form-label">Ancho:</label>
+                <input type="number" name="ancho" step="any" id="ancho" required class="form-control">
+            </div>
+            <div class="col-3">
+                <label for="largo" class="form-label">Largo:</label>
+                <input type="number" name="largo" step="any" id="largo" required class="form-control"> 
+            </div>
+            <div class="col-3">
+                <label class="form-label" for="largo">Muro:</label>
+                <select name="muro" id="muro" class="form-select">
+                    <option value="1" disabled selected>Selecciona un muro</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <div class="col-3">
+                <label for="largo" class="form-label">Posicion:</label>
+                <select name="posicion" id="posicion" class="form-select">    
+                </select>
+            </div>
+            <table class="table-borderless form-linea p-3"  id="tabla">
+                <label for="modelo" class="form-label">Modelo:</label>
                 <tr class="fila-fija">
-                    <td> <input type="text" name="modelo[]" placeholder="modelo" required> </td>
-                    <td class="eliminar"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
+                    <td >
+                        <select name="modelo[]" class="form-select col-11" id="modelo">
+
+                        </select>
+                    </td>
+                    <td class="eliminar"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>  
                 </tr>
             </table>
-            <button id="adicional" name="adicional" type="button" class="btn btn-dark"> <i class="far fa-plus-square"></i> </button>
-            <input type="submit" value="Guardar" class="btn btn-dark">
+            <div class="col text-center">
+                <button id="adicional" name="adicional" type="button" class="btn btn-dark"> <i class="far fa-plus-square"></i> </button>
+                <input type="submit" value="Guardar" class="btn btn-dark">
+            </div>
         </form>        
     </div>
 
+<script src="js/selectPosicion.js"></script>
+<script src="js/agregarModelo.js"></script>
 
 <?php
     include("includes/footer.php")

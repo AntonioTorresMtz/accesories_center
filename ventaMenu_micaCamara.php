@@ -1,29 +1,29 @@
 <?php
         include("db.php");
         include("includes/header.php");
-        if(isset($_SESSION['exito_ventaProtector'])){
+        if(isset($_SESSION['exito_ventaMica_cam'])){
             echo "<script type='text/javascript'>Swal.fire(
                         'Exito en venta!',
                         'Se ha registrado la mica con exito!',
                         'success'
                       )</script>";
-                unset($_SESSION['exito_ventaProtector']);
+                unset($_SESSION['exito_ventaMica_cam']);
         }
 
-        if(isset($_SESSION['error_ventaMica9h'])){
+        if(isset($_SESSION['error_ventaMica_cam'])){
             echo "<script type='text/javascript'>Swal.fire(
                         'Error en venta!',
                         'No se pudo encontrar el modelo seleccionado!',
                         'error'
                       )</script>";
-                unset($_SESSION['error_ventaMica9h']);
+                unset($_SESSION['error_ventaMica_cam']);
         }
 
 ?>
     <div class="container">
-        <form action="registros/ventaProtector.php" method="POST" class="row g-3 mt-3">
-            <h3 class="display-5 text-dark text-center font-weight-bold">Venta protectores</h3>
-            <div class="col-4">
+        <form action="registros/ventaMica_camara.php" method="POST" class="row g-3 mt-3">
+            <h3 class="display-5 text-dark text-center font-weight-bold">Venta micas para camara</h3>
+            <div class="col-6">
                 <label for="marca" class="form-label">Marca</label>
                 <select class="form-select" name="marca" id="marca">
                     <option value="1" disabled selected>Selecciona una marca </option>
@@ -36,15 +36,9 @@
                     <?php  } ?>
                 </select>
             </div>
-            <div class="col-4">
+            <div class="col-6">
                 <label for="modelo" class="form-label">Modelo:</label>
                 <select class="form-select" name="modelo" id="modelo">
-                        
-                </select>
-            </div>
-            <div class="col-4">
-                <label for="Tipo" class="form-label">Tipo:</label>
-                <select class="form-select" name="tipo" id="tipo">
                         
                 </select>
             </div>
@@ -58,7 +52,7 @@
             </div>
             <div class="col-4">
                 <label for="descuento" class="form-label">Descuento:</label>
-                <input class="form-control" type="number" name="descuento" placeholder="descuento"  id="precio">
+                <input class="form-control" type="number" name="descuento" placeholder="Descuento"  id="precio">
             </div>
             
             <div class="col text-center">
@@ -67,7 +61,7 @@
         </form>
     </div>
 
-<script src="js/selectProtector.js"></script>
+<script src="js/selectCamara.js"></script>
 
 <?php
     include("includes/footer.php")
