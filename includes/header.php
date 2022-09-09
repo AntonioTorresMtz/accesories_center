@@ -104,7 +104,9 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="actualizarMenu_camara.php">Mica camara</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="ventaMenu_protector.php">Protector</a></li>
+            <li><a class="dropdown-item" href="actualizarMica100d.php">Mica privacidad</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="actualizarProtector.php">Protector</a></li>
           </ul>
         </li>
         <li class="nav-item">
