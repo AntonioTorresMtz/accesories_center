@@ -24,13 +24,17 @@ function buscar($ancho, $largo){
     $mysqli = getConnexion();
     $q = $mysqli -> real_escape_string($_POST['busca']);
 
-    $query="SELECT a.modelo, b.marca, b.ancho, b.largo, b.boton, b.camara, c.nombre FROM nombre_mica9h a INNER JOIN micas9h b ON b.id_mica9h = a.id_mica9h INNER JOIN posicion c ON c.id_posicion = b.posicion
+    $query="SELECT m.nombre as model, ma.marca, b.ancho, b.largo, b.boton, b.camara, c.nombre FROM nombre_mica9h a
+    INNER JOIN micas9h b ON b.id_mica9h = a.id_mica9h
+    INNER JOIN posicion c ON c.id_posicion = b.posicion
+    INNER JOIN modelos m ON m.id_modelo = a.nombre_modelo
+    INNER JOIN marca ma ON ma.id_marca = b.marca
     WHERE b.ancho <= $ancho and b.largo <= $largo ORDER BY b.ancho DESC";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
         echo "<tr> <td>" . $row['marca']. "</td>".
-        "<td>" . $row['modelo']. "</td>".
+        "<td>" . $row['model']. "</td>".
         "<td>" . $row['ancho']. "</td>".
         "<td>" . $row['largo']. "</td>".
         "<td>" . $row['camara']. "</td>".
