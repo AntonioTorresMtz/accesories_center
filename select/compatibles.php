@@ -15,43 +15,43 @@ $resultado = mysqli_query($conn, $query);
 $total = mysqli_num_rows($resultado);
 if($total==0){
     $html = "<div class='row'>
-    <div class='col-lg-4'>
-        <div class='card'>
-            <div class='card-header'>
-                <h5>Micas Normales</h5>
-            </div>
-            <div class='row card-body'>
-                <div class='col-6'>                       
-                    <p>No hay existencias :(</p>
+                <div class='col-lg-4'>
+                    <div class='card'>
+                        <div class='card-header'>
+                            <h5>Micas Normales</h5>
+                        </div>
+                    <div class='row card-body'>
+                        <div class='col-6'>                       
+                            <p>No hay existencias :(</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>";
+            </div>";
 }else{
     $mica9h = 0;
     $html = "<div class='row'>
-    <div class='col-lg-4'>
-        <div class='card'>
-            <div class='card-header'>
-                <h5>Micas Normales</h5>
-            </div>
+                <div class='col-lg-4'>
+                    <div class='card'>
+                        <div class='card-header'>
+                            <h5>Micas Normales</h5>
+                        </div>
             ";
     while($row = $resultado->fetch_assoc()){
         $mica9h = $row["id_mica9h"];
         $html = $html .  "<div class='row card-body'>
-        <div class='col-6'>
-            <p>Posicion: " .  $row["place"]. "</p>
-        </div>              
+                            <div class='col-6'>
+                                <p>Posicion: " .  $row["place"]. "</p>
+                            </div>              
     
-        <div class='col-6'>
-            <p>Cantidad: " . $row["cantidad"] . "<p>
-            </div>
-            <div class='col-6'>
-                <p>Medidas: " . $row["ancho"] . "x".  $row["largo"] . "<p>
-                </div>
-                <hr> 
-                <div class='col'>
-                    <p>Compatibles: <br>";
+                        <div class='col-6'>
+                            <p>Cantidad: " . $row["cantidad"] . "<p>
+                        </div>
+                        <div class='col-6'>
+                            <p>Medidas: " . $row["ancho"] . "x".  $row["largo"] . "<p>
+                        </div>
+                        <hr> 
+                        <div class='col'>
+                            <p>Compatibles: <br>";
     }
     
     $query2 = "SELECT b.nombre FROM modelos b 
@@ -141,8 +141,8 @@ if($total==0){
     }
 
     $html = $html . "</div>
+        </div>
     </div>
-</div>
 </div>";
 
 }
@@ -207,9 +207,240 @@ if($total==0){
                             </div>";            
     }
 
-    ;
+    $query2 = "SELECT b.nombre FROM modelos b 
+    INNER JOIN modelo_funda a
+    ON b.id_modelo = a.tipo_modelo
+    INNER JOIN  protectores c
+    ON a.id_protector = c.id_protector
+    WHERE c.id_protector = '$protector'";
+
+    $resultado = mysqli_query($conn, $query2);
+    $html = $html . "<hr>
+                        <div class='col-12'>
+                        <p>Compatibles:
+                            <br>";
+    while($row = $resultado->fetch_assoc()){
+        $html = $html  .  $row["nombre"] . ", " ;
+                                   
+    }
+
+    $html = $html . "</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>";
+
 }
+
+$query100d = "SELECT a.nombre, c.cantidad, c.id_mica100d, d.nombre AS place FROM modelos a
+INNER JOIN nombre_mica100d b
+ON b.nombre_modelo = a.id_modelo
+INNER JOIN micas100d c
+ON c.id_mica100d = b.id_mica100d
+INNER JOIN  posicion d
+ON c.posicion = d.id_posicion
+WHERE a.id_modelo = '$modelo'";
+
+$resultado = mysqli_query($conn, $query100d);
+$total = mysqli_num_rows($resultado);
+if($total==0){
+    $html = $html . "<div class='col-lg-4 mt-4'>
+    <div class='card'>
+        <div class='card-header'>
+            <h5>Micas Micas de Privacidad</h5>
+        </div>
+        <div class='row card-body'>
+            <div class='col-6'>                       
+                <p>No hay existencias :(</p>
+            </div>
+        </div>
+    </div>
+</div>";
+} else{
+    $mica100d = 0;
+
+    $html = $html ."<div class='col-lg-4'>
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Micas de Privacidad</h5>
+            </div>
+            ";
+    while($row = $resultado->fetch_assoc()){
+        $mica100d = $row["id_mica100d"];
+        $html = $html .  "<div class='row card-body'>
+        <div class='col-6'>
+            <p>Posicion: " .  $row["place"]. "</p>
+        </div>              
     
+        <div class='col-6'>
+            <p>Cantidad: " . $row["cantidad"] . "<p>
+            </div>
+            <hr> 
+            <div class='col'>
+                <p>Compatibles: <br>";
+    }
+    
+    $query2 = "SELECT b.nombre FROM modelos b 
+    INNER JOIN nombre_mica100d a
+    ON b.id_modelo = a.nombre_modelo
+    INNER JOIN  micas100d c
+    ON a.id_mica100d = c.id_mica100d
+    WHERE c.id_mica100d = '$mica100d'";
+
+    $resultado = mysqli_query($conn, $query2);
+    
+
+    while($row = $resultado->fetch_assoc()){
+        $html = $html  .   $row["nombre"] . ", ";
+    }
+
+    $html = $html . "</div>
+        </div>
+    </div>
+</div>";
+
+}
+
+$queryCamara = "SELECT a.nombre, c.cantidad, c.id_micaCamara, d.nombre AS place FROM modelos a
+INNER JOIN nombre_micacamara b
+ON b.modelo = a.id_modelo
+INNER JOIN micas_camara c
+ON c.id_micaCamara = b.id_micaCamara
+INNER JOIN  posicion d
+ON c.posicion = d.id_posicion
+WHERE a.id_modelo = '$modelo'";
+
+$resultado = mysqli_query($conn, $queryCamara);
+$total = mysqli_num_rows($resultado);
+if($total==0){
+    $html = $html . "<div class='col-lg-4 mt-4'>
+    <div class='card'>
+        <div class='card-header'>
+            <h5>Micas para camara</h5>
+        </div>
+        <div class='row card-body'>
+            <div class='col-6'>                       
+                <p>No hay existencias :(</p>
+            </div>
+        </div>
+    </div>
+</div>";
+} else{
+    $micaCamara = 0;
+
+    $html = $html ."<div class='col-lg-4'>
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Micas para camara</h5>
+            </div>
+            ";
+    while($row = $resultado->fetch_assoc()){
+        $micaCamara = $row["id_micaCamara"];
+        $html = $html .  "<div class='row card-body'>
+        <div class='col-6'>
+            <p>Posicion: " .  $row["place"]. "</p>
+        </div>              
+    
+        <div class='col-6'>
+            <p>Cantidad: " . $row["cantidad"] . "<p>
+            </div>
+            <hr> 
+            <div class='col'>
+                <p>Compatibles: <br>";
+    }
+    
+    $query2 = "SELECT b.nombre FROM modelos b 
+    INNER JOIN nombre_micacamara a
+    ON b.id_modelo = a.modelo
+    INNER JOIN  micas_camara c
+    ON a.id_micaCamara= c.id_micaCamara
+    WHERE c.id_micaCamara = '$micaCamara'";
+
+    $resultado = mysqli_query($conn, $query2);
+    
+
+    while($row = $resultado->fetch_assoc()){
+        $html = $html  .   $row["nombre"] . ", ";
+    }
+
+    $html = $html . "</div>
+        </div>
+    </div>
+</div>";
+
+}
+
+$queryCurva = "SELECT a.nombre, c.cantidad, c.id_micaCurva, d.nombre AS place FROM modelos a
+INNER JOIN nombre_micacurva b
+ON b.nombre_modelo = a.id_modelo
+INNER JOIN micascurva c
+ON c.id_micaCurva = b.id_micaCurva
+INNER JOIN  posicion d
+ON c.posicion = d.id_posicion
+WHERE a.id_modelo = '$modelo'";
+
+$resultado = mysqli_query($conn, $queryCurva);
+$total = mysqli_num_rows($resultado);
+if($total==0){
+    $html = $html . "<div class='col-lg-4 mt-4'>
+    <div class='card'>
+        <div class='card-header'>
+            <h5>Micas Curvas</h5>
+        </div>
+        <div class='row card-body'>
+            <div class='col-6'>                       
+                <p>No hay existencias :(</p>
+            </div>
+        </div>
+    </div>
+</div>";
+} else{
+    $micaCurva = 0;
+
+    $html = $html ."<div class='col-lg-4'>
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Micas curvas</h5>
+            </div>
+            ";
+    while($row = $resultado->fetch_assoc()){
+        $micaCurva = $row["id_micaCurva"];
+        $html = $html .  "<div class='row card-body'>
+        <div class='col-6'>
+            <p>Posicion: " .  $row["place"]. "</p>
+        </div>              
+    
+        <div class='col-6'>
+            <p>Cantidad: " . $row["cantidad"] . "<p>
+            </div>
+            <hr> 
+            <div class='col'>
+                <p>Compatibles: <br>";
+    }
+    
+    $query2 = "SELECT b.nombre FROM modelos b 
+    INNER JOIN nombre_micacurva a
+    ON b.id_modelo = a.nombre_modelo
+    INNER JOIN  micascurva c
+    ON a.id_micaCurva = c.id_micaCurva
+    WHERE c.id_micaCurva = '$micaCurva'";
+
+    $resultado = mysqli_query($conn, $query2);
+    
+
+    while($row = $resultado->fetch_assoc()){
+        $html = $html  .   $row["nombre"] . ", ";
+    }
+
+    $html = $html . "</div>
+        </div>
+    </div>
+</div>";
+
+}
+
+
 echo $html;
   
 ?>

@@ -22,7 +22,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="index.php">
       <img src="img/logo.svg" alt="logo" width="200">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,6 +106,8 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="actualizarMica100d.php">Mica privacidad</a></li>
             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="actualizarMica_curva.php">Micas curvas</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="actualizarProtector.php">Protector</a></li>
           </ul>
         </li>
@@ -113,7 +115,7 @@
           <a class="nav-link active" aria-current="page" href="nuevoModelo.php">Nuevo Modelo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="modeloGeneral.php">Modelo</a>
+          <a class="nav-link active" aria-current="page" href="index.php">Modelo</a>
         </li>
 
       </ul>

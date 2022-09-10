@@ -1,19 +1,19 @@
 <?php
         include("db.php");
         include("includes/header.php");
-        if(isset($_SESSION['exito_mica100d'])){
+        if(isset($_SESSION['exito_modeloNuevo'])){
             echo "<script type='text/javascript'>Swal.fire(
-                        'Nueva mica de Privacidad!',
-                        'Se ha guardado la mica exitosamente!',
+                        'Nuevo modelo!',
+                        'Se ha creado un nuevo modelo con exito!',
                         'success'
                       )</script>";
-                unset($_SESSION['exito_mica100d']);
+                unset($_SESSION['exito_modeloNuevo']);
         }
 ?>
 
 
     <div class="container">
-        <form action="registros/modelo.php" method="POST" class="row g-3 mt-3">
+        <form action="registros/modeloNuevo.php" method="POST" class="row g-3 mt-3">
             <h3 class="display-5 text-dark text-center font-weight-bold">Nuevo Modelo</h3>
             <div class="col-6">
                 <label for="marca" class="form-label">Marca:</label>

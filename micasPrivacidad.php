@@ -18,16 +18,14 @@
             <div class="col-6">
                 <label for="marca" class="form-label">Marca:</label>
                 <select name="marca" id="marca" class="form-select">
-                    <option value="Iphone">Iphone</option>
-                    <option value="Samsung">Samsung</option>
-                    <option value="Motorola">Motorola</option>
-                    <option value="Huawei">Huawei</option>
-                    <option value="Xiaomi">Xiaomi</option>
-                    <option value="OPPO">OPPO</option>
-                    <option value="ZTE">ZTE</option>
-                    <option value="Alcatel">Alcatel</option>
-                    <option value="LG">LG</option>
-                    <option value="Universal">Universal</option>
+                    <option value="0" selected disabled>Selecciona una marca</option>
+                    <?php
+                        $pos="SELECT id_marca, marca FROM marca ORDER BY id_marca ASC";
+                        $resultado = mysqli_query($conn, $pos);
+                        while($row = mysqli_fetch_assoc($resultado)) {
+                            $id_marca = $row["id_marca"]?>
+                            <option value="<?php echo $id_marca?>"> <?php echo $row["marca"]?> </option>
+                    <?php  } ?>
                 </select>
             </div>
             <div class="col-6">
@@ -51,9 +49,13 @@
                 </select>
             </div>
             <table class="table-borderless form-linea p-3"  id="tabla">
-                <label for="">Modelo:</label>
+                <label for="modelo" class="form-label">Modelo:</label>
                 <tr class="fila-fija">
-                    <td > <input class="form-control col-11" type="text" name="modelo[]" placeholder="modelo" required> </td>
+                    <td >
+                        <select name="modelo[]" class="form-select col-11" id="modelo">
+
+                        </select>
+                    </td>
                     <td class="eliminar"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>  
                 </tr>
             </table>
@@ -65,7 +67,8 @@
         </form>
     </div>
 
-  <script src="js/selectPosicion.js"></script>  
+  <script src="js/selectPosicion.js"></script>
+  <script src="js/agregarModelo.js"></script>  
 
 <?php
     include("includes/footer.php")

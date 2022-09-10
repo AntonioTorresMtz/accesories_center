@@ -67,7 +67,7 @@
             </div>
 
             <div class="col-6">
-                <label for="largo" class="form-label">Posicion:</label>
+                <label for="posicion" class="form-label">Posicion:</label>
                 <select name="posicion" id="posicion" class="form-select">    
                 </select>
             </div>

@@ -28,7 +28,7 @@ while(true) {
     //// RECUPERAR LOS VALORES DE LOS ARREGLOS ////////
    $modelo1 = current($modelo); //Modelo
    
-   $sql1 = "INSERT INTO nombre_mica100d (modelo, id_mica100d) VALUES ('$modelo1', '$id')";
+   $sql1 = "INSERT INTO nombre_mica100d (nombre_modelo, id_mica100d) VALUES ('$modelo1', '$id')";
 
    $sqlRes=$conn->query($sql1); //Consulta para el insert
    if(!$sql1){
