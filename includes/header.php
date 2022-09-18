@@ -124,6 +124,9 @@
             <li><a class="dropdown-item" href="nuevoTipoProtector.php">Tipo Protector</a></li>
           </ul>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="existencias.php">Existencias</a>
+        </li>
         
       </ul>
     </div>
