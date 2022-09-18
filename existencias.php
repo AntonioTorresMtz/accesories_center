@@ -2,16 +2,13 @@
 include("includes/header.php");
 include("db.php")
 ?>
-<div class="container mt-4">
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Mica de privacidad</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="busca">
-    </div>
+<div class="container mt-4 text-center">
+    <h1>Lista de Micas con menos de 5</h1>
 </div>
 
 <div class="tablas_existencias">
     <div class="container existencias">
-        <h1 class="text-center">Micas normales</h1>
+        <h4 class="text-center">Micas normales</h4>
         <div class="table-responsive">
             <table class="table table-striped table-borderless table-hover">
                 <thead>
@@ -45,7 +42,7 @@ include("db.php")
     </div>
 
     <div class="container existencias">
-        <h1 class="text-center">Micas completas</h1>
+        <h4 class="text-center">Micas completas</h4>
         <div class="table-responsive">
             <table class="table table-striped table-borderless table-hover">
                 <thead>
@@ -78,7 +75,7 @@ include("db.php")
     </div>
 
     <div class="container existencias">
-        <h1 class="text-center">Micas privacidad</h1>
+        <h4 class="text-center">Micas privacidad</h4>
         <div class="table-responsive">
             <table class="table table-striped table-borderless table-hover">
                 <thead>
@@ -111,7 +108,7 @@ include("db.php")
     </div>
 
     <div class="container existencias">
-        <h1 class="text-center">Micas camara</h1>
+        <h4 class="text-center">Micas camara</h4>
         <div class="table-responsive">
             <table class="table table-striped table-borderless table-hover">
                 <thead>
@@ -144,7 +141,7 @@ include("db.php")
     </div>
 
     <div class="container existencias">
-        <h1 class="text-center">Micas Curvas</h1>
+        <h4 class="text-center">Micas Curvas</h4>
         <div class="table-responsive">
             <table class="table table-striped table-borderless table-hover">
                 <thead>
