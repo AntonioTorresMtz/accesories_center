@@ -22,4 +22,5 @@ if(!$resultado){
     exit(); 
 }
 
+mysqli_close($conn);
 ?>

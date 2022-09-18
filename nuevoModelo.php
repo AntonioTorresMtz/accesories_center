@@ -1,6 +1,7 @@
 <?php
         include("db.php");
         include("includes/header.php");
+        
         if(isset($_SESSION['exito_modeloNuevo'])){
             echo "<script type='text/javascript'>Swal.fire(
                         'Nuevo modelo!',
@@ -9,6 +10,17 @@
                       )</script>";
                 unset($_SESSION['exito_modeloNuevo']);
         }
+
+        if(isset($_SESSION['error_modeloNuevo'])){
+            echo "<script type='text/javascript'>Swal.fire(
+                        'Error al crear modelo!',
+                        'Selecciona una marca por favor',
+                        'error'
+                      )</script>";
+                unset($_SESSION['error_modeloNuevo']);
+        }
+
+        
 ?>
 
 
@@ -17,7 +29,8 @@
             <h3 class="display-5 text-dark text-center font-weight-bold">Nuevo Modelo</h3>
             <div class="col-6">
                 <label for="marca" class="form-label">Marca:</label>
-                <select name="marca" id="marca" class="form-select">
+                <select name="marca" id="marca" class="form-select" required>
+                    <option value="0" selected disabled>Selecciona una marca</option>
                     <?php
                         $pos="SELECT id_marca, marca FROM marca ORDER BY id_marca ASC";
                         $resultado = mysqli_query($conn, $pos);

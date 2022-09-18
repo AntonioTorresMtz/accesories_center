@@ -21,12 +21,12 @@
 
 ?>
     <div class="container">
-        <form action="registros/ventaMica_camara.php" method="POST" class="row g-3 mt-3">
+        <form action="registros/ventaMica_camara.php" method="POST" class="row g-3 mt-3" id="formulario">
             <h3 class="display-5 text-dark text-center font-weight-bold">Venta micas para camara</h3>
             <div class="col-6">
                 <label for="marca" class="form-label">Marca</label>
                 <select class="form-select" name="marca" id="marca">
-                    <option value="1" disabled selected>Selecciona una marca </option>
+                    <option value="0" disabled selected>Selecciona una marca </option>
                 <?php
                         $pos="SELECT id_marca, marca FROM marca ORDER BY id_marca ASC";
                         $resultado = mysqli_query($conn, $pos);
@@ -62,6 +62,7 @@
     </div>
 
 <script src="js/selectCamara.js"></script>
+<script src="js/validaMarca.js"></script>
 
 <?php
     include("includes/footer.php")

@@ -12,7 +12,7 @@ $producto = $_POST['producto'];
 
     $resultado = mysqli_query($conn, $query);
 
-    $html = "<option value='vacio' disabled selected>--Selecciona Modelo--</option>";
+    $html = "<option value='0' disabled selected>--Selecciona Modelo--</option>";
     while($row = $resultado->fetch_assoc()){
         $valor = $row["id_mica"] . "-" . $row["id_modelo"];
         $html = $html . "<option value='".$valor ."'>".$row["nombre"] . "</option>"; 

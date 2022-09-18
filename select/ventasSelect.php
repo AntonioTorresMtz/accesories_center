@@ -12,7 +12,7 @@ ORDER BY a.nombre ASC";
 
     $resultado = mysqli_query($conn, $query);
 
-    $html = "<option value='vacio'>--Selecciona Modelo--</option>";
+    $html = "<option value='0'>--Selecciona Modelo--</option>";
     while($row = $resultado->fetch_assoc()){
         $valor = $row["id_mica9h"] . "-" . $row["id_modelo"];
         $html = $html . "<option value='".$valor ."'>".$row["nombre"] . "</option>"; 
