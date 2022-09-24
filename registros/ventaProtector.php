@@ -62,7 +62,7 @@ if ($encontrado) {
 } else {
     print "<p>No se han encontrado coincidencias.</p>\n";
     $_SESSION['exito_ventaMica9h'] = "Mica guardada";
-    header("Location: ../ventaMenu_mica9h.php");
+    header("Location: ../ventaMenu_protector.php");
     exit(); 
 }
 echo $modelo;

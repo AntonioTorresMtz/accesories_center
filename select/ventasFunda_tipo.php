@@ -20,7 +20,7 @@ WHERE a.id_protector = '$id'";
 
     $resultado = mysqli_query($conn, $query);
 
-    $html = "<option value='vacio'>--Selecciona Estilo de Funda--</option>";
+    $html = "<option value='0'>--Selecciona Estilo de Funda--</option>";
     while($row = $resultado->fetch_assoc()){
         $valor = $row["tipo"];
         $html = $html . "<option value='".$valor ."'>".$row["nombre"] . "</option>"; 

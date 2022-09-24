@@ -21,12 +21,12 @@
 
 ?>
     <div class="container">
-        <form action="registros/ventaProtector.php" method="POST" class="row g-3 mt-3">
+        <form action="registros/ventaProtector.php" method="POST" class="row g-3 mt-3" id="formulario">
             <h3 class="display-5 text-dark text-center font-weight-bold">Venta protectores</h3>
             <div class="col-4">
                 <label for="marca" class="form-label">Marca</label>
                 <select class="form-select" name="marca" id="marca">
-                    <option value="1" disabled selected>Selecciona una marca </option>
+                    <option value="0" disabled selected>Selecciona una marca </option>
                 <?php
                         $pos="SELECT id_marca, marca FROM marca ORDER BY id_marca ASC";
                         $resultado = mysqli_query($conn, $pos);
@@ -58,7 +58,7 @@
             </div>
             <div class="col-4">
                 <label for="descuento" class="form-label">Descuento:</label>
-                <input class="form-control" type="number" name="descuento" placeholder="descuento"  id="precio">
+                <input class="form-control" type="number" name="descuento" placeholder="Descuento"  id="precio">
             </div>
             
             <div class="col text-center">
@@ -68,6 +68,7 @@
     </div>
 
 <script src="js/selectProtector.js"></script>
+<script src="js/validaProtectorVenta.js"></script>
 
 <?php
     include("includes/footer.php")

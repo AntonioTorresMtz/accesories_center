@@ -21,12 +21,12 @@
 
 ?>
     <div class="container">
-        <form action="registros/actualizacion_Protectores.php" method="POST" class="row g-3 mt-3">
+        <form action="registros/actualizacion_Protectores.php" method="POST" class="row g-3 mt-3" id="formulario">
             <h3 class="display-5 text-dark text-center font-weight-bold">Actualizar protectores</h3>
             <div class="col-4">
                 <label for="marca" class="form-label">Marca</label>
                 <select class="form-select" name="marca" id="marca">
-                    <option value="1" disabled selected>Selecciona una marca </option>
+                    <option value="0" disabled selected>Selecciona una marca </option>
                 <?php
                         $pos="SELECT id_marca, marca FROM marca ORDER BY id_marca ASC";
                         $resultado = mysqli_query($conn, $pos);
@@ -45,7 +45,7 @@
             <div class="col-4">
                 <label for="Tipo" class="form-label">Tipo:</label>
                 <select class="form-select" name="tipo" id="tipo">
-                <option value="1" disabled selected>Selecciona un tipo de protector </option>
+                <option value="0" disabled selected>Selecciona un tipo de protector </option>
                     <?php
                         $pos="SELECT id_nombreTipo, nombre FROM nombre_tipo_protector";
                         $resultado = mysqli_query($conn, $pos);
@@ -71,6 +71,7 @@
     </div>
 
 <script src="js/selectProtector_new.js"></script>
+<script src="js/validaProtectorVenta.js"></script>
 
 <?php
     include("includes/footer.php")

@@ -13,7 +13,7 @@
     ?>
 
     <div class="container">
-        <form action="nuevaMica9d.php" method="POST" class="row g-3 mt-3">
+        <form action="nuevaMica9d.php" method="POST" class="row g-3 mt-3" id="formulario">
             <h3 class="display-5 text-dark text-center font-weight-bold">Nueva mica de Completa</h3>
             <div class="col-6">
                 <label for="marca" class="form-label">Marca:</label>
@@ -76,6 +76,8 @@
 
 <script src="js/selectPosicion.js"></script>
 <script src="js/agregarModelo.js"></script>
+<script src="js/valida_medidas.js"></script>
+
 
 <?php
     include("includes/footer.php")
