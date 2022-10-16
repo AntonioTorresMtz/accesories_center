@@ -19,22 +19,25 @@
                 unset($_SESSION['error_ventaMica9h']);
         }
 
-        if(isset($_SESSION['edG_m9h'])){
-            echo "<script type='text/javascript'>Swal.fire(
-                        'Actualizacion exitosa',
-                        'Se han modificado los datos con exito!',
-                        'success'
-                      )</script>";
-                unset($_SESSION['edG_m9h']);
-        }
 ?>
     <div class="container">
-        <form action="registros/actualizacion_Mica9d.php" method="POST" class="row g-3 mt-3">
-            <h3 class="display-5 text-dark text-center font-weight-bold">Buscar Modelo</h3>
+        <form action="registros/actualizacion_Mica9d.php" method="POST" class="row g-3 mt-3" id="formulario">
+            <h3 class="display-5 text-dark text-center font-weight-bold">Editar posicion</h3>
+            <div class="col-6">
+                <label for="producto" class="form-label">Producto:</label>
+                <select class="form-select" name="producto" id="producto">
+                    <option value="1">Mica Normal</option>
+                    <option value="2">Mica Completa</option>
+                    <option value="3">Mica Privacidad</option>
+                    <option value="4">Mica Camara</option>
+                    <option value="5">Mica Curva</option>
+                    <option value="6">Protector</option>
+                </select>
+            </div>
             <div class="col-6">
                 <label for="marca" class="form-label">Marca</label>
                 <select class="form-select" name="marca" id="marca">
-                    <option value="1" disabled selected>Selecciona una marca </option>
+                    <option value="0" disabled selected>Selecciona una marca </option>
                 <?php
                         $pos="SELECT id_marca, marca FROM marca ORDER BY id_marca ASC";
                         $resultado = mysqli_query($conn, $pos);
@@ -44,22 +47,28 @@
                     <?php  } ?>
                 </select>
             </div>
-            <div class="col-6">
+            <div class="col-12">
                 <label for="modelo" class="form-label">Modelo:</label>
                 <select class="form-select" name="modelo" id="modelo">
                         
                 </select>
             </div>
+            <div class="col-4">
+                <label for="cantidad" class="form-label">Cantidad:</label>
+                <input class="form-control" type="number" name="cantidad" placeholder="Cantidad" required id="cantidad">
+            </div>
+            <div class="col-8">
+                <p id="detalles"></p>
+            </div>
             
+            <div class="col-12 text-center">
+                <input type="submit" value="Guardar" class="btn btn-dark">
+            </div>
         </form>
     </div>
 
-    
-    <div class="container mt-3" id="compatibles">
-        
-    </div>
-
-<script src="js/modelo.js"></script>
+<script src="js/posicion.js"></script>
+<script src="js/validaMarca.js"></script>
 
 <?php
     include("includes/footer.php")

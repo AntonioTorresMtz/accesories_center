@@ -20,6 +20,15 @@
                 unset($_SESSION['error_modeloNuevo']);
         }
 
+        if(isset($_SESSION['error_Nombre'])){
+            echo "<script type='text/javascript'>Swal.fire(
+                        'Error al crear modelo!',
+                        'El nombre ya existe',
+                        'error'
+                      )</script>";
+                unset($_SESSION['error_Nombre']);
+        }
+
         
 ?>
 

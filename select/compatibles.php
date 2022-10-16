@@ -39,19 +39,24 @@ if($total==0){
     while($row = $resultado->fetch_assoc()){
         $mica9h = $row["id_mica9h"];
         $html = $html .  "<div class='row card-body'>
+
+                            <div class='col-12'>
+                                <a href='edita_mica9h.php?id=". $mica9h ."'> Editar </a>
+                            </div> 
+
                             <div class='col-6'>
                                 <p>Posicion: " .  $row["place"]. "</p>
                             </div>              
     
-                        <div class='col-6'>
-                            <p>Cantidad: " . $row["cantidad"] . "<p>
-                        </div>
-                        <div class='col-6'>
-                            <p>Medidas: " . $row["ancho"] . "x".  $row["largo"] . "<p>
-                        </div>
-                        <hr> 
-                        <div class='col'>
-                            <p>Compatibles: <br>";
+                            <div class='col-6'>
+                                <p>Cantidad: " . $row["cantidad"] . "<p>
+                            </div>
+                            <div class='col-6'>
+                                <p>Medidas: " . $row["ancho"] . "x".  $row["largo"] . "<p>
+                            </div>
+                            <hr> 
+                            <div class='col'>
+                                <p>Compatibles: <br>";
     }
     
     $query2 = "SELECT b.nombre FROM modelos b 
@@ -69,9 +74,9 @@ if($total==0){
     }
 
     $html = $html . "</div>
-    </div>
-</div>
-</div>";
+                </div>
+            </div> 
+    </div>";
 }
 
 $query9d = "SELECT a.nombre, c.cantidad, c.id_mica9d, d.nombre AS place,
@@ -111,19 +116,23 @@ if($total==0){
     while($row = $resultado->fetch_assoc()){
         $mica9d = $row["id_mica9d"];
         $html = $html .  "<div class='row card-body'>
-        <div class='col-6'>
-            <p>Posicion: " .  $row["place"]. "</p>
-        </div>              
-    
-        <div class='col-6'>
-            <p>Cantidad: " . $row["cantidad"] . "<p>
-            </div>
-            <div class='col-6'>
-                <p>Medidas: " . $row["ancho"] . "x".  $row["largo"] . "<p>
-                </div>
-                <hr> 
-                <div class='col'>
-                    <p>Compatibles: <br>";
+                            <div class='col-12'>
+                                <a href='edita_mica9h.php?id=". $mica9h ."'> Editar </a>
+                            </div> 
+
+                                <div class='col-6'>
+                                    <p>Posicion: " .  $row["place"]. "</p>
+                                </div>              
+                            
+                                <div class='col-6'>
+                                    <p>Cantidad: " . $row["cantidad"] . "<p>
+                                    </div>
+                                    <div class='col-6'>
+                                        <p>Medidas: " . $row["ancho"] . "x".  $row["largo"] . "<p>
+                                        </div>
+                                        <hr> 
+                                        <div class='col'>
+                                            <p>Compatibles: <br>";
     }
     
     $query2 = "SELECT b.nombre FROM modelos b 
