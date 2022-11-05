@@ -1,4 +1,18 @@
-$(document).ready(function(){
+$(document).ready(function (){
+  $('#ancho').change(function (){
+      $('#marca option:selected').each(function (){
+          producto = $(this).val();
+          //console.log(producto)
+          $.post('select/modeloSelect.php', {producto: producto},
+          function(data){
+              $("#modelo").html(data);
+          });
+      });
+  })
+
+});
+
+/*$(document).ready(function(){
     $('#busca').focus();
     $('#busca').on('keyup', function(){
         var busca = $('#busca').val();
@@ -45,4 +59,4 @@ $(document).ready(function(){
         })
     })
 
-})
+})*/

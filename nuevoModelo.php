@@ -53,7 +53,7 @@
                 <label class="form-label" for="nombre">Nombre:</label>
                 <input class="form-control" type="text" min="0" name="nombre"  id="nombre" required>
             </div>
-              <div class="col text-center">
+            <div class="col text-center">
                 <input type="submit" value="Guardar" class="btn btn-dark">
             </div>
         </form>
