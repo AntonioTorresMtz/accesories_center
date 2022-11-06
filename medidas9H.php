@@ -5,7 +5,10 @@ if(isset($_POST['buscar'])){
     $ancho = $_POST["ancho"];
     $largo = $_POST["largo"];
     $order = $_POST["order"];
+} else{
+
 }
+
 ?>
 <div class="container">
     <h3 class="display-6 mt-4 text-dark text-center font-weight-bold">Buscar mica por medidas</h3>
@@ -47,6 +50,7 @@ if(isset($_POST['buscar'])){
                 <th>Modelo</th>
                 <th>Ancho</th>
                 <th>Largo</th>
+                <th>Cantidad</th>
                 <th>Camara</th>
                 <th>Boton</th>
                 <th>Posicion</th>
@@ -54,16 +58,17 @@ if(isset($_POST['buscar'])){
         </thead>
         <tbody id="result">
             <?php  
-                $mysqli = getConnexion();
+                if(isset($_POST['buscar'])){
+                    $mysqli = getConnexion();
                 if($order == "largo"){
-                    $query="SELECT m.nombre as model, ma.marca, b.ancho, b.largo, b.boton, b.camara, c.nombre FROM nombre_mica9h a
+                    $query="SELECT m.nombre as model, ma.marca, b.ancho, b.largo, b.boton, b.camara, c.nombre, b.cantidad FROM nombre_mica9h a
                     INNER JOIN micas9h b ON b.id_mica9h = a.id_mica9h
                     INNER JOIN posicion c ON c.id_posicion = b.posicion
                     INNER JOIN modelos m ON m.id_modelo = a.nombre_modelo
                     INNER JOIN marca ma ON ma.id_marca = b.marca
                     WHERE b.ancho <= $ancho and b.largo <= $largo ORDER BY b.largo DESC";
                 } else{
-                    $query="SELECT m.nombre as model, ma.marca, b.ancho, b.largo, b.boton, b.camara, c.nombre FROM nombre_mica9h a
+                    $query="SELECT m.nombre as model, ma.marca, b.ancho, b.largo, b.boton, b.camara, c.nombre, b.cantidad FROM nombre_mica9h a
                     INNER JOIN micas9h b ON b.id_mica9h = a.id_mica9h
                     INNER JOIN posicion c ON c.id_posicion = b.posicion
                     INNER JOIN modelos m ON m.id_modelo = a.nombre_modelo
@@ -77,12 +82,15 @@ if(isset($_POST['buscar'])){
                     "<td>" . $row['model']. "</td>".
                     "<td>" . $row['ancho']. "</td>".
                     "<td>" . $row['largo']. "</td>".
+                    "<td>" . $row['cantidad']. "</td>".
                     "<td>" . $row['camara']. "</td>".
                     "<td>" . $row['boton']. "</td>".
                     "<td>" . $row['nombre']. "</td>".
                     "</tr>";
                 }
-            ?>
+
+                }
+                ?>
         </tbody>
     </table>
     </div>
