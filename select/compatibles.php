@@ -117,7 +117,7 @@ if($total==0){
         $mica9d = $row["id_mica9d"];
         $html = $html .  "<div class='row card-body'>
                             <div class='col-12'>
-                                <a href='edita_mica9h.php?id=". $mica9h ."'> Editar </a>
+                                <a href='edita_mica9h.php?id=". $mica9d ."'> Editar </a>
                             </div> 
 
                                 <div class='col-6'>
@@ -189,6 +189,10 @@ if($total==0){
     while($row = $resultado->fetch_assoc()){
         $protector = $row["id_protector"];
         $html = $html .  "<div class='row card-body'>
+        <div class='col-12'>
+            <a href='edita_protector.php?id=". $protector ."'> Editar </a>
+        </div>
+
         <div class='col-6'>
             <p>Posicion: " .  $row["nombre"]. "</p>
         </div>              

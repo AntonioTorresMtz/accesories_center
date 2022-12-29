@@ -10,6 +10,15 @@
                       )</script>";
                 unset($_SESSION['exito_mica']);
         }
+
+        if(isset($_SESSION['error_duplicado'])){
+            echo "<script type='text/javascript'>Swal.fire(
+                        'Mica duplicada!',
+                        'Esta mica ya existe en tu inventario!',
+                        'error'
+                      )</script>";
+                unset($_SESSION['error_duplicado']);
+        }        
     ?>
 
     <div class="container">
