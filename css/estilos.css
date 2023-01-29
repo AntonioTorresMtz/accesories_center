@@ -10,3 +10,21 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 }
+
+.formulario{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.tbl-faltantes{
+	width: 600px;
+	margin-right: 40px;
+	margin-top: 100px;
+}
+
+.form-faltantes{
+	width: 400px;
+}

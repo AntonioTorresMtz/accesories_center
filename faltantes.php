@@ -11,19 +11,44 @@
         }
 ?>
 
+    <div class="formulario">
+        <div class="container form-faltantes">
+                <form action="registros/faltante.php" method="POST" class="row g-3 mt-3">
+                    <h3 class="display-5 text-dark text-center font-weight-bold">Anotar faltantes</h3>
+                    <div class="col-12">
+                        <label for="marca" class="form-label">Descripcion:</label>
+                        <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10" placeholder="Tipo - Modelo - Marca"></textarea>                
+                    </div>
 
-    <div class="container">
-        <form action="registros/faltante.php" method="POST" class="row g-3 mt-3">
-            <h3 class="display-5 text-dark text-center font-weight-bold">Anotar faltantes</h3>
-            <div class="col-12">
-                <label for="marca" class="form-label">Descripcion:</label>
-                <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10" placeholder="Tipo - Modelo - Marca"></textarea>                
+                    <div class="col text-center">
+                        <input type="submit" value="Guardar" class="btn btn-dark">
+                    </div>
+                </form>
             </div>
 
-            <div class="col text-center">
-                <input type="submit" value="Guardar" class="btn btn-dark">
+        <div class="table-responsive tbl-faltantes">
+                <table class="table table-striped table-borderless table-hover">
+                    <thead>
+                        <tr>
+                            <th>Faltante</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="result">
+                        <?php
+                            $query = "SELECT descripcion, fecha FROM faltantes";
+
+                            $res = $conn->query($query);
+                            while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
+                                echo "<tr> <td>" . $row['descripcion']. "</td>".
+                                "<td>" . $row['fecha']. "</td>".
+                                "</tr>";
+                            }
+
+                        ?>
+                    </tbody>
+                </table>
             </div>
-        </form>
     </div>
 
 <?php

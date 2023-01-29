@@ -138,6 +138,9 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="existencias.php">Existencias</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="faltantes.php">Faltantes</a>
+        </li>
         
       </ul>
     </div>

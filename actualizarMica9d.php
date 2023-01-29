@@ -22,7 +22,7 @@
 ?>
     <div class="container">
         <form action="registros/actualizacion_Mica9d.php" method="POST" class="row g-3 mt-3" id="formulario">
-            <h3 class="display-5 text-dark text-center font-weight-bold">Actualizar Micas Normales</h3>
+            <h3 class="display-5 text-dark text-center font-weight-bold">Actualizar Micas Completas</h3>
             <div class="col-6">
                 <label for="marca" class="form-label">Marca</label>
                 <select class="form-select" name="marca" id="marca">
