@@ -24,6 +24,8 @@ if(!$resultado){
         $id = $row['MAX(id_mica9d)'];
     }
 
+    $modelos_name = [];
+    
     while(true) {
         //// RECUPERAR LOS VALORES DE LOS ARREGLOS ////////
     
@@ -53,7 +55,7 @@ if(!$resultado){
     }
 
     $_SESSION['exito_mica'] = "Mica guardada";
-    //header("Location: micas9d.php");
+    header("Location: micas9d.php");
     exit(); 
 
 }

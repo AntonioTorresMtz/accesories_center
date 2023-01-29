@@ -9,7 +9,7 @@ function validarMedidas(evento){
     var largo = document.getElementById("largo").value;
     var ancho = document.getElementById("ancho").value;
 
-    if(ancho > largo){
+    if(ancho < largo){
         type='text/javascript'>Swal.fire(
             'Cuidado!',
             'El ancho es mas grande que el largo, verifica los campos',
