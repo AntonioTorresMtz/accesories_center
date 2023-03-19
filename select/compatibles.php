@@ -117,7 +117,7 @@ if($total==0){
         $mica9d = $row["id_mica9d"];
         $html = $html .  "<div class='row card-body'>
                             <div class='col-12'>
-                                <a href='edita_mica9h.php?id=". $mica9d ."'> Editar </a>
+                                <a href='edita_mica9d.php?id=". $mica9d ."'> Editar </a>
                             </div> 
 
                                 <div class='col-6'>

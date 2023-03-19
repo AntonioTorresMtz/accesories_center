@@ -5,7 +5,55 @@ $marca = $_POST["marca"];
 //$cantidad = $_POST["cantidad"];
 $posicion = $_POST["posicion"];
 $muro = $_POST['muro'];
+$modelos_arreglo = array();
+$modelo = ($_POST['modelo']);
 
+
+while(true) {
+    //// RECUPERAR LOS VALORES DE LOS ARREGLOS ////////
+    $modelo1 = current($modelo); //Modelo
+    $modelos_arreglo[] = $modelo1;
+    // Up! Next Value
+    $modelo1 = next( $modelo);
+    // Check terminator
+    if($modelo1 === false) break;
+}
+
+var_dump( $modelos_arreglo);
+
+foreach ($modelos_arreglo as $model) {
+    $sp = "CALL SP_VERIFICA_MODELO('$model', '$marca', '@salida')";
+    echo "Modelo:". $model . "<br>"; 
+    $resultado_sp = mysqli_query($conn, $sp);
+    if(!$resultado_sp){
+        echo 'Error en la Store Procedure que verifica datos repetidos <br>' . mysqli_error($conn);
+    } else{
+        echo 'Exito en la Store Procedure que verifica datos repetidos <br>' ;
+        $resultado = mysqli_query($conn, "SELECT @salida as numero");
+        $verificacion = 0;
+        if($resultado){
+            while($row = mysqli_fetch_assoc($resultado)) {
+                $verificacion = $row['numero'];
+                echo $row['numero'];
+           }
+            if ($verificacion > 0){
+                echo "El modelo se repite <br>";
+                echo $verificacion . "<br>";
+            } else{
+                echo "Todo fine sigue con tu bloque de codigo aqui <br>";
+                echo $verificacion . "<br>";
+            }
+    
+        } else{
+            echo 'Error :c <br>';
+            echo mysqli_error($conn);
+        }
+    }
+    mysqli_free_result($resultado);
+  }
+
+
+/*
 $protector = "INSERT INTO protectores (marca, cantidad, posicion) VALUES ('$marca', '0','$posicion')";
 
 $resultado = mysqli_query($conn, $protector);
@@ -14,8 +62,6 @@ if(!$resultado){
 } else{
     echo 'Exito mica <br>' ;
 }
-
-$modelo = ($_POST['modelo']);
 
 $idProtector = "SELECT MAX(id_protector) FROM protectores";
 $resultado = mysqli_query($conn, $idProtector);
@@ -91,5 +137,5 @@ $_SESSION['exito_protector'] = "Protector guardado";
 header("Location: ../protectores.php");
 exit(); 
 
-
+*/
 ?>

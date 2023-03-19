@@ -27,6 +27,15 @@
                       )</script>";
                 unset($_SESSION['edG_m9h']);
         }
+
+        if(isset($_SESSION['edG_m9d'])){
+            echo "<script type='text/javascript'>Swal.fire(
+                        'Actualizacion exitosa',
+                        'Se han modificado los datos con exito!',
+                        'success'
+                      )</script>";
+                unset($_SESSION['edG_m9d']);
+        }
 ?>
     <div class="container">
         <form action="registros/actualizacion_Mica9d.php" method="POST" class="row g-3 mt-3">
