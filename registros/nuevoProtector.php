@@ -20,9 +20,9 @@ while(true) {
 }
 
 var_dump( $modelos_arreglo);
-
+/*
 foreach ($modelos_arreglo as $model) {
-    $sp = "CALL SP_VERIFICA_MODELO('$model', '$marca', '@salida')";
+    $sp = "CALL SP_VERIFICA_MODELO('$model', '$marca', 'salida')";
     echo "Modelo:". $model . "<br>"; 
     $resultado_sp = mysqli_query($conn, $sp);
     if(!$resultado_sp){
@@ -48,11 +48,30 @@ foreach ($modelos_arreglo as $model) {
             echo 'Error :c <br>';
             echo mysqli_error($conn);
         }
+    }    
+  }*/
+
+
+  $sp = "CALL SP_VERIFICA_MODELO(155, 1, @salida);";
+  $resultado_sp = mysqli_query($conn, $sp);
+  mysql_free_result($resultado_sp);
+  if ($resultado_sp){
+    $consulta = "SELECT @salida";
+    $resultado = mysqli_query($conn, $consulta);
+    while(mysqli_next_result($conn)){;}
+    if($resultado){
+        $fila = mysqli_fetch_assoc($resultado);
+        $num = $fila["salida"];
+        echo $num;
+    }else{
+        echo "MAl";
+        echo 'Error en la Store Procedure que verifica datos repetidos <br>' . mysqli_error($conn);
     }
-    mysqli_free_result($resultado);
+  }else{
+    echo 'Error en la Store Procedure que verifica datos repetidos <br>' . mysqli_error($conn);
   }
-
-
+    
+ 
 /*
 $protector = "INSERT INTO protectores (marca, cantidad, posicion) VALUES ('$marca', '0','$posicion')";
 

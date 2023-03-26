@@ -79,6 +79,8 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#"></a></li>
+            <li><a class="dropdown-item" href="vistaVentas.php">Lista de ventas</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="ventaMenu_mica9d.php">Mica Completa</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="ventaMenu_mica9h.php">Mica Normal</a></li>

@@ -22,7 +22,7 @@ WHERE a.id_protector = '$id'";
 
     $html = "<option value='0'>--Selecciona Estilo de Funda--</option>";
     while($row = $resultado->fetch_assoc()){
-        $valor = $row["tipo"];
+        $valor = $row["id_nombreTipo"];
         $html = $html . "<option value='".$valor ."'>".$row["nombre"] . "</option>"; 
     }
     echo $html;
