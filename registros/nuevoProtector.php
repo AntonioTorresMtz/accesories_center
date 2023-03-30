@@ -20,141 +20,113 @@ while(true) {
 }
 
 var_dump( $modelos_arreglo);
-/*
+
+$contador = 0;
 foreach ($modelos_arreglo as $model) {
-    $sp = "CALL SP_VERIFICA_MODELO('$model', '$marca', 'salida')";
+    $verifica = "SELECT COUNT(*) as number FROM modelo_funda WHERE tipo_modelo = '$model';";
     echo "Modelo:". $model . "<br>"; 
-    $resultado_sp = mysqli_query($conn, $sp);
-    if(!$resultado_sp){
-        echo 'Error en la Store Procedure que verifica datos repetidos <br>' . mysqli_error($conn);
-    } else{
-        echo 'Exito en la Store Procedure que verifica datos repetidos <br>' ;
-        $resultado = mysqli_query($conn, "SELECT @salida as numero");
-        $verificacion = 0;
-        if($resultado){
-            while($row = mysqli_fetch_assoc($resultado)) {
-                $verificacion = $row['numero'];
-                echo $row['numero'];
-           }
-            if ($verificacion > 0){
-                echo "El modelo se repite <br>";
-                echo $verificacion . "<br>";
-            } else{
-                echo "Todo fine sigue con tu bloque de codigo aqui <br>";
-                echo $verificacion . "<br>";
-            }
-    
-        } else{
-            echo 'Error :c <br>';
-            echo mysqli_error($conn);
-        }
-    }    
-  }*/
-
-
-  $sp = "CALL SP_VERIFICA_MODELO(155, 1, @salida);";
-  $resultado_sp = mysqli_query($conn, $sp);
-  mysql_free_result($resultado_sp);
-  if ($resultado_sp){
-    $consulta = "SELECT @salida";
-    $resultado = mysqli_query($conn, $consulta);
-    while(mysqli_next_result($conn)){;}
-    if($resultado){
-        $fila = mysqli_fetch_assoc($resultado);
-        $num = $fila["salida"];
-        echo $num;
-    }else{
-        echo "MAl";
-        echo 'Error en la Store Procedure que verifica datos repetidos <br>' . mysqli_error($conn);
-    }
-  }else{
-    echo 'Error en la Store Procedure que verifica datos repetidos <br>' . mysqli_error($conn);
+    $resultado_sp = mysqli_query($conn, $verifica);
+    $row = mysqli_fetch_assoc($resultado_sp);
+    $contador = $contador + $row["number"];    
   }
+
+echo $contador;
+
+if($contador == 0){
+    $protector = "INSERT INTO protectores (marca, cantidad, posicion) VALUES ('$marca', '0','$posicion')";
+
+    $resultado = mysqli_query($conn, $protector);
+    if(!$resultado){
+        echo 'Error mica <br>';
+    } else{
+        echo 'Exito mica <br>' ;
+    }
+
+    $idProtector = "SELECT MAX(id_protector) FROM protectores";
+    $resultado = mysqli_query($conn, $idProtector);
+    $id;
+    while($row = mysqli_fetch_assoc($resultado)) {
+        $id = $row['MAX(id_protector)'];
+    }
+
+    $cantidad = ($_POST['cantidad']);
+    $tipo = ($_POST['tipo']);
+
+
+    while(true) {
+        //// RECUPERAR LOS VALORES DE LOS ARREGLOS ////////
+    $cantidad1 = current($cantidad); //Cantidad
+    $tipo1 = current ($tipo);
+
+    $sql1 = "INSERT INTO tipo_protector (tipo, cantidad,  id_protector) VALUES ('$tipo1', '$cantidad1', '$id')";
+
+    $sqlRes=$conn->query($sql1); //Consulta para el insert
+    if(!$sql1){
+        echo 'Error tipo<br>';
+    } else{
+        echo 'Exito tipo <br>' ;
+    }
+
+    // Up! Next Value
+    $tipo1 = next( $tipo );
+    $cantidad1 = next ( $cantidad);
+    // Check terminator
+    if($cantidad1 === false || $tipo1 === false) break;
+    }
+
+
+    while(true) {
+        //// RECUPERAR LOS VALORES DE LOS ARREGLOS ////////
+    $modelo1 = current($modelo); //Modelo
     
- 
-/*
-$protector = "INSERT INTO protectores (marca, cantidad, posicion) VALUES ('$marca', '0','$posicion')";
+    $sql1 = "INSERT INTO modelo_funda (id_protector, tipo_modelo) VALUES ('$id', '$modelo1')";
 
-$resultado = mysqli_query($conn, $protector);
-if(!$resultado){
-    echo 'Error mica <br>';
-} else{
-    echo 'Exito mica <br>' ;
-}
+    $sqlRes=$conn->query($sql1); //Consulta para el insert
+    if(!$sql1){
+        echo 'Error modelo<br>';
+    } else{
+        echo 'Exito modelo <br>' ;
+    }
 
-$idProtector = "SELECT MAX(id_protector) FROM protectores";
-$resultado = mysqli_query($conn, $idProtector);
-$id;
-while($row = mysqli_fetch_assoc($resultado)) {
-     $id = $row['MAX(id_protector)'];
-}
+    // Up! Next Value
+    $modelo1 = next( $modelo);
+    // Check terminator
+    if($modelo1 === false) break;
+    }
 
-$cantidad = ($_POST['cantidad']);
-$tipo = ($_POST['tipo']);
+    $total = 0;
+    $cantidadTotal = "SELECT cantidad FROM tipo_protector WHERE id_protector = '$id'";
+    $resultado = mysqli_query($conn, $cantidadTotal);
+    while($row = mysqli_fetch_assoc($resultado)) {
+        $total = $total + $row['cantidad'];
+        echo $total;
+    }
 
+    $totalNuevo = "UPDATE protectores SET cantidad='$total' WHERE id_protector = '$id'";
+    $resultado = mysqli_query($conn, $totalNuevo);
 
-while(true) {
-    //// RECUPERAR LOS VALORES DE LOS ARREGLOS ////////
-   $cantidad1 = current($cantidad); //Cantidad
-   $tipo1 = current ($tipo);
-
-   $sql1 = "INSERT INTO tipo_protector (tipo, cantidad,  id_protector) VALUES ('$tipo1', '$cantidad1', '$id')";
-
-   $sqlRes=$conn->query($sql1); //Consulta para el insert
-   if(!$sql1){
-       echo 'Error tipo<br>';
-   } else{
-       echo 'Exito tipo <br>' ;
-   }
-
-   // Up! Next Value
-   $tipo1 = next( $tipo );
-   $cantidad1 = next ( $cantidad);
-   // Check terminator
-   if($cantidad1 === false || $tipo1 === false) break;
-}
+    if(!$resultado){
+        echo 'Error actualizacion<br>';
+    } else{
+        echo 'Exito actualizacion<br>' ;
+    }
 
 
-while(true) {
-    //// RECUPERAR LOS VALORES DE LOS ARREGLOS ////////
-   $modelo1 = current($modelo); //Modelo
-   
-   $sql1 = "INSERT INTO modelo_funda (id_protector, tipo_modelo) VALUES ('$id', '$modelo1')";
+    $_SESSION['exito_protector'] = "Protector guardado";
+    header("Location: ../protectores.php");
+    exit(); 
+    }else{
+       if(count($modelos_arreglo) == 1){
+            $_SESSION['protector_repetido'] = "Protector repetido";
+            header("Location: ../protectores.php");
+            exit();
+            echo "Modelo repetido" . count($modelos_arreglo);
+        }else{
+            $_SESSION['protectores_repetido'] = "Protector repetido";
+            header("Location: ../protectores.php");
+            exit();
+            echo "Modelos repetido" . count($modelos_arreglo);
+        }
 
-   $sqlRes=$conn->query($sql1); //Consulta para el insert
-   if(!$sql1){
-       echo 'Error modelo<br>';
-   } else{
-       echo 'Exito modelo <br>' ;
-   }
-
-   // Up! Next Value
-   $modelo1 = next( $modelo);
-   // Check terminator
-   if($modelo1 === false) break;
-}
-
-$total = 0;
-$cantidadTotal = "SELECT cantidad FROM tipo_protector WHERE id_protector = '$id'";
-$resultado = mysqli_query($conn, $cantidadTotal);
-while($row = mysqli_fetch_assoc($resultado)) {
-    $total = $total + $row['cantidad'];
-    echo $total;
-}
-
-$totalNuevo = "UPDATE protectores SET cantidad='$total' WHERE id_protector = '$id'";
-$resultado = mysqli_query($conn, $totalNuevo);
-
-if(!$resultado){
-    echo 'Error actualizacion<br>';
-} else{
-    echo 'Exito actualizacion<br>' ;
-}
-
-
-$_SESSION['exito_protector'] = "Protector guardado";
-header("Location: ../protectores.php");
-exit(); 
-
-*/
+    }
 ?>

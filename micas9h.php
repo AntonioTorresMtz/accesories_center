@@ -10,10 +10,26 @@
                       )</script>";
                 unset($_SESSION['exito_mica9h']);
         }
+        if(isset($_SESSION['modelo_repetido'])){
+            echo "<script type='text/javascript'>Swal.fire(
+                        'Modelo repetido!',
+                        'El modelo ya existe en el inventario, intenta actualizar su cantidad!',
+                        'error'
+                      )</script>";
+                unset($_SESSION['modelo_repetido']);
+        }
+        if(isset($_SESSION['modelos_repetido'])){
+            echo "<script type='text/javascript'>Swal.fire(
+                        'Modelos repetidos!',
+                        'Algún modelo ya existe en el inventario, intenta actualizar su cantidad!',
+                        'error'
+                      )</script>";
+                unset($_SESSION['modelos_repetido']);
+        }
     ?>
 
     <div class="container">
-        <form action="registros/nuevaMica9h.php" method="POST" class="row g-3 mt-3">
+        <form action="registros/nuevaMica9h.php" method="POST" class="row g-3 mt-3" id="formulario">
             <h3 class="display-5 text-dark text-center font-weight-bold">Nueva mica normal</h3>
             <div class="col-4">
                 <label for="marca" class="form-label">Marca:</label>
@@ -93,6 +109,7 @@
 
 <script src="js/selectPosicion.js"></script>
 <script src="js/agregarModelo.js"></script>
+<script src="js/valida_medidas.js"></script>
 
 <?php
     include("includes/footer.php")

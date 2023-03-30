@@ -9,6 +9,22 @@
                   )</script>";
             unset($_SESSION['exito_protector']);
     }
+    if(isset($_SESSION['protector_repetido'])){
+        echo "<script type='text/javascript'>Swal.fire(
+                    'Modelo repetido!',
+                    'El modelo ya existe en el inventario, intenta actualizar su cantidad!',
+                    'error'
+                  )</script>";
+            unset($_SESSION['protector_repetido']);
+    }
+    if(isset($_SESSION['protectores_repetido'])){
+        echo "<script type='text/javascript'>Swal.fire(
+                    'Modelos repetidos!',
+                    'Algún modelo ya existe en el inventario, intenta actualizar su cantidad!',
+                    'error'
+                  )</script>";
+            unset($_SESSION['protectores_repetido']);
+    }
 ?>
 
 <div class="container">

@@ -18,7 +18,24 @@
                         'error'
                       )</script>";
                 unset($_SESSION['error_duplicado']);
-        }        
+        }  
+        
+        if(isset($_SESSION['modelo_repetido'])){
+            echo "<script type='text/javascript'>Swal.fire(
+                        'Modelo repetido!',
+                        'El modelo ya existe en el inventario, intenta actualizar su cantidad!',
+                        'error'
+                      )</script>";
+                unset($_SESSION['modelo_repetido']);
+        }
+        if(isset($_SESSION['modelos_repetido'])){
+            echo "<script type='text/javascript'>Swal.fire(
+                        'Modelos repetidos!',
+                        'Algún modelo ya existe en el inventario, intenta actualizar su cantidad!',
+                        'error'
+                      )</script>";
+                unset($_SESSION['modelos_repetido']);
+        }
     ?>
 
     <div class="container">
