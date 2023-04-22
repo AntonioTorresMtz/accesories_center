@@ -3,31 +3,29 @@ include('db.php');
 include("includes/header.php");
 
 $id = $_GET['id'];
-//echo $id;
+echo $id;
 
-$query = "SELECT m.marca as name_marca, a.marca, a.ancho, a.largo, a.cantidad, a.posicion, p.nombre as name_posicion, p.muro
-FROM micas9d a
+$query = "SELECT m.marca as name_marca, a.marca, a.cantidad, a.posicion,
+p.nombre as name_posicion, p.muro
+FROM micas100d a
 INNER JOIN marca m ON m.id_marca = a.marca
 INNER JOIN posicion p ON p.id_posicion = a.posicion
-WHERE id_mica9d = '$id'";
+WHERE id_mica100d = '$id'";
 $resultado = mysqli_query($conn, $query);
 
 $fila = mysqli_fetch_assoc($resultado);
 $marca = $fila["marca"];
 $marca_name = $fila["name_marca"];
-$ancho = $fila["ancho"];
-$largo = $fila["largo"];
-$cantidad = $fila["cantidad"];
 $posicion = $fila["posicion"];
 $posicion_name = $fila["name_posicion"];
-
 $muro = $fila["muro"];
+$cantidad = $fila["cantidad"];
 
 
 ?>
 
 <div class="container">
-    <form action="editar/e_general9d.php" method="POST" class="row g-3 mt-3">
+    <form action="editar/e_general9h.php" method="POST" class="row g-3 mt-3">
         <h3 class="display-5 text-dark text-center font-weight-bold">Editar Mica</h3>
 
         <div class="col-12">
@@ -35,9 +33,9 @@ $muro = $fila["muro"];
             <?php
             $name = "";
             $names = "SELECT m.nombre, m.id_modelo FROM modelos m
-                INNER JOIN nombre a ON a.nombre_modelo = m.id_modelo
-                INNER JOIN micas9d b ON a.id_mica = b.id_mica9d
-                WHERE b.id_mica9d = '$id'";
+                INNER JOIN nombre_mica9h a ON a.nombre_modelo = m.id_modelo
+                INNER JOIN micas9h b ON a.id_mica9h = b.id_mica9h
+                WHERE b.id_mica9h = '$id'";
 
             $resultado = mysqli_query($conn, $names);
             while ($row = mysqli_fetch_assoc($resultado)) {
@@ -52,7 +50,7 @@ $muro = $fila["muro"];
 
         </div>
 
-        <div class="col-4">
+        <div class="col-3">
             <label for="marca" class="form-label">Marca:</label>
             <select name="marca" id="marca" class="form-select">
                 <option value="<?php echo $marca ?>" selected> <?php echo $marca_name ?> </option>
@@ -66,7 +64,7 @@ $muro = $fila["muro"];
             </select>
         </div>
 
-        <div class="col-4">
+        <div class="col-3">
             <label class="form-label" for="largo">Muro:</label>
             <select name="muro" id="muro" class="form-select">
                 <option value="<?php echo $muro ?>" selected> <?php echo $muro ?> </option>
@@ -80,27 +78,16 @@ $muro = $fila["muro"];
             </select>
         </div>
 
-        <div class="col-4">
+        <div class="col-3">
             <label for="posicion" class="form-label">Posicion:</label>
             <select name="posicion" id="posicion" class="form-select">
                 <option value="<?php echo $posicion ?>" selected> <?php echo $posicion_name ?> </option>
 
             </select>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <label for="cantidad" class="form-label">Cantidad:</label>
-            <input type="number" name="cantidad" step="1" id="cantidad" placeholder="Cantidad" class="form-control"
-                value="<?php echo $cantidad ?>" required>
-        </div>
-        <div class="col-4">
-            <label for="ancho" class="form-label">Ancho:</label>
-            <input type="number" name="ancho" step="any" id="ancho" class="form-control" value="<?php echo $ancho ?>"
-                required>
-        </div>
-
-        <div class="col-4">
-            <label for="largo" class="form-label">Largo:</label>
-            <input type="number" name="largo" step="any" id="largo" class="form-control" value="<?php echo $largo ?>"
+            <input type="number" name="cantidad" step="1" id="cantidad" placeholder="Cantidad" class="form-control" value="<?php echo $cantidad ?>"
                 required>
         </div>
 

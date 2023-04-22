@@ -36,7 +36,35 @@ function validarMedidas(evento){
                       )
                     return;   
                 } else{
-                    this.submit();
+                    console.log("muro")
+                    if(document.getElementById('muro')){
+                        console.log(document.getElementById('muro').value)
+                        var muro = document.getElementById('muro').value;
+                        if(muro == 0){
+                            type='text/javascript'>Swal.fire(
+                                'Error en el registro!',
+                                'Selecciona primero un muro',
+                                'error'
+                              ) 
+                              return;
+                        } else{
+                            if(document.getElementById('posicion')){
+                                console.log("Posicion")
+                                console.log(document.getElementById('posicion').value)
+                                var posicion = document.getElementById('posicion').value;
+                                if(posicion == 'vacio'){
+                                    type='text/javascript'>Swal.fire(
+                                        'Error en el registro!',
+                                        'Selecciona primero una posicion',
+                                        'error'
+                                      ) 
+                                    return; 
+                                }else{
+                                    this.submit();
+                                }
+                            }
+                        }
+                    } 
                 }
             }else{
                 this.submit();

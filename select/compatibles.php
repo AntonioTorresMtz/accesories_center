@@ -13,7 +13,7 @@ WHERE a.id_modelo = '$modelo'";
 
 $resultado = mysqli_query($conn, $query);
 $total = mysqli_num_rows($resultado);
-if($total==0){
+if ($total == 0) {
     $html = "<div class='row'>
                 <div class='col-lg-4'>
                     <div class='card'>
@@ -27,7 +27,7 @@ if($total==0){
                     </div>
                 </div>
             </div>";
-}else{
+} else {
     $mica9h = 0;
     $html = "<div class='row'>
                 <div class='col-lg-4'>
@@ -36,29 +36,29 @@ if($total==0){
                             <h5>Micas Normales</h5>
                         </div>
             ";
-    while($row = $resultado->fetch_assoc()){
+    while ($row = $resultado->fetch_assoc()) {
         $mica9h = $row["id_mica9h"];
-        $html = $html .  "<div class='row card-body'>
+        $html = $html . "<div class='row card-body'>
 
                             <div class='col-12'>
-                                <a href='edita_mica9h.php?id=". $mica9h ."'> Editar </a>
+                                <a href='edita_mica9h.php?id=" . $mica9h . "'> Editar </a>
                             </div> 
 
                             <div class='col-6'>
-                                <p>Posicion: " .  $row["place"]. "</p>
+                                <p>Posicion: " . $row["place"] . "</p>
                             </div>              
     
                             <div class='col-6'>
                                 <p>Cantidad: " . $row["cantidad"] . "<p>
                             </div>
                             <div class='col-6'>
-                                <p>Medidas: " . $row["ancho"] . "x".  $row["largo"] . "<p>
+                                <p>Medidas: " . $row["ancho"] . "x" . $row["largo"] . "<p>
                             </div>
                             <hr> 
                             <div class='col'>
                                 <p>Compatibles: <br>";
     }
-    
+
     $query2 = "SELECT b.nombre FROM modelos b 
     INNER JOIN nombre_mica9h a
     ON b.id_modelo = a.nombre_modelo
@@ -67,10 +67,10 @@ if($total==0){
     WHERE c.id_mica9h = '$mica9h'";
 
     $resultado = mysqli_query($conn, $query2);
-    
 
-    while($row = $resultado->fetch_assoc()){
-        $html = $html  .   $row["nombre"] . ", ";
+
+    while ($row = $resultado->fetch_assoc()) {
+        $html = $html . $row["nombre"] . ", ";
     }
 
     $html = $html . "</div>
@@ -91,7 +91,7 @@ WHERE a.id_modelo = '$modelo'";
 
 $resultado = mysqli_query($conn, $query9d);
 $total = mysqli_num_rows($resultado);
-if($total==0){
+if ($total == 0) {
     $html = $html . "<div class='col-lg-4'>
     <div class='card'>
         <div class='card-header'>
@@ -104,37 +104,37 @@ if($total==0){
         </div>
     </div>
 </div>";
-} else{
+} else {
     $mica9d = 0;
 
-    $html = $html ."<div class='col-lg-4'>
+    $html = $html . "<div class='col-lg-4'>
         <div class='card'>
             <div class='card-header'>
                 <h5>Micas Completas</h5>
             </div>
             ";
-    while($row = $resultado->fetch_assoc()){
+    while ($row = $resultado->fetch_assoc()) {
         $mica9d = $row["id_mica9d"];
-        $html = $html .  "<div class='row card-body'>
+        $html = $html . "<div class='row card-body'>
                             <div class='col-12'>
-                                <a href='edita_mica9d.php?id=". $mica9d ."'> Editar </a>
+                                <a href='edita_mica9d.php?id=" . $mica9d . "'> Editar </a>
                             </div> 
 
                                 <div class='col-6'>
-                                    <p>Posicion: " .  $row["place"]. "</p>
+                                    <p>Posicion: " . $row["place"] . "</p>
                                 </div>              
                             
                                 <div class='col-6'>
                                     <p>Cantidad: " . $row["cantidad"] . "<p>
                                     </div>
                                     <div class='col-6'>
-                                        <p>Medidas: " . $row["ancho"] . "x".  $row["largo"] . "<p>
+                                        <p>Medidas: " . $row["ancho"] . "x" . $row["largo"] . "<p>
                                         </div>
                                         <hr> 
                                         <div class='col'>
                                             <p>Compatibles: <br>";
     }
-    
+
     $query2 = "SELECT b.nombre FROM modelos b 
     INNER JOIN nombre a
     ON b.id_modelo = a.nombre_modelo
@@ -143,10 +143,10 @@ if($total==0){
     WHERE c.id_mica9d = '$mica9d'";
 
     $resultado = mysqli_query($conn, $query2);
-    
 
-    while($row = $resultado->fetch_assoc()){
-        $html = $html  .   $row["nombre"] . ", ";
+
+    while ($row = $resultado->fetch_assoc()) {
+        $html = $html . $row["nombre"] . ", ";
     }
 
     $html = $html . "</div>
@@ -165,7 +165,7 @@ WHERE c.tipo_modelo = '$modelo'";
 
 $resultado = mysqli_query($conn, $queryProtector);
 $total = mysqli_num_rows($resultado);
-if($total==0){
+if ($total == 0) {
     $html = $html . "<div class='col-lg-4'>
     <div class='card'>
         <div class='card-header'>
@@ -178,23 +178,23 @@ if($total==0){
         </div>
     </div>
 </div>";
-} else{
+} else {
     $protector = 0;
-    $html = $html ."<div class='col-lg-4'>
+    $html = $html . "<div class='col-lg-4'>
         <div class='card'>
             <div class='card-header'>
                 <h5>Protectores</h5>
             </div>
             ";
-    while($row = $resultado->fetch_assoc()){
+    while ($row = $resultado->fetch_assoc()) {
         $protector = $row["id_protector"];
-        $html = $html .  "<div class='row card-body'>
+        $html = $html . "<div class='row card-body'>
         <div class='col-12'>
-            <a href='edita_protector.php?id=". $protector ."'> Editar </a>
+            <a href='edita_protector.php?id=" . $protector . "'> Editar </a>
         </div>
 
         <div class='col-6'>
-            <p>Posicion: " .  $row["nombre"]. "</p>
+            <p>Posicion: " . $row["nombre"] . "</p>
         </div>              
     
         <div class='col-6'>
@@ -212,12 +212,12 @@ if($total==0){
     WHERE c.id_protector = '$protector'";
 
     $resultado = mysqli_query($conn, $query2);
-    
 
-    while($row = $resultado->fetch_assoc()){
-        $html = $html  .  "<div class='col-12'>
-                                <p>" .$row["nombre"]. ": " .$row["cantidad"] ."</p>
-                            </div>";            
+
+    while ($row = $resultado->fetch_assoc()) {
+        $html = $html . "<div class='col-12'>
+                                <p>" . $row["nombre"] . ": " . $row["cantidad"] . "</p>
+                            </div>";
     }
 
     $query2 = "SELECT b.nombre FROM modelos b 
@@ -232,9 +232,9 @@ if($total==0){
                         <div class='col-12'>
                         <p>Compatibles:
                             <br>";
-    while($row = $resultado->fetch_assoc()){
-        $html = $html  .  $row["nombre"] . ", " ;
-                                   
+    while ($row = $resultado->fetch_assoc()) {
+        $html = $html . $row["nombre"] . ", ";
+
     }
 
     $html = $html . "</p>
@@ -257,7 +257,7 @@ WHERE a.id_modelo = '$modelo'";
 
 $resultado = mysqli_query($conn, $query100d);
 $total = mysqli_num_rows($resultado);
-if($total==0){
+if ($total == 0) {
     $html = $html . "<div class='col-lg-4 mt-4'>
     <div class='card'>
         <div class='card-header'>
@@ -270,20 +270,23 @@ if($total==0){
         </div>
     </div>
 </div>";
-} else{
+} else {
     $mica100d = 0;
 
-    $html = $html ."<div class='col-lg-4'>
+    $html = $html . "<div class='col-lg-4'>
         <div class='card'>
             <div class='card-header'>
                 <h5>Micas de Privacidad</h5>
             </div>
             ";
-    while($row = $resultado->fetch_assoc()){
+    while ($row = $resultado->fetch_assoc()) {
         $mica100d = $row["id_mica100d"];
-        $html = $html .  "<div class='row card-body'>
+        $html = $html . "<div class='row card-body'>
+        <div class='col-12'>
+            <a href='edita_mica100d.php?id=" . $mica100d . "'> Editar </a>
+        </div> 
         <div class='col-6'>
-            <p>Posicion: " .  $row["place"]. "</p>
+            <p>Posicion: " . $row["place"] . "</p>
         </div>              
     
         <div class='col-6'>
@@ -293,7 +296,7 @@ if($total==0){
             <div class='col'>
                 <p>Compatibles: <br>";
     }
-    
+
     $query2 = "SELECT b.nombre FROM modelos b 
     INNER JOIN nombre_mica100d a
     ON b.id_modelo = a.nombre_modelo
@@ -302,10 +305,10 @@ if($total==0){
     WHERE c.id_mica100d = '$mica100d'";
 
     $resultado = mysqli_query($conn, $query2);
-    
 
-    while($row = $resultado->fetch_assoc()){
-        $html = $html  .   $row["nombre"] . ", ";
+
+    while ($row = $resultado->fetch_assoc()) {
+        $html = $html . $row["nombre"] . ", ";
     }
 
     $html = $html . "</div>
@@ -326,7 +329,7 @@ WHERE a.id_modelo = '$modelo'";
 
 $resultado = mysqli_query($conn, $queryCamara);
 $total = mysqli_num_rows($resultado);
-if($total==0){
+if ($total == 0) {
     $html = $html . "<div class='col-lg-4 mt-4'>
     <div class='card'>
         <div class='card-header'>
@@ -339,20 +342,20 @@ if($total==0){
         </div>
     </div>
 </div>";
-} else{
+} else {
     $micaCamara = 0;
 
-    $html = $html ."<div class='col-lg-4'>
+    $html = $html . "<div class='col-lg-4'>
         <div class='card'>
             <div class='card-header'>
                 <h5>Micas para camara</h5>
             </div>
             ";
-    while($row = $resultado->fetch_assoc()){
+    while ($row = $resultado->fetch_assoc()) {
         $micaCamara = $row["id_micaCamara"];
-        $html = $html .  "<div class='row card-body'>
+        $html = $html . "<div class='row card-body'>
         <div class='col-6'>
-            <p>Posicion: " .  $row["place"]. "</p>
+            <p>Posicion: " . $row["place"] . "</p>
         </div>              
     
         <div class='col-6'>
@@ -362,7 +365,7 @@ if($total==0){
             <div class='col'>
                 <p>Compatibles: <br>";
     }
-    
+
     $query2 = "SELECT b.nombre FROM modelos b 
     INNER JOIN nombre_micacamara a
     ON b.id_modelo = a.modelo
@@ -371,10 +374,10 @@ if($total==0){
     WHERE c.id_micaCamara = '$micaCamara'";
 
     $resultado = mysqli_query($conn, $query2);
-    
 
-    while($row = $resultado->fetch_assoc()){
-        $html = $html  .   $row["nombre"] . ", ";
+
+    while ($row = $resultado->fetch_assoc()) {
+        $html = $html . $row["nombre"] . ", ";
     }
 
     $html = $html . "</div>
@@ -395,7 +398,7 @@ WHERE a.id_modelo = '$modelo'";
 
 $resultado = mysqli_query($conn, $queryCurva);
 $total = mysqli_num_rows($resultado);
-if($total==0){
+if ($total == 0) {
     $html = $html . "<div class='col-lg-4 mt-4'>
     <div class='card'>
         <div class='card-header'>
@@ -408,20 +411,20 @@ if($total==0){
         </div>
     </div>
 </div>";
-} else{
+} else {
     $micaCurva = 0;
 
-    $html = $html ."<div class='col-lg-4'>
+    $html = $html . "<div class='col-lg-4'>
         <div class='card'>
             <div class='card-header'>
                 <h5>Micas curvas</h5>
             </div>
             ";
-    while($row = $resultado->fetch_assoc()){
+    while ($row = $resultado->fetch_assoc()) {
         $micaCurva = $row["id_micaCurva"];
-        $html = $html .  "<div class='row card-body'>
+        $html = $html . "<div class='row card-body'>
         <div class='col-6'>
-            <p>Posicion: " .  $row["place"]. "</p>
+            <p>Posicion: " . $row["place"] . "</p>
         </div>              
     
         <div class='col-6'>
@@ -431,7 +434,7 @@ if($total==0){
             <div class='col'>
                 <p>Compatibles: <br>";
     }
-    
+
     $query2 = "SELECT b.nombre FROM modelos b 
     INNER JOIN nombre_micacurva a
     ON b.id_modelo = a.nombre_modelo
@@ -440,10 +443,10 @@ if($total==0){
     WHERE c.id_micaCurva = '$micaCurva'";
 
     $resultado = mysqli_query($conn, $query2);
-    
 
-    while($row = $resultado->fetch_assoc()){
-        $html = $html  .   $row["nombre"] . ", ";
+
+    while ($row = $resultado->fetch_assoc()) {
+        $html = $html . $row["nombre"] . ", ";
     }
 
     $html = $html . "</div>
@@ -455,5 +458,5 @@ if($total==0){
 
 
 echo $html;
-  
+
 ?>

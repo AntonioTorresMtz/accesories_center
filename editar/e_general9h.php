@@ -10,8 +10,9 @@ $largo = $_POST["largo"];
 $camara = $_POST["camara"];
 $boton = $_POST["boton"];
 $id = $_POST["id"];
+$cantidad = $_POST["cantidad"];
 
-$query = "UPDATE `micas9h` SET `marca` = '$marca', `ancho` = '$ancho', `largo` = '$largo',
+$query = "UPDATE `micas9h` SET cantidad = '$cantidad', `marca` = '$marca', `ancho` = '$ancho', `largo` = '$largo',
  `camara` = '$camara', `posicion` = '$posicion', `boton` = '$boton' WHERE `micas9h`.`id_mica9h` = '$id'";
 
 $resultado = mysqli_query($conn, $query);

@@ -69,7 +69,7 @@
             <div class="col-3">
                 <label class="form-label" for="largo">Muro:</label>
                 <select name="muro" id="muro" class="form-select">
-                    <option value="1" disabled selected>Selecciona un muro</option>
+                    <option value="0" disabled selected>Selecciona un muro</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

@@ -28,7 +28,7 @@
 ?>
 
 <div class="container">
-    <form action="registros/nuevoProtector.php" method="POST" class="row g-3 mt-3">
+    <form action="registros/nuevoProtector.php" method="POST" class="row g-3 mt-3" id="formulario">
         <h3 class="display-5 text-dark text-center font-weight-bold">Protector Nuevo</h3>
         <div class="col-4">
             <label for="marca" class="form-label">Marca:</label>
@@ -47,7 +47,7 @@
         <div class="col-4">
                 <label class="form-label" for="largo">Muro:</label>
                 <select name="muro" id="muro" class="form-select">
-                    <option value="1" disabled selected>Selecciona un muro</option>
+                    <option value="0" disabled selected>Selecciona un muro</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -77,7 +77,7 @@
                         <?php  } ?>
                     </select>
                 </td>
-                <td> <input type="text" name="cantidad[]" placeholder="cantidad" class="form-control col-6" required> </td>
+                <td> <input type="number" name="cantidad[]" placeholder="Cantidad" class="form-control col-6" required> </td>
                 <td class="eliminarTipo"><button class="btn btn-dark" value="Menos -"><i class="fas fa-minus-circle"></i></button></td>
             </tr>
         </table>
@@ -105,6 +105,7 @@
 
 <script src="js/agregarModelo.js"></script>
 <script src="js/selectPosicion.js"></script>
+<script src="js/valida_modelos.js"></script>
 
 <?php
     include("includes/footer.php")

@@ -8,8 +8,9 @@ $posicion = $_POST["posicion"];
 $ancho = $_POST["ancho"];
 $largo = $_POST["largo"];
 $id = $_POST["id"];
+$cantidad = $_POST["cantidad"];
 
-$query = "UPDATE `micas9d` SET `marca` = '$marca', `ancho` = '$ancho', `largo` = '$largo',
+$query = "UPDATE `micas9d` SET cantidad = '$cantidad', `marca` = '$marca', `ancho` = '$ancho', `largo` = '$largo',
  `posicion` = '$posicion' WHERE `micas9d`.`id_mica9d` = '$id'";
 
 $resultado = mysqli_query($conn, $query);
