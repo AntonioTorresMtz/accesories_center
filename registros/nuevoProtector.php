@@ -104,8 +104,8 @@ if ($contador == 0) {
     }
 
 
-    //$_SESSION['exito_protector'] = "Protector guardado";
-    //header("Location: ../protectores.php");
+    $_SESSION['exito_protector'] = "Protector guardado";
+    header("Location: ../protectores.php");
     exit();
 } else {
     if (count($modelos_arreglo) == 1) {

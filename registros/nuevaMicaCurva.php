@@ -49,26 +49,16 @@ if ($contador == 0) {
         $id = $row['MAX(id_micaCurva)'];
     }
 
-    while (true) {
-        //// RECUPERAR LOS VALORES DE LOS ARREGLOS ////////
-        $modelo1 = current($modelo); //Modelo
-
-        $sql1 = "INSERT INTO nombre_micacurva (nombre_modelo, id_micaCurva) VALUES ('$modelo1', '$id')";
-
+    foreach ($modelos_arreglo as $model) {
+        $sql1 = "INSERT INTO nombre_micacurva (nombre_modelo, id_micaCurva) VALUES ('$model', '$id')";
+        echo $model . "<br>";
         $sqlRes = $conn->query($sql1); //Consulta para el insert
         if (!$sql1) {
             echo 'Error modelo<br>';
         } else {
             echo 'Exito modelo <br>';
         }
-
-        // Up! Next Value
-        $modelo1 = next($modelo);
-        // Check terminator
-        if ($modelo1 === false)
-            break;
     }
-
 
     $_SESSION['exito_micaCurva'] = "Mica guardada";
     header("Location: ../micasCurva.php");

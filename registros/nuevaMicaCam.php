@@ -47,32 +47,22 @@ if ($contador == 0) {
             $id = $row['MAX(id_micaCamara)'];
         }
 
-        while (true) {
-            //// RECUPERAR LOS VALORES DE LOS ARREGLOS ////////
-            $modelo1 = current($modelo); //Modelo
-
-            $sql1 = "INSERT INTO nombre_micacamara (modelo, id_micaCamara) VALUES ('$modelo1', '$id')";
-
+        foreach ($modelos_arreglo as $model) {
+            $sql1 = "INSERT INTO nombre_micacamara (modelo, id_micaCamara) VALUES ('$model', '$id')";
+            echo $model . "<br>";
             $sqlRes = $conn->query($sql1); //Consulta para el insert
             if (!$sql1) {
                 echo 'Error modelo<br>';
             } else {
                 echo 'Exito modelo <br>';
             }
-
-            // Up! Next Value
-            $modelo1 = next($modelo);
-            // Check terminator
-            if ($modelo1 === false)
-                break;
         }
-
 
         $_SESSION['exito_micaCam'] = "Mica guardada";
         header("Location: ../micasCamara.php");
         exit();
     }
-}else{
+} else {
     if (count($modelos_arreglo) == 1) {
         $_SESSION['modelo_repetido'] = "Protector repetido";
         header("Location: ../micasCamara.php");

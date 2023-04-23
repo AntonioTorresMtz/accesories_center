@@ -61,9 +61,9 @@ if ($contador == 0) {
             }
         }
 
-        //$_SESSION['exito_mica9h'] = "Mica guardada";
-        //header("Location:../micas9h.php");
-        //exit();
+        $_SESSION['exito_mica9h'] = "Mica guardada";
+        header("Location:../micas9h.php");
+        exit();
     }
 } else {
     if (count($modelos_arreglo) == 1) {
