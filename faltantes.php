@@ -36,7 +36,7 @@
                     </thead>
                     <tbody id="result">
                         <?php
-                            $query = "SELECT descripcion, fecha FROM faltantes";
+                            $query = "SELECT descripcion, fecha FROM faltantes ORDER BY fecha DESC";
 
                             $res = $conn->query($query);
                             while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
