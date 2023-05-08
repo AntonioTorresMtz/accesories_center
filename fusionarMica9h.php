@@ -1,23 +1,18 @@
 <?php
 include("db.php");
 include("includes/header.php");
-if (isset($_SESSION['exito_actual_Mica9d'])) {
-    echo "<script type='text/javascript'>Swal.fire(
-                        'Actualizacion exitosa!',
-                        'Se ha actualizado la cantidad de Micas exitosamente!',
-                        'success'
-                      )</script>";
-    unset($_SESSION['exito_actual_Mica9d']);
-}
-?>
+include("mensajesExito/fusiones.php")
+    ?>
 <div class="container">
     <form action="registros/fusionar.php" method="POST" class="mt-3">
         <h3 class="display-5 text-dark text-center font-weight-bold">Fusionar Modelos</h3>
-        <select class="form-select" name="producto" id="producto">
-            <option value="1" selected>Selecciona una producto</option>
-            <option value="2">Mica normal</option>
-            <option value="3">Mica completa</option>
-            <option value="4">Mica privacidad</option>
+        <select class="form-select mb-3" name="producto" id="producto">
+            <option value="0" selected disabled>Selecciona una producto</option>
+            <option value="1">Mica normal</option>
+            <option value="2">Mica completa</option>
+            <option value="3">Mica privacidad</option>
+            <option value="4">Micas camara</option>
+            <option value="5">Micas curvas</option>
         </select>
         <div class="row g-3">
             <div id="modelo1" class="col-6">

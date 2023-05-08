@@ -182,31 +182,15 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Fusionar
+              Compatibilidades
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#"></a></li>
-              <li><a class="dropdown-item" href="actualizarMica9d.php">Mica Completa</a></li>
+              <li><a class="dropdown-item" href="fusionarMica9h.php">Crear</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="fusionarMica9h.php">Mica Normal</a></li>
+              <li><a class="dropdown-item" href="actualizarMenu_camara.php">Dividir</a></li>
               <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="actualizarMenu_camara.php">Mica camara</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="actualizarMica100d.php">Mica privacidad</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="actualizarMica_curva.php">Micas curvas</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="actualizarProtector.php">Protector</a></li>
             </ul>
           </li>
           <li class="nav-item">
