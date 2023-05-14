@@ -13,6 +13,7 @@ include("mensajesExito/fusiones.php")
             <option value="3">Mica privacidad</option>
             <option value="4">Micas camara</option>
             <option value="5">Micas curvas</option>
+            <option value="6">Protectores</option>
         </select>
         <div class="row g-3">
             <div id="modelo1" class="col-6">

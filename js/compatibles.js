@@ -44,9 +44,19 @@ $(document).ready(function () {
           );
           break;
         case "5":
-          console.log("Cinco")
+          console.log("Cinco");
           $.post(
             "select/modeloSelectCurva.php",
+            { producto: producto },
+            function (data) {
+              $("#modelo").html(data);
+            }
+          );
+          break;
+        case "6":
+          console.log("Cinco");
+          $.post(
+            "select/protectorModelo.php",
             { producto: producto },
             function (data) {
               $("#modelo").html(data);
