@@ -73,13 +73,13 @@ include("mensajesExito/celularesMensaje.php")
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="imei1">IMEI 1:</label>
-                    <input type="text" class="form-control" id="imei1" name="imei1" required>
+                    <input type="text" class="form-control" id="imei1" name="imei1"  maxlength="16" required>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="imei1">IMEI 2:</label>
-                    <input type="text" class="form-control" id="imei2" name="imei2">
+                    <input type="text" class="form-control" id="imei2" name="imei2" maxlength="16">
                 </div>
             </div>
         </div>
