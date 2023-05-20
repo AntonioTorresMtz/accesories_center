@@ -9,6 +9,20 @@ $red = $_POST['red'];
 $imei1 = $_POST['imei1'];
 $precioCompra = $_POST['precioCompra'];
 $precioSugerido = $_POST['precioSugerido'];
+$fecha_compra = '';
+$garantia = 0;
+
+if (empty($_POST['fecha_compra'])) {
+    $fecha_compra = '0';
+} else {
+    $fecha_compra = $_POST['fecha_compra'];
+}
+
+if (empty($_POST['garantia'])) {
+    $garantia = 0;
+} else {
+    $garantia = $_POST['garantia'];
+}
 
 if (empty($_POST['imei2'])) {
     $imei2 = 0;
@@ -31,7 +45,8 @@ if (empty($_POST['ram'])) {
 
 $sp = "SP_INSERTAR_TELEFONO";
 $resultado = mysqli_query($conn, "CALL $sp ('$marca', '$modelo', '$almacenamiento',
-'$ram', '$red', '$imei1', '$imei2', '$estado', '7', '$precioCompra', '$precioSugerido')");
+'$ram', '$red', '$imei1', '$imei2', '$estado', '7', '$precioCompra', '$precioSugerido',
+'$fecha_compra', '$garantia')");
 
 if (!$resultado) {
     echo 'Error consulta al programadooooor <br>';

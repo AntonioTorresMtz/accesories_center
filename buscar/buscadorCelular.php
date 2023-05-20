@@ -23,7 +23,7 @@ function buscar()
     c.red, c.imei1, c.imei2, c.precio_sugerido, c.estado
     FROM celular c
     INNER JOIN marca m ON m.id_marca = c.FK_marca
-    WHERE  c.id_celular = '$q' or c.imei1 = '$q' or c.imei2 = '$q'";
+    WHERE  c.id_celular = '$q' or c.imei1 = '$q' or c.imei2 = '$q' and estado_venta = 0";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
@@ -52,7 +52,7 @@ function defecto()
     $query = "SELECT c.id_celular, m.marca, c.almacenamiento, c.modelo, c.ram,
     c.red, c.imei1, c.imei2, c.precio_sugerido, c.estado
     FROM celular c
-    INNER JOIN marca m ON m.id_marca = c.FK_marca";
+    INNER JOIN marca m ON m.id_marca = c.FK_marca WHERE estado_venta = 0";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {

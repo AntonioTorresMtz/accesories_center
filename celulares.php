@@ -84,16 +84,28 @@ include("mensajesExito/celularesMensaje.php")
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="precioCompra">Precio de compra:</label>
                     <input type="number" class="form-control" id="precioCompra" name="precioCompra" required>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="precioCompra">Precio venta sugerido:</label>
                     <input type="number" class="form-control" id="precioSugerido" name="precioSugerido" required>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="fecha_compra">Fecha de Compra:</label>
+                    <input type="date" class="form-control" id="fecha_compra" name="fecha_compra">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="precioCompra">Dias de Garantia:</label>
+                    <input type="number" class="form-control" id="garantia" name="garantia" placeholder="Numero de dias">
                 </div>
             </div>
         </div>

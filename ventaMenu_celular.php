@@ -7,6 +7,7 @@ include("mensajesExito/celularesMensaje.php")
 <div class="container">
     <h1>Teléfonos</h1>
     <div class="row">
+        <div></div>
         <form action="registros/ventaCelular.php" method="POST" id="formulario" class="col-md-3 shadow p-3 max-height-100">
             <div class="row text-center">
                 <h4>Vender celular</h4>
