@@ -8,7 +8,8 @@ include("mensajesExito/celularesMensaje.php")
     <h1>Teléfonos</h1>
     <div class="row">
         <div></div>
-        <form action="registros/ventaCelular.php" method="POST" id="formulario" class="col-md-3 shadow p-3 max-height-100">
+        <form action="registros/ventaCelular.php" method="POST" id="formulario"
+            class="col-md-3 shadow p-3 align-self-start">
             <div class="row text-center">
                 <h4>Vender celular</h4>
             </div>
@@ -17,7 +18,7 @@ include("mensajesExito/celularesMensaje.php")
                     <div class="form-group">
                         <label for="imei">IMEI:</label>
                         <input type="text" class="form-control" id="imei" name="imei" required
-                          value="Todos"  placeholder="IMEI1 o IMEI2">
+                            placeholder="IMEI1 o IMEI2">
                     </div>
                 </div>
             </div>
@@ -47,25 +48,27 @@ include("mensajesExito/celularesMensaje.php")
             </div>
         </form>
         <div class="col-md-9 ml-5">
-            <table class="table table-striped table-borderless table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Almacenamiento</th>
-                        <th>RAM</th>
-                        <th>Red</th>
-                        <th>IMEI 1</th>
-                        <th>IMEI 2</th>
-                        <th>Estado</th>
-                        <th>Precio venta</th>
-                    </tr>
-                </thead>
-                <tbody id="result">
+            <div class="table-responsive" style="max-height: 600px;">
+                <table class="table table-striped table-borderless table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Almacenamiento</th>
+                            <th>RAM</th>
+                            <th>Red</th>
+                            <th>IMEI 1</th>
+                            <th>IMEI 2</th>
+                            <th>Estado</th>
+                            <th>Precio venta</th>
+                        </tr>
+                    </thead>
+                    <tbody id="result">
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
