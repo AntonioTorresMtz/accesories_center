@@ -7,7 +7,7 @@ include("mensajesExito/celularesMensaje.php")
 <div class="container">
     <h1>Teléfonos</h1>
     <div class="row">
-        <form action="registros/ventaCelular.php" method="POST" id="formulario" class="col-md-3 shadow p-3">
+        <form action="registros/ventaCelular.php" method="POST" id="formulario" class="col-md-3 shadow p-3 max-height-100">
             <div class="row text-center">
                 <h4>Vender celular</h4>
             </div>
@@ -16,7 +16,7 @@ include("mensajesExito/celularesMensaje.php")
                     <div class="form-group">
                         <label for="imei">IMEI:</label>
                         <input type="text" class="form-control" id="imei" name="imei" required
-                            placeholder="IMEI1 o IMEI2">
+                          value="Todos"  placeholder="IMEI1 o IMEI2">
                     </div>
                 </div>
             </div>

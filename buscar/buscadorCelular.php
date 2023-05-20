@@ -4,8 +4,14 @@
 require_once '../conexion.php';
 if (!isset($_POST['busca'])) {
     defecto();
-}else{
-    buscar();
+    //exit("No se encontro el valor");
+    
+} else {
+    if ($_POST['busca'] == '' || $_POST['busca'] == 'Todos'){
+        defecto();
+    }else{
+        buscar();
+    }
 }
 
 
@@ -42,7 +48,7 @@ function buscar()
 
 function defecto()
 {
-    $mysqli = getConnexion();    
+    $mysqli = getConnexion();
     $query = "SELECT c.id_celular, m.marca, c.almacenamiento, c.modelo, c.ram,
     c.red, c.imei1, c.imei2, c.precio_sugerido, c.estado
     FROM celular c
