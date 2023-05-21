@@ -55,20 +55,20 @@ if ($encontrado) {
             if(!$resultado3){
                 echo 'Error actualizar cantidad de tipo <br>';
             } else{
-                //$_SESSION['exito_ventaProtector'] = "Mica guardada";
-               // header("Location: ../ventaMenu_protector.php");
-                echo 'Registro modificado';
-               // exit(); 
+               $_SESSION['exito_ventaProtector'] = "Mica guardada";
+               header("Location: ../ventaMenu_protector.php");
+                //echo 'Registro modificado';
+               exit(); 
             }
         }
         
     } 
 } else {
     print "<p>No se han encontrado coincidencias.</p>\n";
-    //$_SESSION['exito_ventaMica9h'] = "Mica guardada";
-    //header("Location: ../ventaMenu_protector.php");
-    //exit(); 
-    echo "Error";
+    $_SESSION['exito_ventaMica9h'] = "Mica guardada";
+    header("Location: ../ventaMenu_protector.php");
+    exit(); 
+    //echo "Error";
 }
 echo $modelo;
 
