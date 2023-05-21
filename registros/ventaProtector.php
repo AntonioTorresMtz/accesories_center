@@ -4,6 +4,9 @@ session_start();
 
 $marca = $_POST['marca'];
 $modelo = $_POST['modelo'];
+echo $modelo . "<br>
+
+";
 $cantidad = $_POST['cantidad'];
 $precio = $_POST['precio'];
 $tipo = $_POST['tipo'];
@@ -44,26 +47,28 @@ if ($encontrado) {
         $resultado2 = mysqli_query($conn, $query2);
         if(!$resultado2){
             echo 'Error actualizar cantidad <br>';
-        } else{
-            $query3 = "UPDATE `tipo_protector` SET `cantidad` = cantidad - '$cantidad'
-            WHERE `tipo_protector`.`id_tipo` = '$tipo'";
-
+        } else{            
+            $query3 = "UPDATE tipo_protector SET `cantidad` = cantidad - '$cantidad'
+            WHERE id_protector = '$id_modelo' AND tipo = '$tipo';";
+            echo $tipo;
             $resultado3 = mysqli_query($conn, $query3);
             if(!$resultado3){
                 echo 'Error actualizar cantidad de tipo <br>';
             } else{
-                $_SESSION['exito_ventaProtector'] = "Mica guardada";
-                header("Location: ../ventaMenu_protector.php");
-                exit(); 
+                //$_SESSION['exito_ventaProtector'] = "Mica guardada";
+               // header("Location: ../ventaMenu_protector.php");
+                echo 'Registro modificado';
+               // exit(); 
             }
         }
         
     } 
 } else {
     print "<p>No se han encontrado coincidencias.</p>\n";
-    $_SESSION['exito_ventaMica9h'] = "Mica guardada";
-    header("Location: ../ventaMenu_protector.php");
-    exit(); 
+    //$_SESSION['exito_ventaMica9h'] = "Mica guardada";
+    //header("Location: ../ventaMenu_protector.php");
+    //exit(); 
+    echo "Error";
 }
 echo $modelo;
 
