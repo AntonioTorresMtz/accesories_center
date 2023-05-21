@@ -1,6 +1,6 @@
 <?php
 if (isset($_SESSION['actualizacion'])) {
-    echo "HOLAAAA";
+
     switch ($_SESSION['actualizacion']) {
         case "exito":
             echo "<script type='text/javascript'>Swal.fire(

@@ -15,7 +15,7 @@ $marca = $_POST['producto'];
     $html = "<option value='0' disabled selected>--Selecciona Modelo--</option>";
     while($row = $resultado->fetch_assoc()){
         $valor = $row["id_micaCamara"] . "-" . $row["id_modelo"];
-        $html = $html . "<option value='".$valor ."'>".$row["nombre"] . "  ".$row["id_micaCamara"] ."</option>"; 
+        $html = $html . "<option value='".$valor ."'>".$row["nombre"] . "</option>"; 
     }
     echo $html;
   

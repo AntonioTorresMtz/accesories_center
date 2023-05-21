@@ -15,7 +15,7 @@ ORDER BY a.nombre ASC";
     $html = "<option value='0'>--Selecciona  Modelo--</option>";
     while($row = $resultado->fetch_assoc()){
         $valor = $row["id"] . "-" . $row["modelo"];
-        $html = $html . "<option value='".$valor ."'>".$row["nombre"] . " id:" . $row["id"] . "</option>"; 
+        $html = $html . "<option value='".$valor ."'>".$row["nombre"] . "</option>"; 
     }
     echo $html;
   
