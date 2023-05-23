@@ -13,7 +13,7 @@ if (isset($_POST['buscar'])) {
 ?>
 <div class="container">
     <h3 class="display-6 mt-4 text-dark text-center font-weight-bold">Buscar mica por medidas</h3>
-    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" class="row g-3 mt-3 align-items-center">
+    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" class="row g-3 mt-3 align-items-end">
         <div class="col-3">
             <label class="form-label" for="ancho">Ancho:</label>
             <input type="number" class="form-control" placeholder="Ancho" aria-label="Username"
