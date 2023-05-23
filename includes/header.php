@@ -177,6 +177,10 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
+              <li><a class="dropdown-item" href="nuevaPosicion.php">Pocision</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
               <li><a class="dropdown-item" href="nuevoTipoProtector.php">Tipo Protector</a></li>
             </ul>
           </li>
