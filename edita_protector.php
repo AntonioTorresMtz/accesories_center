@@ -43,7 +43,7 @@ $muro = $fila["muro"];
                 <?php }
                 $name = rtrim($name, ", ");
                 ?>
-                <a href="e_name9H.php">Editar Nombres</a>
+                
                 <p>
                     <?php echo $name ?>
                 </p>

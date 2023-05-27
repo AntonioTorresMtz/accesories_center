@@ -32,7 +32,7 @@ $cantidad = $fila["cantidad"];
             </div>
 
             <div class="col-12">
-                <label for="boton" class="form-label">Nombres:</label>
+                <label for="boton" class="form-label">Compatibles:</label>
                 <?php
                 $name = "";
                 $names = "SELECT m.nombre, m.id_modelo FROM modelos m
@@ -46,7 +46,7 @@ $cantidad = $fila["cantidad"];
                 <?php }
                 $name = rtrim($name, ", ");
                 ?>
-                <a href="e_name9H.php">Editar Nombres</a>
+
                 <p>
                     <?php echo $name ?>
                 </p>

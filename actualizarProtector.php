@@ -3,8 +3,8 @@ include("db.php");
 include("includes/header.php");
 if (isset($_SESSION['exito_actual_Protector'])) {
     echo "<script type='text/javascript'>Swal.fire(
-                        'Exito en venta!',
-                        'Se ha registrado la mica con exito!',
+                        'Cantidad modificada!',
+                        'Se ha modificado la cantidad!',
                         'success'
                       )</script>";
     unset($_SESSION['exito_actual_Protector']);
