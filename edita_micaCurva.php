@@ -7,10 +7,10 @@ $id = $_GET['id'];
 
 $query = "SELECT m.marca as name_marca, a.marca, a.cantidad, a.posicion,
 p.nombre as name_posicion, p.muro
-FROM micas100d a
+FROM micascurva a
 INNER JOIN marca m ON m.id_marca = a.marca
 INNER JOIN posicion p ON p.id_posicion = a.posicion
-WHERE id_mica100d = '$id'";
+WHERE id_micaCurva = '$id'";
 $resultado = mysqli_query($conn, $query);
 
 $fila = mysqli_fetch_assoc($resultado);
@@ -26,27 +26,26 @@ $cantidad = $fila["cantidad"];
 
 <div class="container">
     <div class="row justify-content-center mt-3">
-        <form action="editar/e_general100d.php" method="POST" class="col-md-3 shadow p-3 align-self-start">
+        <form action="editar/e_generalCurva.php" method="POST" class="col-md-3 shadow p-3 align-self-start">
             <div class="row text-center">
-                <h4>Modificar mica de privacidad</h4>
+                <h4>Modificar mica curva</h4>
             </div>
 
             <div class="col-12">
-                <label for="boton" class="form-label">Nombres:</label>
+                <label for="boton" class="form-label">Compatibles:</label>
                 <?php
                 $name = "";
                 $names = "SELECT m.nombre, m.id_modelo FROM modelos m
-                INNER JOIN nombre_mica100d a ON a.nombre_modelo = m.id_modelo
-                INNER JOIN micas100d b ON a.id_mica100d = b.id_mica100d
-                WHERE b.id_mica100d = '$id'";
+                INNER JOIN nombre_micacurva a ON nombre_modelo = m.id_modelo
+                INNER JOIN micascurva b ON a.id_micaCurva = b.id_micaCurva
+                WHERE b.id_micaCurva = '$id'";
 
                 $resultado = mysqli_query($conn, $names);
                 while ($row = mysqli_fetch_assoc($resultado)) {
                     $name = $name . $row["nombre"] . ", "; ?>
                 <?php }
                 $name = rtrim($name, ", ");
-                ?>
-                <a href="e_name9H.php">Editar Nombres</a>
+                ?>                
                 <p>
                     <?php echo $name ?>
                 </p>
@@ -66,15 +65,13 @@ $cantidad = $fila["cantidad"];
                     <?php } ?>
                 </select>
             </div>
-
             <div class="col">
                 <label for="boton" class="form-label">Cantidad:</label>
                 <input type="number" name="cantidad" step="1" id="cantidad" placeholder="Cantidad" class="form-control"
                     value="<?php echo $cantidad ?>" required>
             </div>
-
             <div class="col-12">
-                <label class="form-label" for="muro">Muro:</label>
+                <label class="form-label" for="largo">Muro:</label>
                 <select name="muro" id="muro" class="form-select">
                     <option value="<?php echo $muro ?>" selected> <?php echo $muro ?> </option>
                     <?php

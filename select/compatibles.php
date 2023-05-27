@@ -97,7 +97,7 @@ if ($total == 0) {
     $html = $html . "<div class='col-lg-4'>
     <div class='card'>
         <div class='card-header'>
-            <h5>Micas Normales</h5>
+            <h5>Micas Completas</h5>
         </div>
         <div class='row card-body'>
             <div class='col-6'>                       
@@ -432,6 +432,9 @@ if ($total == 0) {
     while ($row = $resultado->fetch_assoc()) {
         $micaCurva = $row["id_micaCurva"];
         $html = $html . "<div class='row card-body'>
+        <div class='col-12'>
+            <a href='edita_micaCurva.php?id=" . $micaCurva . "'> Editar </a>
+        </div> 
         <div class='col-6'>
             <p>Posicion: " . $row["place"] . "</p>
         </div>              

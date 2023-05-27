@@ -7,10 +7,10 @@ $id = $_GET['id'];
 
 $query = "SELECT m.marca as name_marca, a.marca, a.cantidad, a.posicion,
 p.nombre as name_posicion, p.muro
-FROM micas100d a
+FROM micas_camara a
 INNER JOIN marca m ON m.id_marca = a.marca
 INNER JOIN posicion p ON p.id_posicion = a.posicion
-WHERE id_mica100d = '$id'";
+WHERE id_micaCamara = '$id'";
 $resultado = mysqli_query($conn, $query);
 
 $fila = mysqli_fetch_assoc($resultado);
@@ -26,7 +26,7 @@ $cantidad = $fila["cantidad"];
 
 <div class="container">
     <div class="row justify-content-center mt-3">
-        <form action="editar/e_general100d.php" method="POST" class="col-md-3 shadow p-3 align-self-start">
+        <form action="editar/e_generalCamara.php" method="POST" class="col-md-3 shadow p-3 align-self-start">
             <div class="row text-center">
                 <h4>Modificar mica de camara</h4>
             </div>
@@ -36,9 +36,9 @@ $cantidad = $fila["cantidad"];
                 <?php
                 $name = "";
                 $names = "SELECT m.nombre, m.id_modelo FROM modelos m
-                INNER JOIN nombre_mica9h a ON a.nombre_modelo = m.id_modelo
-                INNER JOIN micas9h b ON a.id_mica9h = b.id_mica9h
-                WHERE b.id_mica9h = '$id'";
+                INNER JOIN nombre_micacamara a ON modelo = m.id_modelo
+                INNER JOIN micas_camara b ON a.id_micaCamara = b.id_micaCamara
+                WHERE b.id_micaCamara = '$id'";
 
                 $resultado = mysqli_query($conn, $names);
                 while ($row = mysqli_fetch_assoc($resultado)) {
@@ -66,7 +66,11 @@ $cantidad = $fila["cantidad"];
                     <?php } ?>
                 </select>
             </div>
-
+            <div class="col">
+                <label for="boton" class="form-label">Cantidad:</label>
+                <input type="number" name="cantidad" step="1" id="cantidad" placeholder="Cantidad" class="form-control"
+                    value="<?php echo $cantidad ?>" required>
+            </div>
             <div class="col-12">
                 <label class="form-label" for="largo">Muro:</label>
                 <select name="muro" id="muro" class="form-select">
