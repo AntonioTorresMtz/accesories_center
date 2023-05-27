@@ -354,6 +354,9 @@ if ($total == 0) {
     while ($row = $resultado->fetch_assoc()) {
         $micaCamara = $row["id_micaCamara"];
         $html = $html . "<div class='row card-body'>
+        <div class='col-12'>
+        <a href='edita_micaCamara.php?id=" . $micaCamara . "'> Editar </a>
+    </div> 
         <div class='col-6'>
             <p>Posicion: " . $row["place"] . "</p>
         </div>              

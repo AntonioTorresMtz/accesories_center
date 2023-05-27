@@ -1,30 +1,35 @@
-.existencias{
-	width: 600px;
-	height: 300px;
-	overflow-y: scroll;
-	margin-bottom: 15px;
+.existencias {
+  width: 600px;
+  height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 15px;
 }
 
-.tablas_existencias{
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+.tablas_existencias {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.formulario{
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	justify-content: center;
+.formulario {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.tbl-faltantes{
-	width: 600px;
-	margin-right: 40px;
-	margin-top: 100px;
+.tbl-faltantes {
+  width: 600px;
+  margin-right: 40px;
+  margin-top: 100px;
 }
 
-.form-faltantes{
-	width: 400px;
+.form-faltantes {
+  width: 400px;
+}
+
+.contenedor_formulario {
+  max-height: 600px; /* Altura fija del contenedor */
+  overflow: auto; /* Permite el desplazamiento cuando se desborda */
 }
