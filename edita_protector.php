@@ -3,7 +3,7 @@ include('db.php');
 include("includes/header.php");
 
 $id = $_GET['id'];
-echo $id;
+//echo $id;
 
 $query = "SELECT m.marca as name_marca, a.marca,  a.posicion, p.nombre as name_posicion, p.muro
 FROM protectores a
@@ -86,11 +86,6 @@ $muro = $fila["muro"];
                 </select>
             </div>
 
-            <div class="col-12">
-                <label for="cantidad" class="form-label">Cantidad:</label>
-                <input type="number" name="cantidad" step="1" id="cantidad" placeholder="Cantidad" class="form-control"
-                    value="<?php echo $cantidad ?>" required>
-            </div>
             <div class="col text-center">
                 <p>Protectores:</p>
             </div>
@@ -117,7 +112,7 @@ $muro = $fila["muro"];
 
                         // Generar el input dinámico                
                         echo '<div class="row mb-2"><div class="col-6"><input readonly type="text" name="nombre[]" value="' . $nombre . '" class="form-control"> </div>';
-                        echo '<input hidden type="text" name="id[]" value="' . $id_tipo . '" class="form-control"> ';
+                        echo '<input hidden type="text" name="id_tipo[]" value="' . $id_tipo . '" class="form-control"> ';
                         echo '<div class="col-6"><input type="number" name="cantidad[]" value="' . $cantidad . '" class="form-control"> </div> </div>';
                     }
                 }

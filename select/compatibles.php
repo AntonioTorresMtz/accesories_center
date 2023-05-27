@@ -59,18 +59,20 @@ if ($total == 0) {
                                 <p>Compatibles: <br>";
     }
 
-    $query2 = "SELECT b.nombre FROM modelos b 
-    INNER JOIN nombre_mica9h a
-    ON b.id_modelo = a.nombre_modelo
-    INNER JOIN  micas9h c
-    ON a.id_mica9h = c.id_mica9h
-    WHERE c.id_mica9h = '$mica9h'";
+    $query2 = "SELECT GROUP_CONCAT(b.nombre SEPARATOR ', ') as nombre
+    FROM modelos b 
+       INNER JOIN nombre_mica9h a
+       ON b.id_modelo = a.nombre_modelo
+       INNER JOIN  micas9h c
+       ON a.id_mica9h = c.id_mica9h
+       WHERE c.id_mica9h = '$mica9h'
+        GROUP BY a.id_mica9h";
 
     $resultado = mysqli_query($conn, $query2);
 
 
     while ($row = $resultado->fetch_assoc()) {
-        $html = $html . $row["nombre"] . ", ";
+        $html = $html . $row["nombre"];
     }
 
     $html = $html . "</div>
@@ -135,18 +137,19 @@ if ($total == 0) {
                                             <p>Compatibles: <br>";
     }
 
-    $query2 = "SELECT b.nombre FROM modelos b 
+    $query2 = "	 SELECT GROUP_CONCAT(b.nombre SEPARATOR ', ') AS nombre FROM modelos b 
     INNER JOIN nombre a
     ON b.id_modelo = a.nombre_modelo
     INNER JOIN  micas9d c
     ON a.id_mica = c.id_mica9d
-    WHERE c.id_mica9d = '$mica9d'";
+    WHERE c.id_mica9d = '$mica9d'
+    GROUP BY a.id_mica";
 
     $resultado = mysqli_query($conn, $query2);
 
 
     while ($row = $resultado->fetch_assoc()) {
-        $html = $html . $row["nombre"] . ", ";
+        $html = $html . $row["nombre"];
     }
 
     $html = $html . "</div>
@@ -220,12 +223,13 @@ if ($total == 0) {
                             </div>";
     }
 
-    $query2 = "SELECT b.nombre FROM modelos b 
+    $query2 = "SELECT GROUP_CONCAT(b.nombre SEPARATOR ', ') AS nombre FROM modelos b 
     INNER JOIN modelo_funda a
     ON b.id_modelo = a.tipo_modelo
     INNER JOIN  protectores c
     ON a.id_protector = c.id_protector
-    WHERE c.id_protector = '$protector'";
+    WHERE c.id_protector  = '$protector'
+     GROUP BY a.id_protector";
 
     $resultado = mysqli_query($conn, $query2);
     $html = $html . "<hr>
@@ -233,7 +237,7 @@ if ($total == 0) {
                         <p>Compatibles:
                             <br>";
     while ($row = $resultado->fetch_assoc()) {
-        $html = $html . $row["nombre"] . ", ";
+        $html = $html . $row["nombre"];
 
     }
 
@@ -297,18 +301,19 @@ if ($total == 0) {
                 <p>Compatibles: <br>";
     }
 
-    $query2 = "SELECT b.nombre FROM modelos b 
+    $query2 = "SELECT GROUP_CONCAT(b.nombre SEPARATOR ', ') AS nombre FROM modelos b 
     INNER JOIN nombre_mica100d a
     ON b.id_modelo = a.nombre_modelo
     INNER JOIN  micas100d c
     ON a.id_mica100d = c.id_mica100d
-    WHERE c.id_mica100d = '$mica100d'";
+    WHERE c.id_mica100d = '$mica100d'
+    GROUP BY a.id_mica100d";
 
     $resultado = mysqli_query($conn, $query2);
 
 
     while ($row = $resultado->fetch_assoc()) {
-        $html = $html . $row["nombre"] . ", ";
+        $html = $html . $row["nombre"];
     }
 
     $html = $html . "</div>
@@ -369,18 +374,19 @@ if ($total == 0) {
                 <p>Compatibles: <br>";
     }
 
-    $query2 = "SELECT b.nombre FROM modelos b 
+    $query2 = "SELECT GROUP_CONCAT(b.nombre SEPARATOR ', ') AS nombre FROM modelos b 
     INNER JOIN nombre_micacamara a
     ON b.id_modelo = a.modelo
     INNER JOIN  micas_camara c
     ON a.id_micaCamara= c.id_micaCamara
-    WHERE c.id_micaCamara = '$micaCamara'";
+    WHERE c.id_micaCamara = '$micaCamara'
+    GROUP BY a.id_micaCamara";
 
     $resultado = mysqli_query($conn, $query2);
 
 
     while ($row = $resultado->fetch_assoc()) {
-        $html = $html . $row["nombre"] . ", ";
+        $html = $html . $row["nombre"];
     }
 
     $html = $html . "</div>
@@ -438,18 +444,19 @@ if ($total == 0) {
                 <p>Compatibles: <br>";
     }
 
-    $query2 = "SELECT b.nombre FROM modelos b 
+    $query2 = "SELECT GROUP_CONCAT(b.nombre SEPARATOR ', ') AS nombre FROM modelos b 
     INNER JOIN nombre_micacurva a
     ON b.id_modelo = a.nombre_modelo
     INNER JOIN  micascurva c
     ON a.id_micaCurva = c.id_micaCurva
-    WHERE c.id_micaCurva = '$micaCurva'";
+    WHERE c.id_micaCurva = '$micaCurva'
+    GROUP BY a.id_micaCurva";
 
     $resultado = mysqli_query($conn, $query2);
 
 
     while ($row = $resultado->fetch_assoc()) {
-        $html = $html . $row["nombre"] . ", ";
+        $html = $html . $row["nombre"];
     }
 
     $html = $html . "</div>

@@ -1,51 +1,38 @@
 <?php
 include('../db.php');
 session_start();
-
+/*Recibimos las variables*/
 $marca = $_POST["marca"];
 $muro = $_POST["muro"];
 $posicion = $_POST["posicion"];
 $id = $_POST["id"];
-//echo $id
-$query = "UPDATE `protectores` SET `marca` = '$marca', `posicion` = '$posicion' WHERE `protectores`.`id_protector` = $id";
+$id_tipo = $_POST["id_tipo"];
+$cantidad = $_POST["cantidad"];
 
-$resultado = mysqli_query($conn, $query);
+/* Se convierten todos los elementos de los arreglos a enteros */
+$id_tipo = array_map('intval', $id_tipo);
+$cantidad = array_map('intval', $cantidad);
 
-if(!$resultado){
-    echo 'Error mica <br>';
-    printf("Errormessage: %s\n", $conn->error);
-} else{
-    $name = "SELECT m.id_modelo, m.nombre FROM modelos m
-    INNER JOIN modelo_funda a ON a.tipo_modelo = m.id_modelo
-    INNER JOIN protectores b ON a.id_protector = b.id_protector
-    WHERE b.id_protector = '$id'";
+/*Convertimos los arreglos a JSON*/
+$json_tipo = json_encode($id_tipo);
+$json_cantidad = json_encode($cantidad);
 
-    $error = 0;
-    $resultado = mysqli_query($conn, $name);
-    while($row = mysqli_fetch_assoc($resultado)) {
-       $id_modelo = $row["id_modelo"];
-        echo $id_modelo;
-        
-        $query = "UPDATE `modelos` SET `marca` = '$marca' WHERE `modelos`.`id_modelo` = '$id_modelo'";
-       $resultado1 = mysqli_query($conn, $query);
-       if(!$resultado1){
-           echo 'Error cambio de marca <br>';
-           printf("Errormessage: %s\n", $conn->error);
-           $error = $error + 1;
-       }else{
-        echo "Actualizacion exitosa ID: " . $id_modelo . "<br>";
-       }
-    }
+echo $json_tipo;
+echo"<br>";
+echo $json_cantidad;
 
-   if($error == 0){
-        $_SESSION['edG_m9h'] = "Mica guardada";
-        header("Location: ../index.php");
-        exit();
-    }
+/*Mandamos llamar a la SP que actualizara los datos */
 
-    //Aqui se necesita un while para que cambie la marca de todos x
+$sp = "SP_UPDATE_PROTECTORES";
+$resultado = mysqli_query($conn, "CALL $sp ('$marca', '$posicion', '$id', '$json_tipo', '$json_cantidad')");
+
+if (!$resultado) {
+    echo 'Error consulta al programador <br>';
+    //printf("Errormessage: %s\n", $conn->error);
+} else {
+    $_SESSION['edG_m9d'] = "Fusion hecha";
+    header("Location: ../index.php");
+    exit();
 }
-
-
 mysqli_close($conn);
 ?>
