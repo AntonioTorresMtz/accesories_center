@@ -25,7 +25,7 @@ if (isset($_SESSION['exito_NuevoTipo'])) {
         <form action="registros/actualizacion_Protectores.php" method="POST"
             class="col-md-3 shadow p-3 align-self-start" id="formulario">
             <div class="row text-center">
-                <h4>Venta mica completa</h4>
+                <h4>Actualizar protector</h4>
             </div>
             <div class="col">
                 <label for="marca" class="form-label">Marca</label>

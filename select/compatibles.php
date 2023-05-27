@@ -2,7 +2,8 @@
 include '../db.php';
 $modelo = $_POST['modelo'];
 
-$query = "SELECT a.nombre, c.cantidad, c.id_mica9h, d.nombre AS place, c.ancho, c.largo  FROM modelos a
+$query = "SELECT a.nombre, c.cantidad, c.id_mica9h,
+d.muro, d.nombre AS place, c.ancho, c.largo  FROM modelos a
 INNER JOIN nombre_mica9h b
 ON b.nombre_modelo = a.id_modelo
 INNER JOIN micas9h c
@@ -44,11 +45,14 @@ if ($total == 0) {
                                 <a href='edita_mica9h.php?id=" . $mica9h . "'> Editar </a>
                             </div> 
 
-                            <div class='col-6'>
+                            <div class='col-4'>
+                                <p>Muro: " . $row["muro"] . "</p>
+                            </div> 
+                            <div class='col-4'>
                                 <p>Posicion: " . $row["place"] . "</p>
                             </div>              
     
-                            <div class='col-6'>
+                            <div class='col-4'>
                                 <p>Cantidad: " . $row["cantidad"] . "<p>
                             </div>
                             <div class='col-6'>
@@ -81,7 +85,8 @@ if ($total == 0) {
     </div>";
 }
 
-$query9d = "SELECT a.nombre, c.cantidad, c.id_mica9d, d.nombre AS place,
+$query9d = "SELECT a.nombre, c.cantidad, c.id_mica9d,
+d.muro, d.nombre AS place,
  c.ancho, c.largo  FROM modelos a
 INNER JOIN nombre b
 ON b.nombre_modelo = a.id_modelo
@@ -121,12 +126,14 @@ if ($total == 0) {
                             <div class='col-12'>
                                 <a href='edita_mica9d.php?id=" . $mica9d . "'> Editar </a>
                             </div> 
-
-                                <div class='col-6'>
+                                <div class='col-4'>
+                                    <p>Muro: " . $row["muro"] . "</p>
+                                </div> 
+                                <div class='col-4'>
                                     <p>Posicion: " . $row["place"] . "</p>
                                 </div>              
                             
-                                <div class='col-6'>
+                                <div class='col-4'>
                                     <p>Cantidad: " . $row["cantidad"] . "<p>
                                     </div>
                                     <div class='col-6'>
@@ -159,7 +166,7 @@ if ($total == 0) {
 
 }
 
-$queryProtector = "SELECT a.nombre, a.muro, b.id_protector FROM posicion a 
+$queryProtector = "SELECT a.nombre, a.muro, b.cantidad, b.id_protector FROM posicion a 
 INNER JOIN protectores b
 ON b.posicion = a.id_posicion
 INNER JOIN modelo_funda c
@@ -195,13 +202,16 @@ if ($total == 0) {
         <div class='col-12'>
             <a href='edita_protector.php?id=" . $protector . "'> Editar </a>
         </div>
+        <div class='col-4'>
+            <p>Muro: " . $row["muro"] . "<p>
+        </div>
 
-        <div class='col-6'>
+        <div class='col-4'>
             <p>Posicion: " . $row["nombre"] . "</p>
         </div>              
     
-        <div class='col-6'>
-            <p>Muro: " . $row["muro"] . "<p>
+        <div class='col-4'>
+            <p>Total: " . $row["cantidad"] . "</p>
         </div>
         <hr> 
         <div class='col'>
@@ -250,7 +260,8 @@ if ($total == 0) {
 
 }
 
-$query100d = "SELECT a.nombre, c.cantidad, c.id_mica100d, d.nombre AS place FROM modelos a
+$query100d = "SELECT a.nombre, c.cantidad,
+c.id_mica100d, d.muro, d.nombre AS place FROM modelos a
 INNER JOIN nombre_mica100d b
 ON b.nombre_modelo = a.id_modelo
 INNER JOIN micas100d c
@@ -289,11 +300,14 @@ if ($total == 0) {
         <div class='col-12'>
             <a href='edita_mica100d.php?id=" . $mica100d . "'> Editar </a>
         </div> 
-        <div class='col-6'>
+        <div class='col-4'>
+            <p>Muro: " . $row["muro"] . "</p>
+        </div>   
+        <div class='col-4'>
             <p>Posicion: " . $row["place"] . "</p>
         </div>              
     
-        <div class='col-6'>
+        <div class='col-4'>
             <p>Cantidad: " . $row["cantidad"] . "<p>
             </div>
             <hr> 
@@ -323,7 +337,8 @@ if ($total == 0) {
 
 }
 
-$queryCamara = "SELECT a.nombre, c.cantidad, c.id_micaCamara, d.nombre AS place FROM modelos a
+$queryCamara = "SELECT a.nombre, c.cantidad, c.id_micaCamara,
+d.muro, d.nombre AS place FROM modelos a
 INNER JOIN nombre_micacamara b
 ON b.modelo = a.id_modelo
 INNER JOIN micas_camara c
@@ -362,11 +377,14 @@ if ($total == 0) {
         <div class='col-12'>
         <a href='edita_micaCamara.php?id=" . $micaCamara . "'> Editar </a>
     </div> 
-        <div class='col-6'>
+        <div class='col-4'>
+            <p>Muro: " . $row["muro"] . "</p>
+        </div>
+        <div class='col-4'>
             <p>Posicion: " . $row["place"] . "</p>
         </div>              
     
-        <div class='col-6'>
+        <div class='col-4'>
             <p>Cantidad: " . $row["cantidad"] . "<p>
             </div>
             <hr> 
@@ -396,7 +414,8 @@ if ($total == 0) {
 
 }
 
-$queryCurva = "SELECT a.nombre, c.cantidad, c.id_micaCurva, d.nombre AS place FROM modelos a
+$queryCurva = "SELECT a.nombre, c.cantidad, c.id_micaCurva,
+d.muro, d.nombre AS place FROM modelos a
 INNER JOIN nombre_micacurva b
 ON b.nombre_modelo = a.id_modelo
 INNER JOIN micascurva c
@@ -435,11 +454,14 @@ if ($total == 0) {
         <div class='col-12'>
             <a href='edita_micaCurva.php?id=" . $micaCurva . "'> Editar </a>
         </div> 
-        <div class='col-6'>
+        <div class='col-4'>
+            <p>Muro: " . $row["muro"] . "</p>
+        </div>
+        <div class='col-4'>
             <p>Posicion: " . $row["place"] . "</p>
         </div>              
     
-        <div class='col-6'>
+        <div class='col-4'>
             <p>Cantidad: " . $row["cantidad"] . "<p>
             </div>
             <hr> 

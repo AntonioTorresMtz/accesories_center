@@ -25,7 +25,7 @@ if (isset($_SESSION['error_ventaMica9h'])) {
         <form action="registros/actualizacion_Mica100d.php" method="POST" class="col-md-3 shadow p-3 align-self-start"
             id="formulario">
             <div class="row text-center">
-                <h4>Venta mica privacidad</h4>
+                <h4>Actualizar mica privacidad</h4>
             </div>
             <div class="col">
                 <label for="marca" class="form-label">Marca</label>
