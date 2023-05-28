@@ -25,7 +25,7 @@ $muro = $fila["muro"];
         <form action="editar/e_generalProtector.php" method="POST"
             class="col-md-4 shadow p-3 align-self-start contenedor_formulario">
             <div class="row text-center">
-                <h4>Modificar mica de privacidad</h4>
+                <h4>Modificar protector</h4>
             </div>
 
             <div class="col-12">
