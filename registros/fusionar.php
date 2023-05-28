@@ -24,5 +24,8 @@ switch ($producto) {
     case 5:
         micaCurva($id_mica, $id_modelo);
         break;
+    case 6:
+        protector($id_mica, $id_modelo);
+        break;
 }
 ?>

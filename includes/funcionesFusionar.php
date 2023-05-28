@@ -84,4 +84,21 @@ function micaCurva($id_mica, $id_modelo)
     mysqli_close($conn);
 }
 
+function protector($id_mica, $id_modelo)
+{
+    include('../db.php');
+    $sp = "SP_FUSIONAR_PROTECTOR";
+    $resultado = mysqli_query($conn, "CALL $sp ('$id_mica', '$id_modelo')");
+
+    if (!$resultado) {
+        echo 'Error consulta al programador <br>';
+        //printf("Errormessage: %s\n", $conn->error);
+    } else {
+        $_SESSION['fusionCurva'] = "Fusion hecha";
+        header("Location: ../fusionarMica9h.php");
+        exit();
+    }
+    mysqli_close($conn);
+}
+
 ?>
