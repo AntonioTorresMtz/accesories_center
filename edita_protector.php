@@ -3,7 +3,7 @@ include('db.php');
 include("includes/header.php");
 
 $id = $_GET['id'];
-//echo $id;
+echo $id;
 
 $query = "SELECT m.marca as name_marca, a.marca,  a.posicion, p.nombre as name_posicion, p.muro
 FROM protectores a

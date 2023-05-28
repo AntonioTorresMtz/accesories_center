@@ -11,7 +11,7 @@ $marca = $_POST['marca'];
 
     $resultado = mysqli_query($conn, $query);
 
-    $html = "<option value='vacio' disabled selected>-- Selecciona un modelo --</option>";
+    $html = "<option value='vacio' disabled selected>-- Seleccionaa un modelo --</option>";
     while($row = $resultado->fetch_assoc()){
         $html = $html . "<option value='".$row["id_protector"] ."'>".$row["nombre"] . "</option>"; 
     }

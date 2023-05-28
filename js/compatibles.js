@@ -4,6 +4,7 @@ $(document).ready(function () {
   $("#marca").change(function () {
     $("#marca option:selected").each(function () {
       producto = $(this).val();
+      marca = producto;
       //console.log(producto)
       console.log("Producto: " + tipoProducto);
       switch (tipoProducto) {
@@ -44,7 +45,7 @@ $(document).ready(function () {
           );
           break;
         case "5":
-          console.log("Cinco");
+          console.log("Cincooo");
           $.post(
             "select/modeloSelectCurva.php",
             { producto: producto },
@@ -54,10 +55,10 @@ $(document).ready(function () {
           );
           break;
         case "6":
-          console.log("Cinco");
+          console.log("Seis");
           $.post(
             "select/protectorModelo.php",
-            { producto: producto },
+            { marca: marca },
             function (data) {
               $("#modelo").html(data);
             }
