@@ -177,7 +177,7 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="nuevaPosicion.php">Pocision</a></li>
+              <li><a class="dropdown-item" href="nuevaPosicion.php">Posicion</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -193,7 +193,7 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="actualizarMenu_camara.php">Dividir</a></li>
+              <li><a class="dropdown-item" href="desfusionarMenu.php">Dividir</a></li>
               <li>
             </ul>
           </li>

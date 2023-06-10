@@ -33,3 +33,7 @@
   max-height: 600px; /* Altura fija del contenedor */
   overflow: auto; /* Permite el desplazamiento cuando se desborda */
 }
+
+.linea{
+  border-right: 1px solid #CED4DA;
+}

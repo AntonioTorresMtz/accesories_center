@@ -1,13 +1,14 @@
 <?php
 include("db.php");
 include("includes/header.php");
-include("mensajesExito/fusiones.php")
+include("mensajesExito/desfusiones.php")
     ?>
 <div class="container">
     <div class="row justify-content-center mt-3">
-        <form action="registros/fusionar.php" method="POST" class="col-md-6 shadow p-3 align-self-start">
+        <form action="registros/desfusionar.php" method="POST" class="col-md-6 shadow p-3 align-self-start"
+            id="formulario">
             <div class="row text-center">
-                <h2>Fusionar Modelos</h2>
+                <h2>Desfusionar modelos</h2>
             </div>
 
             <div class="col form-group">
@@ -46,6 +47,11 @@ include("mensajesExito/fusiones.php")
                         <select class="form-select" name="modelo" id="modelo">
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="cantidad2" class="form-label">Cantidad:</label>
+                        <input class="form-control" type="number" name="cantidad2" placeholder="Cantidad" required
+                            id="cantidad2">
+                    </div>
                 </div>
                 <div id="modelo3" class="col-6">
                     <div class="row text-center">
@@ -53,22 +59,14 @@ include("mensajesExito/fusiones.php")
                     </div>
 
                     <div class="form-group">
-                        <label for="marca2" class="form-label">Marca:</label>
-                        <select class="form-select" name="marca2" id="marca2">
-                            <option value="1" disabled selected>Selecciona una marca</option>
-                            <?php
-                            $pos = "SELECT id_marca, marca FROM marca ORDER BY id_marca ASC";
-                            $resultado = mysqli_query($conn, $pos);
-                            while ($row = mysqli_fetch_assoc($resultado)) {
-                                $id_marca = $row["id_marca"] ?>
-                                <option value="<?php echo $id_marca ?>"> <?php echo $row["marca"] ?> </option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label for="modelo2" class="form-label">Modelo:</label>
                         <select class="form-select" name="modelo2" id="modelo2">
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cantidad2" class="form-label">Cantidad:</label>
+                        <input class="form-control" type="number" name="cantidad1" placeholder="Cantidad" required
+                            id="cantidad1">
                     </div>
                 </div>
             </div>
@@ -84,7 +82,8 @@ include("mensajesExito/fusiones.php")
 
 </div>
 
-<script src="js/compatibles.js"></script>
+<script src="js/dividir.js"></script>
+<script src="js/validaDesfusion.js"></script>
 
 <?php
 include("includes/footer.php");
