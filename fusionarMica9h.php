@@ -5,7 +5,8 @@ include("mensajesExito/fusiones.php")
     ?>
 <div class="container">
     <div class="row justify-content-center mt-3">
-        <form action="registros/fusionar.php" method="POST" class="col-md-6 shadow p-3 align-self-start">
+        <form action="registros/fusionar.php" method="POST" class="col-md-6 shadow p-3 align-self-start"
+            id="formulario">
             <div class="row text-center">
                 <h2>Fusionar Modelos</h2>
             </div>
@@ -85,6 +86,7 @@ include("mensajesExito/fusiones.php")
 </div>
 
 <script src="js/compatibles.js"></script>
+<script src="js/validaFusion.js"></script>
 
 <?php
 include("includes/footer.php");

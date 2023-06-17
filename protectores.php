@@ -29,13 +29,14 @@ if (isset($_SESSION['protectores_repetido'])) {
 
 <div class="container">
     <div class="row justify-content-center mt-3">
-        <form action="registros/nuevoProtector.php" method="POST" class="col-md-4 shadow p-3 align-self-start">
+        <form action="registros/nuevoProtector.php" method="POST" class="col-md-4 shadow p-3 align-self-start"
+        id="formulario">
             <div class="row text-center">
                 <h4>Nuevo protector</h4>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <label for=" marca" class="form-label">Marca:</label>
+                    <label for="marca" class="form-label">Marca:</label>
                     <select name="marca" id="marca" class="form-select">
                         <option value="0" selected disabled>Selecciona una marca</option>
                         <?php
@@ -70,7 +71,7 @@ if (isset($_SESSION['protectores_repetido'])) {
 
             <div class="row pt-2">
                 <div class="col-12 text-centar">
-                    <label for="">Tipo:</label>
+                    <label>Tipo:</label>
                 </div>
                 <table class="table-borderless form-linea p-3" id="tablaTipo">
                     <tr class="fila-fija">
@@ -96,14 +97,14 @@ if (isset($_SESSION['protectores_repetido'])) {
             </div>
             <div class="row mt-2">
                 <div class="col text-center">
-                    <label class="form-label" for="">Agregar tipo de funda:</label>
+                    <label class="form-label">Agregar tipo de funda:</label>
                     <button id="adicionalTipo" name="adicional" type="button" class="btn btn-dark"> <i
                             class="far fa-plus-square"></i> </button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 text-centar">
-                    <label for="">Modelo:</label>
+                    <label>Modelo:</label>
                 </div>
                 <table class="table-borderless form-linea p-3" id="tabla">
                     <tr class="fila-fija">
@@ -117,7 +118,7 @@ if (isset($_SESSION['protectores_repetido'])) {
             </div>
             <div class="row">
                 <div class="col text-center">
-                    <label class="form-label" for="">Agregar tipo de modelo:</label>
+                    <label class="form-label">Agregar tipo de modelo:</label>
                     <button id="adicional" name="adicional" type="button" class="btn btn-dark"> <i
                             class="far fa-plus-square"></i> </button>
                 </div>
@@ -137,7 +138,7 @@ if (isset($_SESSION['protectores_repetido'])) {
 
 <script src="js/agregarModelo.js"></script>
 <script src="js/selectPosicion.js"></script>
-<script src="js/valida_modelos.js"></script>
+<script src="js/validaProtectores.js"></script>
 
 <?php
 include("includes/footer.php")

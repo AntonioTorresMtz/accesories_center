@@ -19,6 +19,8 @@ while (true) {
         break;
 }
 
+$modelos_arreglo = array_unique($modelos_arreglo);
+
 $contador = 0;
 foreach ($modelos_arreglo as $model) {
     $verifica = "SELECT COUNT(*) as number FROM nombre WHERE nombre_modelo = '$model';";

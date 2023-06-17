@@ -94,7 +94,7 @@ function protector($id_mica, $id_modelo)
         echo 'Error consulta al programador <br>';
         //printf("Errormessage: %s\n", $conn->error);
     } else {
-        $_SESSION['fusionCurva'] = "Fusion hecha";
+        $_SESSION['fusionProtector'] = "Fusion hecha";
         header("Location: ../fusionarMica9h.php");
         exit();
     }

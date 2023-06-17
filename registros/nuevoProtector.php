@@ -20,7 +20,7 @@ while (true) {
         break;
 }
 
-var_dump($modelos_arreglo);
+$modelos_arreglo = array_unique($modelos_arreglo);
 
 $contador = 0;
 foreach ($modelos_arreglo as $model) {
