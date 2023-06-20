@@ -30,7 +30,7 @@ if (isset($_SESSION['protectores_repetido'])) {
 <div class="container">
     <div class="row justify-content-center mt-3">
         <form action="registros/nuevoProtector.php" method="POST" class="col-md-4 shadow p-3 align-self-start"
-        id="formulario">
+            id="formulario">
             <div class="row text-center">
                 <h4>Nuevo protector</h4>
             </div>
@@ -51,14 +51,17 @@ if (isset($_SESSION['protectores_repetido'])) {
             </div>
 
             <div class="row">
-                <div class="col-6">
+                <div class="col">
                     <label class="form-label" for="largo">Muro:</label>
                     <select name="muro" id="muro" class="form-select">
-                        <option value="0" disabled selected>Selecciona un muro</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+                        <option value="0" selected disabled>Selecciona un muro</option>
+                        <?php
+                        $pos = "SELECT DISTINCT muro FROM posicion;";
+                        $resultado = mysqli_query($conn, $pos);
+                        while ($row = mysqli_fetch_assoc($resultado)) {
+                            $id_marca = $row["id_marca"] ?>
+                            <option value="<?php echo $row["muro"] ?>"> <?php echo $row["muro"] ?> </option>
+                        <?php } ?>
                     </select>
                 </div>
 
@@ -121,6 +124,12 @@ if (isset($_SESSION['protectores_repetido'])) {
                     <label class="form-label">Agregar tipo de modelo:</label>
                     <button id="adicional" name="adicional" type="button" class="btn btn-dark"> <i
                             class="far fa-plus-square"></i> </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label for="notas" class="form-label">Notas:</label>
+                    <textarea name="notas" id="notas" class="form-control" maxlength="200"></textarea>
                 </div>
             </div>
             <div class="row mt-3">

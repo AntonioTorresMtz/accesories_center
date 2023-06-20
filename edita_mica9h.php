@@ -6,7 +6,7 @@ $id = $_GET['id'];
 //echo $id;
 
 $query = "SELECT m.marca as name_marca, a.marca, a.ancho, a.largo, a.camara, a.posicion,
-a.cantidad, p.nombre as name_posicion, p.muro, a.boton
+a.cantidad, p.nombre as name_posicion, p.muro, a.boton, a.notas
 FROM micas9h a
 INNER JOIN marca m ON m.id_marca = a.marca
 INNER JOIN posicion p ON p.id_posicion = a.posicion
@@ -23,6 +23,7 @@ $posicion = $fila["posicion"];
 $posicion_name = $fila["name_posicion"];
 $boton = $fila["boton"];
 $muro = $fila["muro"];
+$notas = $fila["notas"];
 $cantidad = $fila["cantidad"];
 ?>
 
@@ -55,18 +56,12 @@ $cantidad = $fila["cantidad"];
 
             </div>
 
-            <div class="col-12">
-                <label for="marca" class="form-label">Marca:</label>
-                <select name="marca" id="marca" class="form-select">
-                    <option value="<?php echo $marca ?>" selected> <?php echo $marca_name ?> </option>
-                    <?php
-                    $pos = "SELECT id_marca, marca FROM marca ORDER BY id_marca ASC";
-                    $resultado = mysqli_query($conn, $pos);
-                    while ($row = mysqli_fetch_assoc($resultado)) {
-                        $id_marca = $row["id_marca"] ?>
-                        <option value="<?php echo $id_marca ?>"> <?php echo $row["marca"] ?> </option>
-                    <?php } ?>
-                </select>
+            <div class="row">
+                <div class="col-12">
+                    <label for="notas" class="form-label">Notas:</label>
+                    <textarea name="notas" id="notas" class="form-control"
+                        maxlength="200"><?php echo $notas ?></textarea>
+                </div>
             </div>
             <div class="row">
                 <div class="col-6">

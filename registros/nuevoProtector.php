@@ -7,6 +7,13 @@ $posicion = $_POST["posicion"];
 $muro = $_POST['muro'];
 $modelos_arreglo = array();
 $modelo = ($_POST['modelo']);
+if (isset($_POST['notas']) && !empty($_POST['notas'])) {
+    // La variable 'nombre' está presente y no está vacía
+    $notas = $_POST['notas'];
+    // Realizar acciones con la variable 'nombre' aquí
+} else {
+    $notas = null;
+}
 
 
 while (true) {
@@ -34,7 +41,7 @@ foreach ($modelos_arreglo as $model) {
 echo $contador;
 
 if ($contador == 0) {
-    $protector = "INSERT INTO protectores (marca, cantidad, posicion) VALUES ('$marca', '0','$posicion')";
+    $protector = "INSERT INTO protectores (marca, cantidad, posicion, notas) VALUES ('$marca', '0','$posicion', '$notas')";
 
     $resultado = mysqli_query($conn, $protector);
     if (!$resultado) {

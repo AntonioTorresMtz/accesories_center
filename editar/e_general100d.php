@@ -2,14 +2,14 @@
 include('../db.php');
 session_start();
 
-$marca = $_POST["marca"];
 $muro = $_POST["muro"];
 $posicion = $_POST["posicion"];
 $id = $_POST["id"];
 $cantidad = $_POST["cantidad"];
+$notas = $_POST["notas"];
 
 $sp = "SP_UPDATE_MICA100D";
-$resultado = mysqli_query($conn, "CALL $sp ('$marca', '$posicion', '$cantidad', '$id')");
+$resultado = mysqli_query($conn, "CALL $sp ('$notas', '$posicion', '$cantidad', '$id')");
 
 if (!$resultado) {
     echo 'Error consulta al programador <br>';

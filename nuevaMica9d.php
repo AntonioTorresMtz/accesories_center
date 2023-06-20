@@ -8,6 +8,13 @@ $largo = $_POST["largo"];
 $posicion = $_POST["posicion"];
 $modelos_arreglo = array();
 $modelo = ($_POST['modelo']);
+if (isset($_POST['notas']) && !empty($_POST['notas'])) {
+    // La variable 'nombre' está presente y no está vacía
+    $notas = $_POST['notas'];
+    // Realizar acciones con la variable 'nombre' aquí
+} else {
+    $notas = null;
+}
 
 while (true) {
     $modelo1 = current($modelo); //Modelo
@@ -31,8 +38,8 @@ foreach ($modelos_arreglo as $model) {
 }
 
 if ($contador == 0) {
-    $mica = "INSERT INTO micas9d (marca, cantidad, ancho, largo, posicion) VALUES ('$marca', '$cantidad',
-'$ancho', '$largo', '$posicion')";
+    $mica = "INSERT INTO micas9d (marca, cantidad, ancho, largo, posicion, notas) VALUES ('$marca', '$cantidad',
+'$ancho', '$largo', '$posicion', '$notas')";
 
     $resultado = mysqli_query($conn, $mica);
     if (!$resultado) {

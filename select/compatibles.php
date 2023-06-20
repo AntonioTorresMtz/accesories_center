@@ -2,7 +2,7 @@
 include '../db.php';
 $modelo = $_POST['modelo'];
 
-$query = "SELECT a.nombre, c.cantidad, c.id_mica9h,
+$query = "SELECT a.nombre, c.cantidad, c.id_mica9h, c.notas,
 d.muro, d.nombre AS place, c.ancho, c.largo  FROM modelos a
 INNER JOIN nombre_mica9h b
 ON b.nombre_modelo = a.id_modelo
@@ -58,6 +58,10 @@ if ($total == 0) {
                             <div class='col-6'>
                                 <p>Medidas: " . $row["ancho"] . "x" . $row["largo"] . "<p>
                             </div>
+                            <hr>                             
+                            <div class='col-12'>
+                                <p>Notas: " . $row["notas"] . "</p>
+                            </div>  
                             <hr> 
                             <div class='col'>
                                 <p>Compatibles: <br>";
@@ -86,7 +90,7 @@ if ($total == 0) {
     </div>";
 }
 
-$query9d = "SELECT a.nombre, c.cantidad, c.id_mica9d,
+$query9d = "SELECT a.nombre, c.cantidad, c.id_mica9d, c.notas,
 d.muro, d.nombre AS place,
  c.ancho, c.largo  FROM modelos a
 INNER JOIN nombre b
@@ -140,6 +144,10 @@ if ($total == 0) {
                                     <div class='col-6'>
                                         <p>Medidas: " . $row["ancho"] . "x" . $row["largo"] . "<p>
                                         </div>
+                                        <hr>
+                                        <div class='col-12'>
+                                            <p>Notas: " . $row["notas"] . "</p>
+                                        </div>    
                                         <hr> 
                                         <div class='col'>
                                             <p>Compatibles: <br>";
@@ -235,7 +243,7 @@ if ($total == 0) {
                             </div>";
     }
 
-    $query2 = "SELECT GROUP_CONCAT(m.marca, ' ', b.nombre SEPARATOR ', ') AS nombre FROM modelos b 
+    $query2 = "SELECT GROUP_CONCAT(m.marca, ' ', b.nombre SEPARATOR ', ') AS nombre , c.notas FROM modelos b 
     INNER JOIN modelo_funda a
     ON b.id_modelo = a.tipo_modelo
     INNER JOIN  protectores c
@@ -243,7 +251,7 @@ if ($total == 0) {
     INNER JOIN marca m ON m.id_marca = b.marca
     WHERE c.id_protector  = '$protector'
     GROUP BY a.id_protector";
-
+    $notas_protector = '';
     $resultado = mysqli_query($conn, $query2);
     $html = $html . "<hr>
                         <div class='col-12'>
@@ -251,11 +259,16 @@ if ($total == 0) {
                             <br>";
     while ($row = $resultado->fetch_assoc()) {
         $html = $html . $row["nombre"];
+        $notas_protector = $row['notas'];
 
     }
 
     $html = $html . "</p>
                 </div>
+                <hr>
+                <div class='col-12'>
+                    <p>Notas: " . $notas_protector . "</p>
+                </div>   
             </div>
         </div>
     </div>
@@ -263,7 +276,7 @@ if ($total == 0) {
 
 }
 
-$query100d = "SELECT a.nombre, c.cantidad,
+$query100d = "SELECT a.nombre, c.cantidad, c.notas,
 c.id_mica100d, d.muro, d.nombre AS place FROM modelos a
 INNER JOIN nombre_mica100d b
 ON b.nombre_modelo = a.id_modelo
@@ -314,6 +327,10 @@ if ($total == 0) {
             <p>Cantidad: " . $row["cantidad"] . "<p>
             </div>
             <hr> 
+            <div class='col-12'>
+                <p>Notas: " . $row["notas"] . "</p>
+            </div> 
+            <hr>
             <div class='col'>
                 <p>Compatibles: <br>";
     }
@@ -341,7 +358,7 @@ if ($total == 0) {
 
 }
 
-$queryCamara = "SELECT a.nombre, c.cantidad, c.id_micaCamara,
+$queryCamara = "SELECT a.nombre, c.cantidad, c.id_micaCamara, c.notas,
 d.muro, d.nombre AS place FROM modelos a
 INNER JOIN nombre_micacamara b
 ON b.modelo = a.id_modelo
@@ -391,6 +408,10 @@ if ($total == 0) {
         <div class='col-4'>
             <p>Cantidad: " . $row["cantidad"] . "<p>
             </div>
+            <hr>             
+            <div class='col-12'>
+                <p>Notas: " . $row["notas"] . "</p>
+            </div> 
             <hr> 
             <div class='col'>
                 <p>Compatibles: <br>";
@@ -419,7 +440,7 @@ if ($total == 0) {
 
 }
 
-$queryCurva = "SELECT a.nombre, c.cantidad, c.id_micaCurva,
+$queryCurva = "SELECT a.nombre, c.cantidad, c.id_micaCurva, c.notas,
 d.muro, d.nombre AS place FROM modelos a
 INNER JOIN nombre_micacurva b
 ON b.nombre_modelo = a.id_modelo
@@ -469,6 +490,10 @@ if ($total == 0) {
         <div class='col-4'>
             <p>Cantidad: " . $row["cantidad"] . "<p>
             </div>
+            <hr>             
+            <div class='col-12'>
+                <p>Notas: " . $row["notas"] . "</p>
+            </div> 
             <hr> 
             <div class='col'>
                 <p>Compatibles: <br>";

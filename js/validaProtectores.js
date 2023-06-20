@@ -50,7 +50,7 @@ function validar(evento) {
                     "error"
                   );
                 return;
-              } else {                
+              } else {
                 this.submit();
               }
             }

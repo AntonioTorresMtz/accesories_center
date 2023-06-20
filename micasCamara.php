@@ -61,8 +61,14 @@ if (isset($_SESSION['modelos_repetido'])) {
                 <div class="col-6">
                     <label class="form-label" for="largo">Muro:</label>
                     <select name="muro" id="muro" class="form-select">
-                        <option value="0" disabled selected>Selecciona un muro</option>
-                        <option value="4">4</option>
+                        <option value="0" selected disabled>Selecciona un muro</option>
+                        <?php
+                        $pos = "SELECT DISTINCT muro FROM posicion;";
+                        $resultado = mysqli_query($conn, $pos);
+                        while ($row = mysqli_fetch_assoc($resultado)) {
+                            $id_marca = $row["id_marca"] ?>
+                            <option value="<?php echo $row["muro"] ?>"> <?php echo $row["muro"] ?> </option>
+                        <?php } ?>
                     </select>
                 </div>
 
@@ -86,6 +92,12 @@ if (isset($_SESSION['modelos_repetido'])) {
                                     class="fas fa-minus-circle"></i></button></td>
                     </tr>
                 </table>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label for="notas" class="form-label">Notas:</label>
+                    <textarea name="notas" id="notas" class="form-control" maxlength="200"></textarea>
+                </div>
             </div>
             <div class="row mt-2">
                 <div class="col text-center">
