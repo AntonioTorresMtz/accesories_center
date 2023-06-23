@@ -30,9 +30,9 @@ if (!$resultado) {
     echo 'Error consulta al programador <br>';
     //printf("Errormessage: %s\n", $conn->error);
 } else {
+    mysqli_close($conn);
     $_SESSION['edG_m9d'] = "Fusion hecha";
     header("Location: ../index.php");
     exit();
 }
-mysqli_close($conn);
 ?>

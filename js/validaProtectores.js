@@ -51,7 +51,21 @@ function validar(evento) {
                   );
                 return;
               } else {
-                this.submit();
+                if (document.getElementById("tipo")) {
+                  var tipo = document.getElementById("tipo").value;
+                  if (tipo == 0) {
+                    type =
+                      "text/javascript" >
+                      Swal.fire(
+                        "Error al agregar!",
+                        "Selecciona primero un tipo de protector",
+                        "error"
+                      );                    
+                    return;
+                  } else {
+                    this.submit();
+                  }
+                }
               }
             }
           }
