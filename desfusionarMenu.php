@@ -5,7 +5,7 @@ include("mensajesExito/desfusiones.php")
     ?>
 <div class="container">
     <div class="row justify-content-center mt-3">
-        <form action="registros/desfusionar.php" method="POST" class="col-md-6 shadow p-3 align-self-start"
+        <form action="registros/desfusionar.php" method="POST" class="col-md-8 shadow p-3 align-self-start"
             id="formulario">
             <div class="row text-center">
                 <h2>Desfusionar modelos</h2>
@@ -47,10 +47,13 @@ include("mensajesExito/desfusiones.php")
                         <select class="form-select" name="modelo" id="modelo">
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="contenedor_cantidades1">
                         <label for="cantidad2" class="form-label">Cantidad:</label>
                         <input class="form-control" type="number" name="cantidad2" placeholder="Cantidad" required
                             id="cantidad2">
+                    </div>
+                    <div class="form-group" id="cantidades">
+
                     </div>
                 </div>
                 <div id="modelo3" class="col-6">
@@ -63,10 +66,13 @@ include("mensajesExito/desfusiones.php")
                         <select class="form-select" name="modelo2" id="modelo2">
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="contenedor_cantidades2">
                         <label for="cantidad2" class="form-label">Cantidad:</label>
                         <input class="form-control" type="number" name="cantidad1" placeholder="Cantidad" required
                             id="cantidad1">
+                    </div>
+                    <div class="form-group" id="cantidades2">
+
                     </div>
                 </div>
             </div>

@@ -1,10 +1,13 @@
 var tipoProducto = 0;
+modelo_global = 0;
+producto_global = 0;
 
 $(document).ready(function () {
   $("#marca").change(function () {
     $("#marca option:selected").each(function () {
       producto = $(this).val();
       marca = producto;
+      producto_global = producto;
       //console.log(producto)
       console.log("Producto: " + tipoProducto);
       switch (tipoProducto) {
@@ -81,6 +84,7 @@ $(document).ready(function () {
   $("#modelo").change(function () {
     $("#modelo option:selected").each(function () {
       modelo = $(this).val();
+      modelo_global = modelo;
       console.log("Id de la mica 9h");
       console.log(modelo);
     });
@@ -88,11 +92,11 @@ $(document).ready(function () {
 
   $("#marca2").change(function () {
     $("#marca2 option:selected").each(function () {
-      producto = $(this).val();
+      marca = $(this).val();
       //console.log(producto)
       $.post(
-        "select/modeloSelect.php",
-        { producto: producto },
+        "select/selectModelosNoCompatibles.php",
+        { marca: marca, id: modelo_global, producto: tipoProducto },
         function (data) {
           $("#modelo2").html(data);
         }
