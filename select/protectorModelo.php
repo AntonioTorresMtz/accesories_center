@@ -7,7 +7,8 @@ $query = "SELECT a.nombre, a.id_modelo, b.id_protector FROM modelo_funda b
     ON b.tipo_modelo = a.id_modelo
     INNER JOIN protectores c
     ON  c.id_protector = b.id_protector
-    WHERE a.marca = '$marca'";
+    WHERE a.marca = '$marca'
+    ORDER BY a.nombre ASC";
 
 $resultado = mysqli_query($conn, $query);
 
