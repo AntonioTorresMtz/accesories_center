@@ -203,7 +203,7 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="faltantes.php">Faltantes</a>
           </li>
-          <li class="nav-item dropdown">
+         <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Celulares
             </a>
@@ -215,7 +215,7 @@
               <li><a class="dropdown-item" href="ventaMenu_celular.php">Vender</a></li>
               <li>
             </ul>
-          </li>
+          </li>-->
         </ul>
       </div>
     </div>

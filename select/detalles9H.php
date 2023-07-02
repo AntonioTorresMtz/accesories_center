@@ -16,6 +16,7 @@ WHERE c.id_mica9h = '$modelo'";
         $cantidad = $row["cantidad"];
         $html = $html . $row["nombre"] . ", ";
     }
-    echo $modelo . "Cantidad actual: " .$cantidad . "<br>". "Modelos compatibles: ".$html;
+    $html = substr($html, 0, (strlen($html)-2));
+    echo "Cantidad actual: " .$cantidad . "<br>". "Modelos compatibles: ".$html;
   
 ?>

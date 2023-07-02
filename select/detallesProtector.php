@@ -24,7 +24,8 @@ if ($encontrado) {
             //$cantidad = $row["cantidad"];
             $html = $html . $row["nombre"] . ", ";
         }
-        $html = $id_protector .  "Modelos compatibles: ".$html . "<br>";
+        $html = substr($html, 0, (strlen($html)-2));
+        $html = "Modelos compatibles: ".$html . "<br>";
 
         $query2 = "SELECT a.cantidad, b.nombre FROM tipo_protector a
         INNER JOIN nombre_tipo_protector b
