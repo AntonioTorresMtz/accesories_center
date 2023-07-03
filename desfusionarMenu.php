@@ -58,7 +58,7 @@ include("mensajesExito/desfusiones.php")
                 </div>
                 <div id="modelo3" class="col-6">
                     <div class="row text-center">
-                        <h4>Modelo fusionado</h4>
+                        <h4>Modelo separado</h4>
                     </div>
 
                     <div class="form-group">

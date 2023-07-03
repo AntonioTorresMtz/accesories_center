@@ -16,7 +16,7 @@ WHERE c.id_micaCurva = '$modelo'";
         $cantidad = $row["cantidad"];
         $html = $html . $row["nombre"] . ", ";
     }
-    $html = substr($html, 0, (strlen($html)-2));
+    $html = substr($html, 0, strlen($html)-2);
     echo "Cantidad actual: " .$cantidad . "<br>". "Modelos compatibles: ".$html;
   
 ?>
