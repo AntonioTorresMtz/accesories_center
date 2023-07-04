@@ -5,6 +5,7 @@ include("mensajesExito/ventasAccesorios.php");
 if (isset($_POST['buscar'])) {
     $inicio = $_POST["fechaInicio"];
     $fin = $_POST["fechaFinal"];
+    $fin = date('Y-m-d', strtotime($fin . ' +1 day'));
 
     $_SESSION['fechaInicio'] = $inicio;
     $_SESSION['fechaFinal'] = $fin;
