@@ -16,7 +16,7 @@ if (isset($_SESSION['exito'])) {
 
 <div class="container">
     <div class="row justify-content-center mt-3">
-        <form action="registros/editaTipoProtector.php" method="POST" class="col-md-3 shadow p-3 align-self-start">
+        <form action="registros/editaTipoProtector.php" id="formulario" method="POST" class="col-md-3 shadow p-3 align-self-start">
             <div class="row text-center">
                 <h4>Editar nombre tipo de protector</h4>
             </div>
@@ -44,7 +44,7 @@ if (isset($_SESSION['exito'])) {
     </div>
 </div>
 
-
+<script src="js/validaNombreTipo.js"></script>
 <?php
 include("includes/footer.php")
-    ?>
+?>
