@@ -203,7 +203,18 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="faltantes.php">Faltantes</a>
           </li>
-         <!-- <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Editar
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"></a></li>
+              <li><a class="dropdown-item" href="editaModelosMenu.php">Tipo de Protector</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+          </li>
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Celulares
             </a>
