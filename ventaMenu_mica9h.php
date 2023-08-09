@@ -56,7 +56,7 @@ if (isset($_SESSION['error_ventaMica9h'])) {
             </div>
             <div class="col-12">
                 <label for="descuento" class="form-label">Descuento:</label>
-                <input class="form-control" type="number" name="Descuento" placeholder="descuento" id="precio">
+                <input class="form-control" type="number" name="descuento" placeholder="descuento" id="precio">
             </div>
 
             <div class="col text-center mt-2">
