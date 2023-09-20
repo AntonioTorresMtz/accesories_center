@@ -43,9 +43,6 @@ if (isset($_SESSION['exito_plan'])) {
     </div>
 </div>
 
-<script src="js/select9D.js"></script>
-<script src="js/validaMarca.js"></script>
-
 <?php
 include("includes/footer.php")
     ?>

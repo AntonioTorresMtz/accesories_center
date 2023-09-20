@@ -45,14 +45,18 @@ if (!$resultado) {
     $printer->text("Telefono: " . $telefono . "\n");
     $printer->text("Monto: " . $monto . "\n");
 
-    $printer->setJustification(Printer::JUSTIFY_CENTER);    
+    $printer->setJustification(Printer::JUSTIFY_CENTER);
     $printer->text("\n");
     $printer->text("Gracias por su compra :)\n");
+
+    $printer->text("////// -- PROMOCION --- //////\n");
+    $printer->text("MIERCOLES EN LA COMPRA DE\n");
+    $printer->text("CUALQUIER FUNDA\n");
+    $printer->text("TE LLEVAS UNA MICA GRATIS!!\n");
     $printer->cut();
 
     // Cerrar la conexión de impresión
     $printer->close();
-    $result->free();
 
     $_SESSION['exito_plan'] = "1";
     header("Location: ../planes_menu.php");
