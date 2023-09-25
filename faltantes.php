@@ -46,7 +46,8 @@ if (isset($_SESSION['exito_Faltante'])) {
                     </thead>
                     <tbody id="result">
                         <?php
-                        $query = "SELECT descripcion, fecha FROM faltantes ORDER BY fecha DESC";
+                        $query = "SELECT descripcion, fecha FROM faltantes
+                        where completado = 0 ORDER BY fecha DESC";
                         $res = $conn->query($query);
                         while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
                             echo "<tr> <td>" . $row['descripcion'] . "</td>" .
