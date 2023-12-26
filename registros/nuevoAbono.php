@@ -41,7 +41,7 @@ if (!$resultado) {
     tbl_apartado a
     INNER JOIN cat_estado_apartado e ON e.PK_estado_apartado = a.FK_estado_apartado
     WHERE
-    pk_apartado = '$id';";
+    pk_apartado = '$id_apartado';";
 
     $resultado = mysqli_query($conn, $query);
     $fila = mysqli_fetch_assoc($resultado);
@@ -65,22 +65,33 @@ if (!$resultado) {
     $printer->setJustification(Printer::JUSTIFY_LEFT);
     $printer->text("Cliente: " . $nombre . "\n");
     $printer->text("Producto: " . $producto . "\n");
+    $printer->text("Estado: " . $estado . "\n");
     $printer->text("Valor total: $" . number_format($precio, 2, ".", ",") . "\n");
     $printer->text("Restante: $" . number_format($restante, 2, ".", ",") . "\n");
     $printer->text("Dias restantes para liquidar:" . $dias_restante);
+    $printer->text("\n");
 
     //---DESGLOCE DE ABONOS ---
+    $printer->setJustification(Printer::JUSTIFY_CENTER);
     $printer->text("\n");
+    $printer->text("----- ABONOS -----");
+    $printer->text("\n");
+    $printer->text("\n");
+    $printer->setJustification(Printer::JUSTIFY_LEFT);
+
     $num_abono = 1;
-    $query = "SELECT fecha_pago, monto FROM tbl_pagos p
+    $query2 = "SELECT fecha_pago, monto FROM tbl_pagos p
                         INNER JOIN rel_apartado_pago r ON r.FK_pago = p.PK_pago
                         INNER JOIN tbl_apartado a ON a.PK_apartado = r.FK_apartado
                         WHERE pk_apartado = '$id_apartado';";
-    $res = $conn->query($query);
+    $res = $conn->query($query2);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
-        $printer->text("Abono numero: " . $num_abono . "\n");
+        $printer->text("Abono numero " . $num_abono);
+        $printer->text("\n");
         $printer->text("Fecha " . $row['fecha_pago']);
-        $printer->text("Cantidad " . number_format($row['monto'], 2, ".", ","));
+        $printer->text("\n");
+        $printer->text("Cantidad $" . number_format($row['monto'], 2, ".", ","));
+        $printer->text("\n");
         $printer->text("\n");
         $num_abono = $num_abono + 1;
     }
@@ -91,6 +102,9 @@ if (!$resultado) {
     $printer->text("El producto adquirido cuenta con un mes de garantia al momento de su compra.\n");
     $printer->text("\n");
     $printer->text("Gracias por la preferencia :)\n");
+    $printer->text("\n");
+    $printer->text("\n");
+    $printer->text("\n");
     $printer->cut();
 
     // Cerrar la conexión de impresión
