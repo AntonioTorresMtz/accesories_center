@@ -37,7 +37,7 @@ include("mensajesExito/celularesMensaje.php")
                     <div class="form-group">
                         <label for="descuento">Descuento:</label>
                         <input type="number" class="form-control" id="descuento" name="descuento"
-                            placeholder="Descuento en pesos">
+                            placeholder="Descuento en pesos" value=0>
                     </div>
                 </div>
             </div>

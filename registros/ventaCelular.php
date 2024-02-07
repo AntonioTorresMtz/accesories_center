@@ -50,12 +50,12 @@ if ($result) {
         //printf("Errormessage: %s\n", $conn->error);
     } else {
         // Crear una instancia del conector de impresión de Windows
-        $connector = new WindowsPrintConnector("POS58 Printer");
+        $connector = new WindowsPrintConnector("POS58");
 
         // Crear una instancia de la impresora
         $printer = new Printer($connector);
-        $rutaLogo = "../img/logoImpresion.png";
-        $logo = EscposImage::load($rutaLogo);
+        //$rutaLogo = "ticket.jpg";
+        //$logo = EscposImage::load('../img/ticket.jpg');
 
 
         // Realizar las operaciones de impresión
@@ -65,7 +65,8 @@ if ($result) {
         $printer->text("Hidalgo #151, Ario de Rosales\n");
         $printer->text(date('d-m-Y') . "  " . date('H:i:s') . "\n");
         $printer->text("\n");
-        $printer->bitImage($logo);
+        //$printer->bitImage($logo);
+        $printer->text("\n");
         $printer->text("TICKET DE COMPRA\n");
         $printer->setJustification(Printer::JUSTIFY_LEFT);
         $printer->text("Celular: " . $marca . " " . $modelo . "\n");
@@ -77,7 +78,7 @@ if ($result) {
         $printer->text("Total: $" . $totalF . "\n");
 
         $printer->setJustification(Printer::JUSTIFY_CENTER);
-        $printer->text("El producto adquirido cuenta con un mes de garantia al momento de su compra.\n");
+        $printer->text("El producto adquirido cuenta con un mes de garantia al momento de su compra, en equipos nuevos y una semana en equipos usados.\n");
         $printer->text("Dicha garantía cubre cualquier defecto de fabrica, siempre y cuando el producto
         no presente rayaduras, golpes o se encuentre mojado. Debera ser entregado con todos sus accesorios,
         caja y esta nota de compra.\n");
