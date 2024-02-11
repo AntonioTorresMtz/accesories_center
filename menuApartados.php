@@ -5,7 +5,9 @@ include("mensajesExito/apartadosMensaje.php")
     ?>
 
 <div class="container">
-    <h1>Articulos Apartados</h1>
+    <div>
+        <h1 class="text-center m-4">Articulos apartados</h1>
+    </div>
     <div class="row">
         <div></div>
         <form action="registros/nuevoApartado.php" method="POST" id="formulario"
