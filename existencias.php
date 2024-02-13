@@ -56,4 +56,4 @@ include("mensajesExito/apartadosMensaje.php")
     }
 </style>
 
-<script src="js/buscarApartado.js"></script>
+<script src="js/buscarExistencias.js"></script>
