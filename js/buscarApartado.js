@@ -1,22 +1,24 @@
-function buscar() {
-  // Obtener los valores de los campos del formulario
-  var producto = document.getElementById("producto").value;
-  var maximo = document.getElementById("maximo").value;
+$(document).ready(function () {
+  var busca = ""; // Valor inicial a enviar al servidor
+  enviarDatos(busca); // Enviar datos al servidor inicialmente
 
-  // Enviar los datos a un servidor
-  enviarDatos(producto, maximo);
-}
+  $("#buscar").on("keyup", function () {
+    busca = $("#buscar").val();
+    console.log(busca);
+    enviarDatos(busca);
+  });
 
-function enviarDatos(producto, maximo) {
-  $.ajax({
-    type: "POST",
-    url: "buscar/buscadorExistencias.php",
-    data: { producto: producto, maximo: maximo },
-  })
-    .done(function (resultado) {
-      $("#result").html(resultado);
+  function enviarDatos(busca) {
+    $.ajax({
+      type: "POST",
+      url: "buscar/buscarApartado.php",
+      data: { busca: busca },
     })
-    .fail(function () {
-      alert("Ocurrió un error");
-    });
-}
+      .done(function (resultado) {
+        $("#result").html(resultado);
+      })
+      .fail(function () {
+        alert("Ocurrió un error");
+      });
+  }
+});
