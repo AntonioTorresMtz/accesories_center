@@ -39,6 +39,7 @@ include("mensajesExito/apartadosMensaje.php")
                         <tr>
                             <th>Modelos</th>
                             <th>Cantidad</th>
+                            <th>Posicion</th>
                         </tr>
                     </thead>
                     <tbody id="result">

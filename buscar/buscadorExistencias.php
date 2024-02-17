@@ -44,14 +44,15 @@ function buscarMica9h($maximo)
 function buscarMica9d($maximo)
 {
     $mysqli = getConnexion();
-    $query = "SELECT GROUP_CONCAT(DISTINCT CONCAT(ma.marca, ' ', mo.nombre) SEPARATOR ', ') AS modelos, m.cantidad 
-    FROM micas9d m
-    INNER JOIN nombre nom ON m.id_mica9d = nom.id_mica
-    INNER JOIN modelos mo ON mo.id_modelo = nom.nombre_modelo
-    INNER JOIN marca ma ON ma.id_marca = mo.marca
-    WHERE m.cantidad <= '$maximo'
-    GROUP BY nom.id_mica
-    ORDER BY ma.marca, mo.nombre";
+    $query = "SELECT GROUP_CONCAT(DISTINCT CONCAT(ma.marca, ' ', mo.nombre) SEPARATOR ', ') AS modelos, CONCAT('Muro ', p.muro, ' ', p.nombre),
+    m.cantidad 
+        FROM micas9d m
+        INNER JOIN nombre nom ON m.id_mica9d = nom.id_mica
+        INNER JOIN modelos mo ON mo.id_modelo = nom.nombre_modelo
+        INNER JOIN marca ma ON ma.id_marca = mo.marca
+        INNER JOIN posicion p ON m.posicion = p.id_posicion
+        GROUP BY nom.id_mica
+        ORDER BY p.nombre, ma.marca, mo.nombre";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
