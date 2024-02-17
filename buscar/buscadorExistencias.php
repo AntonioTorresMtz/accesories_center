@@ -49,7 +49,7 @@ function buscarMica9d($maximo)
     INNER JOIN nombre nom ON m.id_mica9d = nom.id_mica
     INNER JOIN modelos mo ON mo.id_modelo = nom.nombre_modelo
     INNER JOIN marca ma ON ma.id_marca = mo.marca
-    WHERE m.cantidad <= '$maximo'
+    
     GROUP BY nom.id_mica
     ORDER BY ma.marca, mo.nombre";
 
