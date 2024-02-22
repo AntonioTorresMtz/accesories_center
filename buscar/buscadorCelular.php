@@ -5,14 +5,14 @@ require_once '../conexion.php';
 if (!isset($_POST['busca'])) {
     defecto();
     exit("No se encontro el valor");
-    
+
 } else {
-    if ($_POST['busca'] == '' || $_POST['busca'] == 'Todos'){
+    if ($_POST['busca'] == '' || $_POST['busca'] == 'Todos') {
         defecto();
         //echo 'Borrado vacio';
-    }else{
+    } else {
         buscar();
-       // echo "Buscar";
+        // echo "Buscar";
 
     }
 }
@@ -35,6 +35,11 @@ function buscar()
         } else {
             $condicion = 'Nuevo';
         }
+        if ($row['altan_compat'] == 0) {
+            $altan_compatibilidad = 'Si';
+        } else {
+            $altan_compatibilidad = 'No';
+        }
         echo "<tr> <td>" . $row['id_celular'] . "</td>" .
             "<td>" . $row['marca'] . "</td>" .
             "<td>" . $row['modelo'] . "</td>" .
@@ -45,7 +50,7 @@ function buscar()
             "<td>" . $row['imei2'] . "</td>" .
             "<td>" . $condicion . "</td>" .
             "<td>" . $row['precio_sugerido'] . "</td>" .
-            "<td>" . $row['altan_compat'] . "</td>" .
+            "<td>" . $altan_compatibilidad . "</td>" .
             "</tr>";
     }
 }
@@ -65,6 +70,11 @@ function defecto()
         } else {
             $condicion = 'Nuevo';
         }
+        if ($row['altan_compat'] == 0) {
+            $altan_compatibilidad = 'Si';
+        } else {
+            $altan_compatibilidad = 'No';
+        }
         echo "<tr> <td>" . $row['id_celular'] . "</td>" .
             "<td>" . $row['marca'] . "</td>" .
             "<td>" . $row['modelo'] . "</td>" .
@@ -75,7 +85,7 @@ function defecto()
             "<td>" . $row['imei2'] . "</td>" .
             "<td>" . $condicion . "</td>" .
             "<td>" . $row['precio_sugerido'] . "</td>" .
-            "<td>" . $row['altan_compat'] . "</td>" .
+            "<td>" . $altan_compatibilidad . "</td>" .
             "</tr>";
     }
 }
