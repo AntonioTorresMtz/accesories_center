@@ -23,7 +23,7 @@ function buscar()
     $mysqli = getConnexion();
     $q = $mysqli->real_escape_string($_POST['busca']);
     $query = "SELECT c.id_celular, m.marca, c.almacenamiento, c.modelo, c.ram,
-    c.red, c.imei1, c.imei2, c.precio_sugerido, c.estado
+    c.red, c.imei1, c.imei2, c.precio_sugerido, c.estado, c.altan_compat
     FROM celular c
     INNER JOIN marca m ON m.id_marca = c.FK_marca
     WHERE  c.id_celular = '$q' or c.imei1 = '$q' or c.imei2 = '$q' and estado_venta = 1";
@@ -45,6 +45,7 @@ function buscar()
             "<td>" . $row['imei2'] . "</td>" .
             "<td>" . $condicion . "</td>" .
             "<td>" . $row['precio_sugerido'] . "</td>" .
+            "<td>" . $row['altan_compat'] . "</td>" .
             "</tr>";
     }
 }
@@ -53,7 +54,7 @@ function defecto()
 {
     $mysqli = getConnexion();
     $query = "SELECT c.id_celular, m.marca, c.almacenamiento, c.modelo, c.ram,
-    c.red, c.imei1, c.imei2, c.precio_sugerido, c.estado
+    c.red, c.imei1, c.imei2, c.precio_sugerido, c.estado, c.altan_compat
     FROM celular c
     INNER JOIN marca m ON m.id_marca = c.FK_marca WHERE estado_venta = 1";
 
@@ -74,6 +75,7 @@ function defecto()
             "<td>" . $row['imei2'] . "</td>" .
             "<td>" . $condicion . "</td>" .
             "<td>" . $row['precio_sugerido'] . "</td>" .
+            "<td>" . $row['altan_compat'] . "</td>" .
             "</tr>";
     }
 }
