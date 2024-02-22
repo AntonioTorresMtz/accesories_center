@@ -62,6 +62,7 @@ include("mensajesExito/celularesMensaje.php")
                             <th>IMEI 2</th>
                             <th>Estado</th>
                             <th>Precio venta</th>
+                            <th>Compatible con Bait</th>
                         </tr>
                     </thead>
                     <tbody id="result">
