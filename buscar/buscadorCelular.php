@@ -27,6 +27,7 @@ function buscar()
     FROM celular c
     INNER JOIN marca m ON m.id_marca = c.FK_marca
     WHERE  c.id_celular = '$q' or c.imei1 = '$q' or c.imei2 = '$q' and estado_venta = 1";
+    $altan_compatibilidad = "Desconocido";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
@@ -35,9 +36,9 @@ function buscar()
         } else {
             $condicion = 'Nuevo';
         }
-        if ($row['altan_compat'] == 0) {
+        if ($row['altan_compat'] == 1) {
             $altan_compatibilidad = 'Si';
-        } else {
+        } else if ($row['altan_compat'] == 0) {
             $altan_compatibilidad = 'No';
         }
         echo "<tr> <td>" . $row['id_celular'] . "</td>" .
@@ -62,6 +63,7 @@ function defecto()
     c.red, c.imei1, c.imei2, c.precio_sugerido, c.estado, c.altan_compat
     FROM celular c
     INNER JOIN marca m ON m.id_marca = c.FK_marca WHERE estado_venta = 1";
+    $altan_compatibilidad = "Desconocido";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
@@ -70,9 +72,9 @@ function defecto()
         } else {
             $condicion = 'Nuevo';
         }
-        if ($row['altan_compat'] == 0) {
+        if ($row['altan_compat'] == 1) {
             $altan_compatibilidad = 'Si';
-        } else {
+        } else if ($row['altan_compat'] == 0) {
             $altan_compatibilidad = 'No';
         }
         echo "<tr> <td>" . $row['id_celular'] . "</td>" .
