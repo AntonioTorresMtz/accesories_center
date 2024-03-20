@@ -222,6 +222,9 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="planes_menu.php">Lineas Telcel</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="recargasMenu.php">Recargas</a>
+          </li>
         </ul>
       </div>
     </div>
