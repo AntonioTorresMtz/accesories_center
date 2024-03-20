@@ -33,7 +33,7 @@ function buscar()
             "<td>" . $row['tipo'] . "</td>" .
             "<td>" . $row['monto'] . "</td>" .
             "<td>" . $row['telefono'] . "</td>" .
-            "<td>" . $row['fecha'] . "</td>" .
+            "<td>" . $row['fecha_insercion'] . "</td>" .
             "</tr>";
     }
 }
