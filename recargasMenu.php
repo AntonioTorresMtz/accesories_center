@@ -5,13 +5,15 @@ include ("mensajesExito/celularesMensaje.php")
     ?>
 
 <div class="container">
-    <h1>Teléfonos</h1>
+    <div>
+        <h1 class="text-center m-4">Recargas Telefonicas</h1>
+    </div>
     <div class="row">
         <div></div>
         <form action="registros/ventaCelular.php" method="POST" id="formulario"
             class="col-md-3 shadow p-3 align-self-start">
             <div class="row text-center">
-                <h4>Vender celular</h4>
+                <h4>Insertar Recarga</h4>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -74,7 +76,7 @@ include ("mensajesExito/celularesMensaje.php")
                             <th>Tipo Recarga</th>
                             <th>Monto</th>
                             <th>Telefono</th>
-                            <th>Fecha</th>                          
+                            <th>Fecha</th>
                         </tr>
                     </thead>
                     <tbody id="result">
