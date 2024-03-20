@@ -1,7 +1,7 @@
 <?php
 include ("db.php");
 include ("includes/header.php");
-include ("mensajesExito/celularesMensaje.php")
+include ("mensajesExito/apartadosMensaje.php")
     ?>
 
 <div class="container">
@@ -9,57 +9,73 @@ include ("mensajesExito/celularesMensaje.php")
         <h1 class="text-center m-4">Recargas Telefonicas</h1>
     </div>
     <div class="row">
-        <div></div>
-        <form action="registros/ventaCelular.php" method="POST" id="formulario"
-            class="col-md-3 shadow p-3 align-self-start">
-            <div class="row text-center">
-                <h4>Insertar Recarga</h4>
+        <div class="col-md-3">
+            <div class="col-md-12 shadow p-3 mt-3 border align-self-start">
+                <div class="row text-center">
+                    <h4>Ventas del Dia</h4>
+                    <?php
+                    $query = "SELECT SUM(monto) as ventas FROM tbl_recargas WHERE 
+                    CURDATE() = DATE(fecha_insercion);";
+
+                    $res = $connRecargas->query($query);
+                    $row = $res->fetch_array(MYSQLI_ASSOC);
+                    echo '<p> $' . number_format($row['ventas'], 2, '.', '.' ). '</p>'
+                    ?>
+                </div>                              
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="imei">Numero:</label>
-                        <input type="text" class="form-control" id="numero" name="numero" required placeholder="Numero">
+            <form action="registros/nuevaRecarga.php" method="POST" id="formulario"
+                class="col-md-12 shadow p-3 align-self-start">
+                <div class="row text-center">
+                    <h4>Insertar Recarga</h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="imei">Numero:</label>
+                            <input type="text" class="form-control" id="numero" name="numero" required
+                                placeholder="Numero">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="modelo">Monto:</label>
-                        <input type="number" class="form-control" id="monto" name="monto"
-                            placeholder="Monto de la recarga" required>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="modelo">Monto:</label>
+                            <input type="number" class="form-control" id="monto" name="monto"
+                                placeholder="Monto de la recarga" required>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="tipo" class="form-label">Tipo de recarga:</label>
-                        <select class="form-select" name="tipo" id="tipo">
-                            <option value="1">Normal</option>
-                            <option value="2">Paquete</option>
-                        </select>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="tipo" class="form-label">Tipo de recarga:</label>
+                            <select class="form-select" name="tipo" id="tipo">
+                                <option value="1">Paquete</option>
+                                <option value="2">Normal</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="fecha">Fecha:</label>
-                        <input type="datetime-local" class="form-control" id="fecha" name="fecha" placeholder="Fecha"
-                            required>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="fecha">Fecha:</label>
+                            <input type="datetime-local" class="form-control" id="fecha" name="fecha"
+                                placeholder="Fecha" required>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
-            <div class="row">
-                <div class="col-md-12 text-center mt-3">
-                    <button class="btn btn-dark">Guardar</button>
+                <div class="row">
+                    <div class="col-md-12 text-center mt-3">
+                        <button class="btn btn-dark">Guardar</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+
         <div class="col-md-9 ml-5">
             <div class="row">
                 <div class="col-md-12">
