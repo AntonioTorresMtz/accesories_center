@@ -44,7 +44,7 @@ function defecto()
     $query = "SELECT r.PK_recarga, tp.tipo, r.monto, r.telefono, r.fecha_insercion FROM tbl_recargas r
     INNER JOIN cat_tipo_recarga tp ON tp.PK_tipo_recarga = r.FK_tipo_recarga
     ORDER BY PK_recarga DESC
-    LIMIT 5;";
+    LIMIT 100;";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
