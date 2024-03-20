@@ -21,10 +21,10 @@ if (!isset ($_POST['busca'])) {
 function buscar()
 {
     $mysqli = getConnexionRecargas();
-    $fecha = $mysqli->real_escape_string($_POST['busca']);
+    $numero = $mysqli->real_escape_string($_POST['busca']);
     $query = "SELECT r.PK_recarga, tp.tipo, r.monto, r.telefono, r.fecha_insercion FROM tbl_recargas r
     INNER JOIN cat_tipo_recarga tp ON tp.PK_tipo_recarga = r.FK_tipo_recarga
-    WHERE date(r.fecha_insercion) = '$fecha'
+    WHERE r.telefono = '$numero'
     ORDER BY PK_recarga DESC;";
 
     $res = $mysqli->query($query);
@@ -43,7 +43,8 @@ function defecto()
     $mysqli = getConnexionRecargas();
     $query = "SELECT r.PK_recarga, tp.tipo, r.monto, r.telefono, r.fecha_insercion FROM tbl_recargas r
     INNER JOIN cat_tipo_recarga tp ON tp.PK_tipo_recarga = r.FK_tipo_recarga
-    ORDER BY PK_recarga DESC;";
+    ORDER BY PK_recarga DESC
+    LIMIT 5;";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
