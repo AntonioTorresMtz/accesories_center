@@ -6,10 +6,14 @@ $conn = mysqli_connect(
     'tienda3'
 );
 
+$connRecargas = mysqli_connect(
+    'localhost',
+    'root',
+    '',
+    'recargas'
+);
 
 
 /*if(isset($conn)){
     echo 'Base de datos conectada';
 } */
-
-?>
