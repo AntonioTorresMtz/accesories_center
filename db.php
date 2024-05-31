@@ -13,12 +13,7 @@ $connRecargas = mysqli_connect(
     'recargas'
 );
 
-$connFacturas = mysqli_connect(
-    'localhost',
-    'root',
-    '',
-    'facturas'
-);
+
 
 /*if(isset($conn)){
     echo 'Base de datos conectada';
