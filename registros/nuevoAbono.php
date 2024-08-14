@@ -55,6 +55,11 @@ if (!$resultado) {
     // Realizar las operaciones de impresión
     $printer->setJustification(Printer::JUSTIFY_CENTER);
     //$printer->setFontSize(2, 2);
+    // Imprimir imagen
+    $image = EscposImage::load("../phone.png");
+    $printer->graphics($image);
+
+
     $printer->text("Center Accesories\n");
     $printer->text("Hidalgo #151, Ario de Rosales\n");
     $printer->text(date('d-m-Y') . "  " . date('H:i:s') . "\n");

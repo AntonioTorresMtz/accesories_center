@@ -4,14 +4,14 @@ include '../db.php';
 
 $marca = $_POST['marca'];
 $modelo = $_POST['modelo'];
-$estado = filter_var($_POST['estado'], FILTER_VALIDATE_BOOLEAN);
+$estado = $_POST['estado'];
 $red = $_POST['red'];
 $imei1 = $_POST['imei1'];
 $precioCompra = $_POST['precioCompra'];
 $precioSugerido = $_POST['precioSugerido'];
 $fecha_compra = '';
 $garantia = 0;
-$altan_com = filter_var($_POST['bait_com'], FILTER_VALIDATE_BOOLEAN);
+$altan_com = $_POST['bait_com'];
 
 if (empty($_POST['fecha_compra'])) {
     $fecha_compra = '0';

@@ -11,6 +11,12 @@ date_default_timezone_set('America/Mexico_City');
 $imei = $_POST['imei'];
 $precio = $_POST['precio'];
 $descuento = $_POST['descuento'];
+
+if (empty($descuento)) {
+    $descuento = 0;
+}
+
+
 $total = $precio - $descuento;
 $totalF = number_format($total, 2, ".", ",");
 $marca = '';

@@ -19,5 +19,3 @@ if (isset($_SESSION['exito'])) {
             break;
     }
 }
-
-?>
