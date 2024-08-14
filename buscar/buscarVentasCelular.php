@@ -27,7 +27,8 @@ vc.precio, vc.descuento, (vc.precio - vc.descuento) AS total
 FROM venta_celular vc
 INNER JOIN celular c ON c.id_celular = vc.FK_celular
 INNER JOIN marca m ON m.id_marca = c.FK_marca
-    WHERE  CONCAT(m.marca, ' ', c.modelo, ' ', c.red, 'G ', c.almacenamiento, ' gb') LIKE '%$q%'";
+    WHERE  CONCAT(m.marca, ' ', c.modelo, ' ', c.red, 'G ', c.almacenamiento, ' gb') LIKE '%$q%'
+    ORDER BY vc.fecha_venta DESC";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
@@ -54,7 +55,8 @@ c.imei1, vc.fecha_venta, DATEDIFF(CURDATE(), date(vc.fecha_venta)) AS dias,
 vc.precio, vc.descuento, (vc.precio - vc.descuento) AS total
 FROM venta_celular vc
 INNER JOIN celular c ON c.id_celular = vc.FK_celular
-INNER JOIN marca m ON m.id_marca = c.FK_marca";
+INNER JOIN marca m ON m.id_marca = c.FK_marca
+ORDER BY vc.fecha_venta DESC";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
