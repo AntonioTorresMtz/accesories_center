@@ -1,6 +1,6 @@
 <?php
 $conn = mysqli_connect(
-    'localhost:3307',
+    'localhost',
     'root',
     '',
     'tienda3'
@@ -11,7 +11,7 @@ if (!$conn->set_charset("utf8mb4")) {
     exit();
 }
 $connRecargas = mysqli_connect(
-    'localhost:3307',
+    'localhost',
     'root',
     '',
     'recargas'
