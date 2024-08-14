@@ -14,7 +14,6 @@ $connRecargas = mysqli_connect(
 );
 
 
-
 /*if(isset($conn)){
     echo 'Base de datos conectada';
 } */
