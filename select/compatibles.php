@@ -232,7 +232,7 @@ if ($total == 0) {
     ON a.id_nombreTipo = b.tipo
     INNER JOIN protectores c
     ON b.id_protector = c.id_protector
-    WHERE c.id_protector = '$protector'";
+    WHERE c.id_protector = '$protector' and b.cantidad > 0";
 
     $resultado = mysqli_query($conn, $query2);
 

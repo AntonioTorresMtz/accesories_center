@@ -19,7 +19,7 @@ include ("mensajesExito/apartadosMensaje.php")
 
                     $res = $connRecargas->query($query);
                     $row = $res->fetch_array(MYSQLI_ASSOC);
-                    echo '<p> $' . number_format($row['ventas'], 2, '.', '.' ). '</p>'
+                    echo '<p> $' . $row['ventas'] . '</p>';                                                                                 
                     ?>
                 </div>                              
             </div>

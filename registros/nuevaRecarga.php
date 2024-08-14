@@ -2,7 +2,7 @@
 session_start();
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
-
+use Mike42\Escpos\EscposImage;
 
 include ("../vendor/autoload.php");
 include '../db.php';
@@ -37,6 +37,9 @@ if (!$resultado) {
     // Realizar las operaciones de impresión
     $printer->setJustification(Printer::JUSTIFY_CENTER);
     //$printer->setFontSize(2, 2);
+    //Impirmir imagen
+    $image = EscposImage::load("../phone.png");
+    $printer->graphics($image);
     $printer->text("Center Accesories\n");
     $printer->text("Hidalgo #151, Ario de Rosales\n");
     $printer->text("\n");

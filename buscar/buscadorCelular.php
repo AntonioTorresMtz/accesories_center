@@ -62,7 +62,8 @@ function defecto()
     $query = "SELECT c.id_celular, m.marca, c.almacenamiento, c.modelo, c.ram,
     c.red, c.imei1, c.imei2, c.precio_sugerido, c.estado, c.altan_compat
     FROM celular c
-    INNER JOIN marca m ON m.id_marca = c.FK_marca WHERE estado_venta = 1";
+    INNER JOIN marca m ON m.id_marca = c.FK_marca WHERE estado_venta = 1
+    ORDER BY m.marca, c.modelo";
     $altan_compatibilidad = "Desconocido";
 
     $res = $mysqli->query($query);
