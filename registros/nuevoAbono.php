@@ -22,12 +22,11 @@ if (!$resultado) {
     //printf("Errormessage: %s\n", $conn->error);
 } else {
     // Crear una instancia del conector de impresión de Windows
-    $connector = new WindowsPrintConnector("POS58 Printer");
+    $connector = new WindowsPrintConnector("POS58");
 
     // Crear una instancia de la impresora
     $printer = new Printer($connector);
-    $rutaLogo = "../img/logoImpresion.png";
-    $logo = EscposImage::load($rutaLogo);
+
 
     $query = "SELECT
     e.nombre_estado,
