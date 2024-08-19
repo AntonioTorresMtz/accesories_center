@@ -46,3 +46,4 @@ include("mensajesExito/apartadosMensaje.php")
 </style>
 
 <script src="js/buscarVentasCelular.js"></script>
+<script src="js/reimprimirTicket.js"></script>
