@@ -15,7 +15,7 @@ if ($data) {
         'message' => 'Datos recibidos correctamente',
         'data' => $data
     ];
-
+    consultarVenta($id);
     // Configuramos la respuesta con el código HTTP 200 (OK)
     http_response_code(200);
 } else {
@@ -67,46 +67,43 @@ function consultarVenta($id)
     }
 }
 
-function imprimirInfo($marca, $modelo, $imei1, $imei2, $estado, $precio, $descuento, $total){
-      // Crear una instancia del conector de impresión de Windows
-      $connector = new WindowsPrintConnector("POS58 Printer");
+function imprimirInfo($marca, $modelo, $imei1, $imei2, $estado, $precio, $descuento, $total)
+{
+    // Crear una instancia del conector de impresión de Windows
+    $connector = new WindowsPrintConnector("POS58 Printer");
 
-      // Crear una instancia de la impresora
-      $printer = new Printer($connector);
-      //$rutaLogo = "ticket.jpg";
-      //$logo = EscposImage::load('../img/ticket.jpg');
+    // Crear una instancia de la impresora
+    $printer = new Printer($connector);
+    // Realizar las operaciones de impresión
+    $printer->setJustification(Printer::JUSTIFY_CENTER);
+    //$printer->setFontSize(2, 2);
+    $printer->text("Center Accesories\n");
+    $printer->text("Hidalgo #151, Ario de Rosales\n");
+    $printer->text(date('d-m-Y') . "  " . date('H:i:s') . "\n");
+    $printer->text("\n");
+    //$printer->bitImage($logo);
+    $printer->text("\n");
+    $printer->text("TICKET DE COMPRA\n");
+    $printer->setJustification(Printer::JUSTIFY_LEFT);
+    $printer->text("Celular: " . $marca . " " . $modelo . "\n");
+    $printer->text("Esatado del telefono: " . $estado . "\n");
+    $printer->text("IMEI 1: " . $imei1 . "\n");
+    $printer->text("IMEI 2: " . $imei2 . "\n");
+    $printer->text("Precio: $" . number_format($precio, 2, ".", ",") . "\n");
+    $printer->text("Descuento: $" . number_format($descuento, 2, ".", ",") . "\n");
+    $printer->text("Total: $" . $total . "\n");
 
-
-      // Realizar las operaciones de impresión
-      $printer->setJustification(Printer::JUSTIFY_CENTER);
-      //$printer->setFontSize(2, 2);
-      $printer->text("Center Accesories\n");
-      $printer->text("Hidalgo #151, Ario de Rosales\n");
-      $printer->text(date('d-m-Y') . "  " . date('H:i:s') . "\n");
-      $printer->text("\n");
-      //$printer->bitImage($logo);
-      $printer->text("\n");
-      $printer->text("TICKET DE COMPRA\n");
-      $printer->setJustification(Printer::JUSTIFY_LEFT);
-      $printer->text("Celular: " . $marca . " " . $modelo . "\n");
-      $printer->text("Esatado del telefono: " . $estado . "\n");
-      $printer->text("IMEI 1: " . $imei1 . "\n");
-      $printer->text("IMEI 2: " . $imei2 . "\n");
-      $printer->text("Precio: $" . number_format($precio, 2, ".", ",") . "\n");
-      $printer->text("Descuento: $" . number_format($descuento, 2, ".", ",") . "\n");
-      $printer->text("Total: $" . $total . "\n");
-
-      $printer->setJustification(Printer::JUSTIFY_CENTER);
-      $printer->text("El producto adquirido cuenta con un mes de garantia al momento de su compra, en equipos nuevos y una semana en equipos usados.\n");
-      $printer->text("Dicha garantía cubre cualquier defecto de fabrica, siempre y cuando el producto
+    $printer->setJustification(Printer::JUSTIFY_CENTER);
+    $printer->text("El producto adquirido cuenta con un mes de garantia al momento de su compra, en equipos nuevos y una semana en equipos usados.\n");
+    $printer->text("Dicha garantía cubre cualquier defecto de fabrica, siempre y cuando el producto
       no presente rayaduras, golpes o se encuentre mojado. Debera ser entregado con todos sus accesorios,
       caja y esta nota de compra.\n");
-      $printer->text("\n");
-      $printer->text("Agradecemos su compra :)\n");
-      $printer->cut();
+    $printer->text("\n");
+    $printer->text("Agradecemos su compra :)\n");
+    $printer->cut();
 
-      // Cerrar la conexión de impresión
-      $printer->close();
+    // Cerrar la conexión de impresión
+    $printer->close();
 }
 
 
