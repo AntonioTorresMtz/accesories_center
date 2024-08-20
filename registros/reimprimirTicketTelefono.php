@@ -66,7 +66,7 @@ function consultarVenta($id)
         $precio = $row['precio'];
         $descuento = $row['descuento'];
         $total = $row['total'];
-        imprimirInfo($marca, $modelo, $imei1, $imei2, $estado, $precio, $descuento, $total, $fecha);
+        imprimirInfo($marca, $modelo, $imei1, $imei2, $condicion, $precio, $descuento, $total, $fecha);
     }
 }
 
