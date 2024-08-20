@@ -9,14 +9,14 @@ $data = json_decode(file_get_contents('php://input'), true);
 if ($data) {
     // Extraemos los datos
     $id = $data['idVenta'] ?? null;
-
+    consultarVenta($data['idVenta']);
     $response = [
         'status' => 'success',
         'message' => 'Datos recibidos correctamente',
         'data' => $data['idVenta'],
 
     ];
-    consultarVenta($id['idVenta']);
+
     // Configuramos la respuesta con el código HTTP 200 (OK)
     http_response_code(200);
 } else {

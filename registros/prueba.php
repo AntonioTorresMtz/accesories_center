@@ -59,6 +59,7 @@ function imprimirInfo($marca, $modelo, $imei1, $imei2, $estado, $precio, $descue
     $printer->text("TICKET DE COMPRA\n");
     $printer->setJustification(Printer::JUSTIFY_LEFT);
     $printer->text("Celular: " . $marca . " " . $modelo . "\n");
+    echo "Celular: " . $marca . " " . $modelo . "\n";
     $printer->text("Esatado del telefono: " . $estado . "\n");
     $printer->text("IMEI 1: " . $imei1 . "\n");
     $printer->text("IMEI 2: " . $imei2 . "\n");
