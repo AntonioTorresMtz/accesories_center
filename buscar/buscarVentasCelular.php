@@ -73,6 +73,6 @@ ORDER BY vc.fecha_venta DESC";
             "<td>" . $row['precio'] . "</td>" .
             "<td>" . $row['descuento'] . "</td>" .
             "<td>" . $row['total'] . "</td>" .
-            "<td> <button class='btn btn-primary btn-reimprimir' id='" . $row['PK_venta'] . "' onclick=(reimprimir(" . $row['PK_venta'] . "))> Reimprimir </button> </td>";
+            "<td> <button class='btn btn-primary btn-reimprimir' id='" . $row['PK_venta'] . "' onclick='reimprimir(" . $row['PK_venta'] . ")'> Reimprimir </button> </td>";
     }
 }

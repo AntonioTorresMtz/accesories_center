@@ -1,7 +1,7 @@
 // Ejemplo de función para manejar la reimpresión
 function reimprimir(id) {
   const datos = {
-    idVenta: id
+    idVenta: id,
   };
 
   // Envía los datos al servidor usando POST

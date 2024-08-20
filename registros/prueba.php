@@ -2,39 +2,7 @@
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
-// Verificamos si se recibieron datos en el cuerpo de la solicitud POST
-$data = json_decode(file_get_contents('php://input'), true);
-
-// Verificamos si los datos fueron recibidos correctamente
-if ($data) {
-    // Extraemos los datos
-    $id = $data['idVenta'] ?? null;
-
-    $response = [
-        'status' => 'success',
-        'message' => 'Datos recibidos correctamente',
-        'data' => $data['idVenta'],
-
-    ];
-    consultarVenta($id['idVenta']);
-    // Configuramos la respuesta con el código HTTP 200 (OK)
-    http_response_code(200);
-} else {
-    // Si no se recibieron datos, enviamos una respuesta de error
-    $response = [
-        'status' => 'error',
-        'message' => 'No se recibieron datos'
-    ];
-
-    // Configuramos la respuesta con el código HTTP 400 (Bad Request)
-    http_response_code(400);
-}
-
-// Enviamos la respuesta de vuelta en formato JSON
-header('Content-Type: application/json');
-echo json_encode($response);
-
-
+consultarVenta(7);
 function consultarVenta($id)
 {
     include '../db.php';
@@ -49,6 +17,7 @@ function consultarVenta($id)
 
     if ($result) {
         // Obtener los datos y guardarlos en variables
+        echo "Se realizo la consulta";
         $row = $result->fetch_assoc();
         $marca = $row['marca'];
         $modelo = $row['modelo'];
@@ -65,6 +34,8 @@ function consultarVenta($id)
         $descuento = $row['descuento'];
         $total = $row['total'];
         imprimirInfo($marca, $modelo, $imei1, $imei2, $estado, $precio, $descuento, $total);
+    } else {
+        echo "Ocurrio un error";
     }
 }
 
@@ -107,6 +78,4 @@ function imprimirInfo($marca, $modelo, $imei1, $imei2, $estado, $precio, $descue
     // Cerrar la conexión de impresión
     $printer->close();
 }
-
-
 
