@@ -39,7 +39,8 @@ function consultarVenta($id)
 {
     include '../db.php';
 
-    $sql = "SELECT m.marca, c.modelo, c.imei1, c.imei2, c.estado, vc.precio, vc.descuento, (vc.precio - vc.descuento) AS total 
+    $sql = "SELECT m.marca, c.modelo, c.imei1, c.imei2, c.estado,
+        vc.precio, vc.descuento, (vc.precio - vc.descuento) AS total, vc.fecha_venta
         FROM venta_celular vc 
         INNER JOIN celular c ON vc.FK_celular = c.id_celular
         INNER JOIN marca m ON m.id_marca = c.FK_marca
@@ -50,6 +51,7 @@ function consultarVenta($id)
     if ($result) {
         // Obtener los datos y guardarlos en variables
         $row = $result->fetch_assoc();
+        $fecha = $row['fecha_venta'];
         $marca = $row['marca'];
         $modelo = $row['modelo'];
         $imei1 = $row['imei1'];
@@ -64,11 +66,11 @@ function consultarVenta($id)
         $precio = $row['precio'];
         $descuento = $row['descuento'];
         $total = $row['total'];
-        imprimirInfo($marca, $modelo, $imei1, $imei2, $estado, $precio, $descuento, $total);
+        imprimirInfo($marca, $modelo, $imei1, $imei2, $estado, $precio, $descuento, $total, $fecha);
     }
 }
 
-function imprimirInfo($marca, $modelo, $imei1, $imei2, $estado, $precio, $descuento, $total)
+function imprimirInfo($marca, $modelo, $imei1, $imei2, $condicion, $precio, $descuento, $total, $fecha)
 {
     include("../vendor/autoload.php");
     // Crear una instancia del conector de impresión de Windows
@@ -81,19 +83,19 @@ function imprimirInfo($marca, $modelo, $imei1, $imei2, $estado, $precio, $descue
     //$printer->setFontSize(2, 2);
     $printer->text("Center Accesories\n");
     $printer->text("Hidalgo #151, Ario de Rosales\n");
-    $printer->text(date('d-m-Y') . "  " . date('H:i:s') . "\n");
+    $printer->text($fecha . "\n");
     $printer->text("\n");
     //$printer->bitImage($logo);
     $printer->text("\n");
     $printer->text("TICKET DE COMPRA\n");
     $printer->setJustification(Printer::JUSTIFY_LEFT);
     $printer->text("Celular: " . $marca . " " . $modelo . "\n");
-    $printer->text("Esatado del telefono: " . $estado . "\n");
+    $printer->text("Esatado del telefono: " . $condicion . "\n");
     $printer->text("IMEI 1: " . $imei1 . "\n");
     $printer->text("IMEI 2: " . $imei2 . "\n");
     $printer->text("Precio: $" . number_format($precio, 2, ".", ",") . "\n");
     $printer->text("Descuento: $" . number_format($descuento, 2, ".", ",") . "\n");
-    $printer->text("Total: $" . $total . "\n");
+    $printer->text("Total: $" . number_format($total, 2, ".", ",") . "\n");
 
     $printer->setJustification(Printer::JUSTIFY_CENTER);
     $printer->text("El producto adquirido cuenta con un mes de garantia al momento de su compra, en equipos nuevos y una semana en equipos usados.\n");
