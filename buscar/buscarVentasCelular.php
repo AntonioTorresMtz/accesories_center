@@ -23,7 +23,7 @@ function buscar()
     $q = $mysqli->real_escape_string($_POST['busca']);
     $query = "SELECT CONCAT(m.marca, ' ', c.modelo, ' ', c.red, 'G ', c.almacenamiento, ' gb') AS modelo,
 c.imei1, vc.fecha_venta, DATEDIFF(CURDATE(), date(vc.fecha_venta)) AS dias,
-vc.precio, vc.descuento, (vc.precio - vc.descuento) AS total
+vc.precio, vc.descuento, (vc.precio - vc.descuento) AS total, vc.PK_venta
 FROM venta_celular vc
 INNER JOIN celular c ON c.id_celular = vc.FK_celular
 INNER JOIN marca m ON m.id_marca = c.FK_marca
@@ -44,7 +44,7 @@ INNER JOIN marca m ON m.id_marca = c.FK_marca
             "<td>" . $row['precio'] . "</td>" .
             "<td>" . $row['descuento'] . "</td>" .
             "<td>" . $row['total'] . "</td>" .
-            "<td> <button> Reimprimir </button> </td>";
+            "<td> <button class='btn btn-primary btn-reimprimir' id='" . $row['PK_venta'] . "' onclick='reimprimir(" . $row['PK_venta'] . ")'> Reimprimir </button> </td>";
     }
 }
 
