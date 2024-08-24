@@ -10,7 +10,11 @@ $marca = $_POST['producto'];
     WHERE a.marca = '$producto'
     ORDER BY a.nombre ASC"; */
 
-    $query= "SELECT a.nombre, a.id_modelo FROM modelos a WHERE marca = '$marca' ORDER BY a.nombre ASC";
+    $query= "SELECT a.nombre, a.id_modelo
+    FROM modelos a
+    LEFT JOIN modelo_funda mf ON mf.tipo_modelo = a.id_modelo
+    WHERE mf.tipo_modelo IS NULL AND a.marca = '$marca'
+    ORDER BY a.nombre ASC;";
 
     $resultado = mysqli_query($conn, $query);
 
