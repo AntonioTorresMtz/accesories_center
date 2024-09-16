@@ -145,7 +145,7 @@ if (isset($_SESSION['protectores_repetido'])) {
 
 
 
-<script src="js/agregarModelo.js"></script>
+<script src="js/agregarModeloProtector.js"></script>
 <script src="js/selectPosicion.js"></script>
 <script src="js/validaProtectores.js"></script>
 
