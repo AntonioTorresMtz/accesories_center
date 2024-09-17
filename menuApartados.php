@@ -28,6 +28,16 @@ include("mensajesExito/apartadosMensaje.php")
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
+                        <label for="nombre">Telefono:</label>
+                        <input type="text" class="form-control" id="telefono" name="telefono" required
+                            placeholder="Telefono de contacto">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
                         <label for="producto">Producto:</label>
                         <input type="text" class="form-control" id="producto" name="producto"
                             placeholder="Nombre del articulo">

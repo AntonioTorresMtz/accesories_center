@@ -13,12 +13,13 @@ $producto = $_POST['producto'];
 $precio = $_POST['precio'];
 $abono = $_POST['abono'];
 $plazo = $_POST['plazo'];
+$telefono = $_POST['telefono'];
 
 
 
 // Liberar memoria del resultado
 $sp = "SP_INSERTAR_APARTADO";
-$resultado = mysqli_query($conn, "CALL $sp ('$nombre', '$producto', '$precio', '$plazo', '$abono')");
+$resultado = mysqli_query($conn, "CALL $sp ('$nombre', '$producto', '$precio', '$plazo', '$abono', '$telefono')");
 
 if (!$resultado) {
     echo 'Error consulta al programador ' . $conn->error;

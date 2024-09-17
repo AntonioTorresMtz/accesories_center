@@ -8,6 +8,7 @@ e.nombre_estado,
 producto,
 precio,
 nombre_cliente,
+telefono,
 cantidad_restante,
 fecha_inicio,
 DATEDIFF(DATE_ADD(fecha_inicio, INTERVAL 1 MONTH), CURDATE()) AS dias_restantes
@@ -26,6 +27,7 @@ $fecha_inicio = $fila["fecha_inicio"];
 $dias_restante = $fila["dias_restantes"];
 $precio = $fila["precio"];
 $restante = $fila["cantidad_restante"];
+$telefono = $fila["telefono"];
 
 ?>
 
@@ -42,8 +44,9 @@ $restante = $fila["cantidad_restante"];
                 <div class="row">
                     <div class="col-md-12">
                         <p>
-                            <?php echo $nombre ?>
-                        </p>
+                            <?php echo $nombre ?> |
+                            <?php echo $telefono ?>
+                        </p>                
                         <hr>
                     </div>
                 </div>
