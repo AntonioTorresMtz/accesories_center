@@ -43,7 +43,7 @@ function imprimirInfo($marca, $modelo, $imei1, $imei2, $estado, $precio, $descue
 {
     include("../vendor/autoload.php");
     // Crear una instancia del conector de impresión de Windows
-    $connector = new WindowsPrintConnector("POS58 Printer");
+    $connector = new WindowsPrintConnector("POS58");
 
     // Crear una instancia de la impresora
     $printer = new Printer($connector);
