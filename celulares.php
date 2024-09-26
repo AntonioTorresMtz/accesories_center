@@ -85,16 +85,33 @@ include("mensajesExito/celularesMensaje.php")
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="imei1">IMEI 1:</label>
                     <input type="text" class="form-control" id="imei1" name="imei1" maxlength="16" required>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="imei1">IMEI 2:</label>
                     <input type="text" class="form-control" id="imei2" name="imei2" maxlength="16">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="proveedor">Proveedor:</label>
+                    <select class="form-select" id="proveedor" name="proveedor">
+                        <option value="0" selected>Selecciona un proveedor </option>
+                        <?php
+                        $pos = "SELECT PK_proveedor, alias FROM tbl_proveedores ORDER BY PK_proveedor ASC";
+                        $resultado = mysqli_query($conn, $pos);
+                        while ($row = mysqli_fetch_assoc($resultado)) {
+                            $id_proveedor = $row["PK_proveedor"] ?>
+                            <option value="<?php echo $id_proveedor ?>">
+                                <?php echo $row["alias"] ?>
+                            </option>
+                        <?php } ?>
+                    </select>
                 </div>
             </div>
         </div>

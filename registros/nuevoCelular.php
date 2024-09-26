@@ -43,21 +43,51 @@ if (empty($_POST['ram'])) {
     $ram = $_POST['ram'];
 }
 
+if (empty($_POST['proveedor'])) {
+    $proveedor = null;
+} else {
+    $proveedor = $_POST['proveedor'];
+}
+
 echo $estado;
 
 $sp = "SP_INSERTAR_TELEFONO";
-$resultado = mysqli_query($conn, "CALL $sp ('$marca', '$modelo', '$almacenamiento',
-'$ram', '$red', '$imei1', '$imei2', '$estado', '7', '$precioCompra', '$precioSugerido',
-'$fecha_compra', '$garantia', '$altan_com')");
-
-if (!$resultado) {
-    echo 'Error consulta al programadooooor <br>';
-    printf("Errormessage: %s\n", $conn->error);
-} else {
-    $_SESSION['exito'] = "1";
-    header("Location: ../celulares.php");
-    exit();
+$stmt = mysqli_prepare($conn, "CALL $sp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$producto = 7;
+if ($stmt) {
+    // Asignamos los valores a los parámetros usando bind_param
+    mysqli_stmt_bind_param(
+        $stmt,
+        "isiiissiiddiiii",
+        $marca,
+        $modelo,
+        $almacenamiento,
+        $ram,
+        $red,
+        $imei1,
+        $imei2,
+        $estado,
+        $producto,
+        $precioCompra,
+        $precioSugerido,
+        $fecha_compra,
+        $garantia,
+        $altan_com,
+        $proveedor
+    );
+    // Ejecutamos la consulta
+    if (mysqli_stmt_execute($stmt)) {
+        $resultado = mysqli_stmt_get_result($stmt);
+        mysqli_stmt_close($stmt);
+        $_SESSION['exito'] = "1";
+        header("Location: ../celulares.php");
+        exit();
+    } else {
+        //echo "Error ejecutando la consulta: " . mysqli_stmt_error($stmt);
+        $_SESSION['error'] = mysqli_error($conn);
+        header("Location: ../celulares.php");
+        exit();
+    }
 }
-mysqli_close($conn);
 
-?>
+mysqli_close($conn);
