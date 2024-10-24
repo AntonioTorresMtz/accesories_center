@@ -33,6 +33,14 @@ if (isset($_SESSION['exito'])) {
                   )</script>";
       unset($_SESSION['exito']);
       break;
+    case "5":
+      echo "<script type='text/javascript'>Swal.fire(
+                      'Solucion registrada!',
+                      'Se ha cerrado el caso de una garantia!',
+                      'success'
+                    )</script>";
+      unset($_SESSION['exito']);
+      break;
   }
 }
 
