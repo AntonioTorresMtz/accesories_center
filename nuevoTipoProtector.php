@@ -20,7 +20,15 @@ if (isset($_SESSION['exito_TipoP'])) {
             </div>
             <div class="col-12">
                 <label class="form-label" for="nombre">Nombre:</label>
-                <input class="form-control" type="text" min="0" name="nombre" id="nombre" required>
+                <input class="form-control" type="text" name="nombre" id="nombre" required>
+            </div>
+            <div class="col-12">
+                <label class="form-label" for="nombre">Clave Sicar:</label>
+                <input class="form-control" type="text" minlength="1" maxlength="50" name="nombre" id="nombre" required>
+            </div>
+            <div class="col-12">
+                <label class="form-label" for="nombre">Precio:</label>
+                <input class="form-control" type="number" min="1" name="nombre" id="nombre" required>
             </div>
             <div class="col text-center mt-2">
                 <input type="submit" value="Guardar" class="btn btn-dark">

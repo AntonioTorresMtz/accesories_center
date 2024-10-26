@@ -295,6 +295,7 @@ function diferencia($diferencia)
                             <label for="imei" class="form-label">IMEI:</label>
                             <input class="form-control" type="text" name="imei" placeholder="IMEI del telefono a cambio"
                                 required id="imei">
+                            <div id="result"></div>
                         </div>
                         <div class="col-md-12" id="contenedor-diferencia" style="display: none">
                             <div class="form-group">

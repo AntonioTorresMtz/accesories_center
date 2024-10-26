@@ -56,7 +56,7 @@ diferenciaRadioButtons.forEach((radioButton) => {
         break;
       case "1":
         monto_diferencia.style.display = "block";
-        cantidad_efectivo.style.display = "block";
+        cantidad_efectivo.style.display = "none";
         especie.style.display = "none";
         break;
       case "2":

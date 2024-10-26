@@ -34,6 +34,18 @@
   overflow: auto; /* Permite el desplazamiento cuando se desborda */
 }
 
-.linea{
-  border-right: 1px solid #CED4DA;
+.linea {
+  border-right: 1px solid #ced4da;
+}
+
+.modalFundas {
+  width: 500px;
+  height: 400px;
+  background: red;
+}
+
+.modalFundas img {
+  width: 100%;  /* Forza la imagen a ocupar todo el ancho del contenedor */
+  height: 100%; /* Forza la imagen a ocupar toda la altura del contenedor */
+  object-fit: contain; /* Ajusta la imagen para cubrir todo el contenedor sin deformarse */
 }
