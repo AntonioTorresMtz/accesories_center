@@ -56,8 +56,6 @@ if (!$resultado) {
     $printer->setJustification(Printer::JUSTIFY_CENTER);
     //$printer->setFontSize(2, 2);
     // Imprimir imagen
-    $image = EscposImage::load("../phone.png");
-    $printer->graphics($image);
 
 
     $printer->text("Center Accesories\n");
