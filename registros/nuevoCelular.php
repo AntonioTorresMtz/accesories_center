@@ -14,7 +14,7 @@ $garantia = 0;
 $altan_com = $_POST['bait_com'];
 
 if (empty($_POST['fecha_compra'])) {
-    $fecha_compra = '0';
+    $fecha_compra = null;
 } else {
     $fecha_compra = $_POST['fecha_compra'];
 }
@@ -58,7 +58,7 @@ if ($stmt) {
     // Asignamos los valores a los parámetros usando bind_param
     mysqli_stmt_bind_param(
         $stmt,
-        "isiiissiiddiiii",
+        "isiiissiiddsiii",
         $marca,
         $modelo,
         $almacenamiento,

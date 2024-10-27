@@ -1,5 +1,5 @@
 <?php
-if (isset ($_SESSION['exito'])) {
+if (isset($_SESSION['exito'])) {
   switch ($_SESSION['exito']) {
     case "1":
       echo "<script type='text/javascript'>Swal.fire(
@@ -23,6 +23,22 @@ if (isset ($_SESSION['exito'])) {
                   'Se ha registrado una recarga con exito.!',
                   'success'
                 )</script>";
+      unset($_SESSION['exito']);
+      break;
+    case "4":
+      echo "<script type='text/javascript'>Swal.fire(
+                    'Ticket de Garantia Registrada!',
+                    'Consulta la tabla de garantias para darle seguimiento!',
+                    'success'
+                  )</script>";
+      unset($_SESSION['exito']);
+      break;
+    case "5":
+      echo "<script type='text/javascript'>Swal.fire(
+                      'Solucion registrada!',
+                      'Se ha cerrado el caso de una garantia!',
+                      'success'
+                    )</script>";
       unset($_SESSION['exito']);
       break;
   }

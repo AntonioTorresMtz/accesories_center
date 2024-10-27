@@ -5,11 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="css/estilos.css">
@@ -28,7 +31,8 @@
       <a class="navbar-brand" href="index.php">
         <img src="img/logo.svg" alt="logo" width="200">
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -218,6 +222,10 @@
               <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="menuVentasCelulares.php">Lista de ventas</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="garantias_menu.php">Garantias</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -229,29 +237,29 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="recargasMenu.php">Recargas</a>
         </li>
-              <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item" href="ventaMenu_mica9d.php">Mica Completa</a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item" href="ventaMenu_mica9h.php">Mica Normal</a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item" href="ventaMenu_mica100d.php">Mica de privacidad</a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item" href="ventaMenu_micaCurva.php">Mica curva</a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item" href="ventaMenu_micaCamara.php">Mica camara</a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item" href="ventaMenu_protector.php">Protector</a></li>
+        <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" href="ventaMenu_mica9d.php">Mica Completa</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" href="ventaMenu_mica9h.php">Mica Normal</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" href="ventaMenu_mica100d.php">Mica de privacidad</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" href="ventaMenu_micaCurva.php">Mica curva</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" href="ventaMenu_micaCamara.php">Mica camara</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" href="ventaMenu_protector.php">Protector</a></li>
         </ul>
         </li>
         <li class="nav-item dropdown">
@@ -384,4 +392,6 @@
   </nav>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>

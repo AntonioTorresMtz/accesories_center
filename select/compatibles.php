@@ -227,7 +227,7 @@ if ($total == 0) {
         <div class='col'>
             <p>Tipos de Protector: <br>";
     }
-    $query2 = "SELECT a.nombre, b.cantidad FROM nombre_tipo_protector a
+    $query2 = "SELECT a.nombre, b.cantidad, a.clave, a.precio FROM nombre_tipo_protector a
     INNER JOIN tipo_protector b
     ON a.id_nombreTipo = b.tipo
     INNER JOIN protectores c
@@ -239,8 +239,11 @@ if ($total == 0) {
 
     while ($row = $resultado->fetch_assoc()) {
         $html = $html . "<div class='col-12'>
-                                <p>" . $row["nombre"] . ": " . $row["cantidad"] . "</p>
-                            </div>";
+        <p id='" . $row['nombre'] . "'> 
+            <b>" . $row['nombre'] . ":</b> (" . $row['cantidad'] . ") Precio: $"
+            . number_format($row['precio']) . ", Clave: " . $row['clave'] . "
+        </p>
+    </div>";
     }
 
     $query2 = "SELECT GROUP_CONCAT(m.marca, ' ', b.nombre SEPARATOR ', ') AS nombre , c.notas FROM modelos b 
