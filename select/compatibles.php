@@ -239,9 +239,9 @@ if ($total == 0) {
 
     while ($row = $resultado->fetch_assoc()) {
         $html = $html . "<div class='col-12'>
-        <p id='" . $row['nombre'] . "'> 
+        <p id='" . $row['clave'] . "' class='tipo_funda'> 
             <b>" . $row['nombre'] . ":</b> (" . $row['cantidad'] . ") Precio: $"
-            . number_format($row['precio']) . ", Clave: " . $row['clave'] . "
+            . $row['precio'] . ", Clave: " . $row['clave'] . "
         </p>
     </div>";
     }
