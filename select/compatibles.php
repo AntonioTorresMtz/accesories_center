@@ -241,7 +241,7 @@ if ($total == 0) {
         $html = $html . "<div class='col-12'>
         <p id='" . $row['clave'] . "' class='tipo_funda'> 
             <b>" . $row['nombre'] . ":</b> (" . $row['cantidad'] . ") Precio: $"
-            . $row['precio'] . ", Clave: " . $row['clave'] . "
+            . round($row['precio'], 1) . ", Clave: " . $row['clave'] . "
         </p>
     </div>";
     }
