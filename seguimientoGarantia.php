@@ -187,7 +187,8 @@ function diferencia($diferencia)
                     </div>
                     <div class="row text-center">
                         <p>Aún no existe solucion para este garantia, seguimos trabajando en ello.</p>
-                        <button type="button" class="text-center col-md-3 btn btn-primary" data-toggle="modal" data-target="#miModal">
+                        <button type="button" class="text-center col-md-3 btn btn-primary" data-toggle="modal"
+                            data-target="#miModal">
                             Agregar Solucion
                         </button>
                     </div>
@@ -263,7 +264,7 @@ function diferencia($diferencia)
                     <div class="row text-center">
                         <h4>Solucion de Garantia</h4>
                     </div>
-                    <input type="hidden" name="id_garantia" value="<?php echo $id?>">
+                    <input type="hidden" name="id_garantia" value="<?php echo $id ?>">
                     <div class="row">
                         <div class="col-12">
                             <label for="solucion" class="form-label">Seleccion:</label>
@@ -288,13 +289,13 @@ function diferencia($diferencia)
                         </div>
                         <div class="col-12" id="contenedor-rembolso" style="display: none">
                             <label for="rombolso" class="form-label">Rembolso:</label>
-                            <input class="form-control" type="number" name="rembolso" placeholder="Rembolso" required
+                            <input class="form-control" type="number" name="rembolso" placeholder="Rembolso"
                                 id="rembolso">
                         </div>
                         <div class="col-12" id="contenedor-imei" style="display: none">
                             <label for="imei" class="form-label">IMEI:</label>
                             <input class="form-control" type="text" name="imei" placeholder="IMEI del telefono a cambio"
-                                required id="imei">
+                                id="imei">
                             <div id="result"></div>
                         </div>
                         <div class="col-md-12" id="contenedor-diferencia" style="display: none">
@@ -302,7 +303,7 @@ function diferencia($diferencia)
                                 <label for="">Diferencia de dinero:</label><br>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="diferencia" id="diferencia_favor"
-                                        value="1" required>
+                                        value="1">
                                     <label class="form-check-label" for="diferencia_favor">Positiva</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -320,12 +321,12 @@ function diferencia($diferencia)
                         <div class="col-12" id="contenedor-monto-diferencia" style="display: none">
                             <label for="monto_diferencia" class="form-label">Monto Diferencia:</label>
                             <input class="form-control" type="number" name="monto_diferencia"
-                                placeholder="Cantidad diferencia" required id="monto_diferencia">
+                                placeholder="Cantidad diferencia" id="monto_diferencia">
                         </div>
                         <div class="col-12" id="contenedor-cantidad-efectivo" style="display: none">
                             <label for="cantidad_efectivo" class="form-label">Cantidad en efectivo:</label>
                             <input class="form-control" type="number" name="cantidad_efectivo"
-                                placeholder="Cantidad efectivo" required id="cantidad_efectivo">
+                                placeholder="Cantidad efectivo"  id="cantidad_efectivo">
                         </div>
                         <div class="col-md-12" id="contenedor-especie" style="display: none">
                             <div class="form-group">
@@ -335,13 +336,13 @@ function diferencia($diferencia)
                             </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <input type="submit" value="Guardar" class="btn btn-primary">
+                    </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary"
-                    onclick="validarSolucion();">Guardar cambios</button>
-            </div>
+
         </div>
     </div>
 </div>

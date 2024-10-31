@@ -19,7 +19,14 @@ $(document).ready(function () {
   });
 });
 
-function validarSolucion() {
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("formulario")
+    .addEventListener("submit", validarSolucion);
+});
+
+function validarSolucion(evento) {
+  evento.preventDefault();
   var solucion = document.getElementById("solucion").value;
   if (solucion == 0) {
     type =
@@ -31,16 +38,6 @@ function validarSolucion() {
       );
     return;
   } else {
-    var camposOcultos = formulario.querySelectorAll('[style*="display: none"]');
-    camposOcultos.forEach(function (campo) {
-      campo.disabled = true; // Deshabilitar campos ocultos
-    });
-
-    if (formulario.reportValidity()) {
-      formulario.submit(); // Envía el formulario si es válido
-    }
-     camposOcultos.forEach(function(campo) {
-      campo.disabled = false;
-    });
+    this.submit();
   }
 }

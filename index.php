@@ -68,6 +68,15 @@ if (isset($_SESSION['edG_m9d'])) {
 
 </div>
 
+<div id="overlay" class="overlay">
+    <div class="contenedor-modal border shadow" id="contenedor-modal">
+        <div id="titulo-modal">Título del Modal</div>
+        <div id="cerrar-modal" onclick="ocultarModal()">X</div>
+        <div class="modalFundas">
+            <img src="../img/fundas/Original.jpeg" alt="">
+        </div>
+    </div>
+</div>
 
 
 <script src="js/modalFundas.js"></script>

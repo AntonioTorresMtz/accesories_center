@@ -38,14 +38,36 @@
   border-right: 1px solid #ced4da;
 }
 
+.contenedor-modal {
+  display: none;
+  position: fixed;
+  background-color: whitesmoke;
+  width: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Asegura que el modal esté por encima de otros elementos */
+}
 .modalFundas {
   width: 500px;
   height: 400px;
-  background: red;
 }
 
 .modalFundas img {
-  width: 100%;  /* Forza la imagen a ocupar todo el ancho del contenedor */
+  width: 100%; /* Forza la imagen a ocupar todo el ancho del contenedor */
   height: 100%; /* Forza la imagen a ocupar toda la altura del contenedor */
   object-fit: contain; /* Ajusta la imagen para cubrir todo el contenedor sin deformarse */
+}
+
+#cerrar-modal{
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  background: black;
 }
