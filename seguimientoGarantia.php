@@ -7,7 +7,7 @@ $query = "SELECT tg.PK_ticket_garantia, CONCAT(m.marca, ' ', c.modelo, ' ', c.re
 tg.nombre_dueno, tg.telefono_dueno, vc.fecha_venta, tg.fecha_recepcion, tg.ticket_compra,
 tg.caja_celular, tg.caja_celular, tg.accesorios_celular, tg.desbloqueado, tg.formateado, tg.descripcion_falla,
 tg.observaciones,
-vc.fecha_venta, vc.precio, vc.descuento, (vc.precio - vc.descuento) AS total,
+vc.fecha_venta, vc.precio, vc.descuento, (vc.precio - vc.descuento) AS total, vc.PK_venta,
 c.fecha_compra, c.ram, c.imei1, c.imei2, c.altan_compat
 FROM tbl_ticket_garantia tg
 INNER JOIN venta_celular vc ON vc.PK_venta = tg.FK_venta_celular
@@ -17,6 +17,7 @@ WHERE tg.PK_ticket_garantia = '$id';";
 
 $resultado = mysqli_query($conn, $query);
 $fila = mysqli_fetch_assoc($resultado);
+$id_venta = $fila["PK_venta"];
 $modelo = $fila["modelo"];
 $nombre_dueno = $fila["nombre_dueno"];
 $telefono_dueno = $fila["telefono_dueno"];
@@ -265,6 +266,7 @@ function diferencia($diferencia)
                         <h4>Solucion de Garantia</h4>
                     </div>
                     <input type="hidden" name="id_garantia" value="<?php echo $id ?>">
+                    <input type="hidden" name="id_venta" value="<?php echo $id_venta ?>">
                     <div class="row">
                         <div class="col-12">
                             <label for="solucion" class="form-label">Seleccion:</label>
