@@ -37,8 +37,10 @@ soluciones.addEventListener("change", function () {
       imei.style.display = "block";
       diferencia.style.display = "block";
       observaciones.style.display = "block";
+      rembolso.style.display = "none";
       campoImei.required = true;
       campoDiferencia.required = true;
+      campoRembolso.required = false;
       break;
     case "3":
       observaciones.style.display = "block";

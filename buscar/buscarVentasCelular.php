@@ -37,7 +37,8 @@ INNER JOIN marca m ON m.id_marca = c.FK_marca
           } else {
               $condicion = 'Nuevo';
           }*/
-        echo "<tr> <td>" . $row['modelo'] . "</td>" .
+        echo "<tr> <td>" . $row['PK_venta'] . "</td>" .
+            "<td>" . $row['modelo'] . "</td>" .
             "<td>" . $row['imei1'] . "</td>" .
             "<td>" . $row['fecha_venta'] . "</td>" .
             "<td>" . $row['dias'] . "</td>" .
@@ -66,7 +67,8 @@ ORDER BY vc.fecha_venta DESC";
           } else {
               $condicion = 'Nuevo';
           }*/
-        echo "<tr> <td>" . $row['modelo'] . "</td>" .
+        echo "<tr> <td>" . $row['PK_venta'] . "</td>" .
+            "<td>" . $row['modelo'] . "</td>" .
             "<td>" . $row['imei1'] . "</td>" .
             "<td>" . $row['fecha_venta'] . "</td>" .
             "<td>" . $row['dias'] . "</td>" .

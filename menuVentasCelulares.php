@@ -21,6 +21,7 @@ include("mensajesExito/apartadosMensaje.php")
                 <table class="table table-striped table-borderless table-hover">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Modelo</th>
                             <th>IMEI</th>
                             <th>Fecha de Venta</th>

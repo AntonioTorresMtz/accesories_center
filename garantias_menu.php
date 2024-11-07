@@ -21,10 +21,11 @@ include("mensajesExito/apartadosMensaje.php")
                     <option value="0" disabled selected>Selecciona la venta en garantia</option>
                     <?php
                     $pos = "SELECT pk_venta, CONCAT(pk_venta, '.- ', m.marca, ' ', c.modelo, ' ', c.red, 'G ', c.almacenamiento, ' gb') AS modelo
-                    FROM venta_celular vc
-                    INNER JOIN celular c ON c.id_celular = vc.FK_celular
-                    INNER JOIN marca m ON m.id_marca = c.FK_marca
-                    ORDER BY vc.fecha_venta DESC ;";
+                            FROM venta_celular vc
+                            INNER JOIN celular c ON c.id_celular = vc.FK_celular
+                            INNER JOIN marca m ON m.id_marca = c.FK_marca
+                            WHERE vc.fecha_venta BETWEEN DATE_SUB(CURDATE(), INTERVAL 31 DAY) AND CURDATE()
+                            ORDER BY vc.fecha_venta DESC;";
                     $resultado = mysqli_query($conn, $pos);
                     while ($row = mysqli_fetch_assoc($resultado)) {
                         $id_venta = $row["pk_venta"] ?>
@@ -54,7 +55,7 @@ include("mensajesExito/apartadosMensaje.php")
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="nombre">Telefono:</label>
-                        <input type="text" class="form-control" id="telefono" name="telefono" required
+                        <input type="text" class="form-control" pattern="\d{10}" id="telefono" name="telefono" required
                             placeholder="Telefono de contacto">
                     </div>
                 </div>
@@ -167,7 +168,7 @@ include("mensajesExito/apartadosMensaje.php")
                             <th>Telefono</th>
                             <th>Fecha de venta</th>
                             <th>Fecha de recepcion</th>
-                            <th>Trae ticket</th>                        
+                            <th>Trae ticket</th>
                         </tr>
                     </thead>
                     <tbody id="result">
@@ -185,4 +186,5 @@ include("mensajesExito/apartadosMensaje.php")
     }
 </style>
 
+<script src="js/verificarDesbloqueo.js"></script>
 <script src="js/buscarGarantia.js"></script>
