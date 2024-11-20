@@ -24,7 +24,7 @@ include("mensajesExito/apartadosMensaje.php")
                             FROM venta_celular vc
                             INNER JOIN celular c ON c.id_celular = vc.FK_celular
                             INNER JOIN marca m ON m.id_marca = c.FK_marca
-                            WHERE vc.fecha_venta BETWEEN DATE_SUB(CURDATE(), INTERVAL 35 DAY) AND CURDATE()
+                            WHERE vc.fecha_venta BETWEEN DATE_SUB(CURDATE(), INTERVAL 31 DAY) AND CURDATE()
                             ORDER BY vc.fecha_venta DESC;";
                     $resultado = mysqli_query($conn, $pos);
                     while ($row = mysqli_fetch_assoc($resultado)) {
