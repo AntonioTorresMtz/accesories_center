@@ -66,7 +66,8 @@ if (isset($_POST['buscar'])) {
             LEFT JOIN nombre_tipo_protector n ON n.id_nombreTipo = v.id_tipo
             INNER JOIN modelos mo ON mo.id_modelo = v.nombre_modelo
             WHERE v.fecha BETWEEN '$inicio' and '$fin'
-            ORDER BY v.id_venta DESC";
+            ORDER BY v.id_venta DESC
+            LIMIT 50";
 
                     $res = $conn->query($query);
                     if ($res->num_rows == 0) {
