@@ -226,6 +226,10 @@
               <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="garantias_menu.php">Garantias</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="comparar_telefonos.php">Comparar</a></li>
           </ul>
         </li>
         <li class="nav-item">

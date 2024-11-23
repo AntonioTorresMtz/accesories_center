@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="consulta" type="text" />
+    <button id="boton">Consultar</button>
+    <pre id="respuesta"></pre>
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+    <script type="module">
+      import { GoogleGenerativeAI } from "@google/generative-ai";
+      import { clave } from "./key.js";
+
+      const genAI = new GoogleGenerativeAI(clave);
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+      document.querySelector("#boton").addEventListener("click", async () => {
+        console.log("Se oprimio el boton");
+        const consulta = document.querySelector("#consulta").value;
+        const respuesta = document.querySelector("#respuesta");
+        try {
+          const result = await model.generateContent(consulta);
+          const response = await result.response;
+          const text = response.text();
+          respuesta.innerHTML = text;
+          console.log(text);
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    </script>
+  </body>
+</html>

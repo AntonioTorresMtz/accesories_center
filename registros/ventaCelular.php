@@ -84,7 +84,7 @@ if ($result) {
         $printer->text("Total: $" . $totalF . "\n");
 
         $printer->setJustification(Printer::JUSTIFY_CENTER);
-        $printer->text("El producto adquirido cuenta con un mes de garantia al momento de su compra, en equipos nuevos y una semana en equipos usados.\n");
+        $printer->text("El producto adquirido cuenta con un mes de garantia al momento de su compra.\n");
         $printer->text("Dicha garantía cubre cualquier defecto de fabrica, siempre y cuando el producto
         no presente rayaduras, golpes o se encuentre mojado. Debera ser entregado con todos sus accesorios,
         caja y esta nota de compra.\n");
