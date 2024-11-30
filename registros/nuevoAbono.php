@@ -101,7 +101,10 @@ if (!$resultado) {
 
 
     $printer->setJustification(Printer::JUSTIFY_CENTER);
-    $printer->text("El producto adquirido cuenta con un mes de garantia al momento de su compra.\n");
+    $printer->text("El producto apartado cuenta con un mes para liquidar el producto.\n");
+    $printer->text("Pasado el mes los productos vuelven a vitrina y la tienda se queda con el 40% del dinero abonado.\n");
+    $printer->text("A partir del 05 de diciembre productos de temporada apartados tendran como fecha limite el 05 de enero.\n");
+    $printer->text("\n");
     $printer->text("\n");
     $printer->text("Gracias por la preferencia :)\n");
     $printer->text("\n");
