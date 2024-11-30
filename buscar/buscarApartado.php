@@ -24,7 +24,8 @@ function buscar()
     $query = "SELECT e.nombre_estado, PK_apartado, producto, precio, tiempo_apartado, nombre_cliente, cantidad_restante, fecha_inicio
     FROM tbl_apartado a
     INNER JOIN cat_estado_apartado e ON e.PK_estado_apartado = a.FK_estado_apartado
-    WHERE  a.nombre_cliente LIKE '%$q%'";
+    WHERE  a.nombre_cliente LIKE '%$q%'
+    ORDER BY PK_apartado DESC";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
@@ -50,7 +51,8 @@ function defecto()
     $mysqli = getConnexion();
     $query = "SELECT e.nombre_estado, PK_apartado, producto, precio, tiempo_apartado, nombre_cliente, cantidad_restante, fecha_inicio
     FROM tbl_apartado a
-    INNER JOIN cat_estado_apartado e ON e.PK_estado_apartado = a.FK_estado_apartado;";
+    INNER JOIN cat_estado_apartado e ON e.PK_estado_apartado = a.FK_estado_apartado
+    ORDER BY PK_apartado DESC";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
