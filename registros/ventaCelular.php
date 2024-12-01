@@ -76,7 +76,7 @@ if ($result) {
         $printer->text("TICKET DE COMPRA\n");
         $printer->setJustification(Printer::JUSTIFY_LEFT);
         $printer->text("Celular: " . $marca . " " . $modelo . "\n");
-        $printer->text("Esatado del telefono: " . $condicion . "\n");
+        $printer->text("Estado del telefono: " . $condicion . "\n");
         $printer->text("IMEI 1: " . $imei1 . "\n");
         $printer->text("IMEI 2: " . $imei2 . "\n");
         $printer->text("Precio: $" . number_format($precio, 2, ".", ",") . "\n");
