@@ -146,7 +146,7 @@ function imprimirCambio($imei, $id_venta, $monto_diferencia)
     $printer->text("Celular: " . $modeloViejo . "\n");
     $printer->text("IMEI: " . $imeiViejo . "\n");
     $printer->text("\n");
-    $printer->text("Diferencia de precio: $" . number_format($monto_diferencia, 2, ".", ",") . "\n");
+    $printer->text("Diferencia de precio: $" . $monto_diferencia . "\n");
     $printer->setJustification(Printer::JUSTIFY_CENTER);
     $printer->text("El producto adquirido cuenta con un mes de garantia al momento de su cambio.\n");
     $printer->text("Dicha garantía cubre cualquier defecto de fabrica, siempre y cuando el producto
