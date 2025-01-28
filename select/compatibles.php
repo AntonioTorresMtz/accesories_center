@@ -119,7 +119,7 @@ if ($total == 0) {
 } else {
     $mica9d = 0;
 
-    $html = $html . "<div class='col-lg-4'>
+    $html = $html . "<div class='col-lg-4 mt-4'>
         <div class='card'>
             <div class='card-header'>
                 <h5>Micas Completas</h5>
@@ -200,7 +200,7 @@ if ($total == 0) {
 </div>";
 } else {
     $protector = 0;
-    $html = $html . "<div class='col-lg-4'>
+    $html = $html . "<div class='col-lg-4 mt-4'>
         <div class='card'>
             <div class='card-header'>
                 <h5>Protectores</h5>
@@ -292,8 +292,8 @@ WHERE a.id_modelo = '$modelo'";
 $resultado = mysqli_query($conn, $query100d);
 $total = mysqli_num_rows($resultado);
 if ($total == 0) {
-    $html = $html . "<div class='col-lg-4 mt-4'>
-    <div class='card'>
+    $html = $html . "<div class='col-lg-4'>
+    <div class='card mt-4'>
         <div class='card-header'>
             <h5>Micas Micas de Privacidad</h5>
         </div>
@@ -308,7 +308,7 @@ if ($total == 0) {
     $mica100d = 0;
 
     $html = $html . "<div class='col-lg-4'>
-        <div class='card'>
+        <div class='card mt-4'>
             <div class='card-header'>
                 <h5>Micas de Privacidad</h5>
             </div>
