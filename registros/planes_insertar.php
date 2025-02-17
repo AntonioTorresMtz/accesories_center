@@ -44,7 +44,6 @@ if (!$resultado) {
     $printer->text("Cliente: " . $cliente . "\n");
     $printer->text("Telefono: " . $telefono . "\n");
     $printer->text("Monto: $" . $monto . "\n");
-    $printer->text("Monto: $" . $monto . "\n");
 
     $printer->setJustification(Printer::JUSTIFY_CENTER);
     $printer->text("\n");
@@ -79,34 +78,6 @@ if (!$resultado) {
 
     $printer->text("\n");
 
-    $printer->text("\n");
-
-    $printer->text("////// -- IMPORTANTE --- //////\n");
-    $printer->text("Los pagos tardan aproximadamente\n");
-    $printer->text("20 minutos en verse reflejados,\n");
-    $printer->text("dentro del horario de atención.\n");
-
-    $printer->text("\n");
-
-    $printer->text("**** HORARIOS: ****\n");
-    $printer->text("Lunes a Viernes:\n");
-    $printer->text("09:00 am - 06:00 pm\n");
-    $printer->text("Sabados:\n");
-    $printer->text("10:00 am - 01:30 pm\n");
-
-    $printer->text("\n");
-
-    $printer->text("Si se realiza un pago fuera\n");
-    $printer->text("del horario mencionado este\n");
-    $printer->text("se vera reflejado hasta el dia\n");
-    $printer->text("laboral siguiente.\n");
-
-    $printer->text("\n");
-
-    $printer->text("Dudas o aclaraciones:\n");
-    $printer->text("llamar al *264\n");
-
-    $printer->text("\n");
     $printer->cut();
 
     // Cerrar la conexión de impresión
