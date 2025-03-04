@@ -91,6 +91,7 @@ include ("mensajesExito/apartadosMensaje.php")
                             <th>ID</th>
                             <th>Tipo Recarga</th>
                             <th>Monto</th>
+                            <th>Compañia</th>
                             <th>Telefono</th>
                             <th>Fecha</th>
                         </tr>
