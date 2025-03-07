@@ -108,6 +108,39 @@
         </ul>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Buscar
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#"></a></li>
+            <li><a class="dropdown-item" href="buscarMica9d.php">Mica Completa</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="buscaMica9h.php">Mica Normal</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="buscaMica100d.php">Mica privacidad</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="medidas9h.php">Mica Normal medidas</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="buscaMicaCurva.php">Mica Curva</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="buscarCamara.php">Mica Camara</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="buscarProtector.php">Protector</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Nuevo
           </a>
           <ul class="dropdown-menu">

@@ -12,7 +12,7 @@ function buscar(){
     INNER JOIN micas100d b ON a.id_mica100d = b.id_mica100d 
     INNER JOIN posicion d ON d.id_posicion = b.posicion
     INNER JOIN modelos m ON m.id_modelo = a.nombre_modelo
-    INNER JOIN  marca  ma ON  ma.id_marca = b.marca
+    INNER JOIN  marca  ma ON  ma.id_marca = m.marca
     WHERE m.nombre LIKE '%$q%';";
 
     $res = $mysqli->query($query);
