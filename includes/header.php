@@ -80,7 +80,8 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="vistaVentasPersonalizadas.php">Lista de Personalizadas</a></li>
+              <li><a class="dropdown-item" href="vistaVentasPersonalizadas.php">Lista de
+                  Personalizadas</a></li>
               <hr class="dropdown-divider">
           </li>
           <li><a class="dropdown-item" href="ventaMenu_mica9d.php">Mica Completa</a></li>
@@ -105,40 +106,6 @@
           </li>
           <li><a class="dropdown-item" href="ventaMenu_protector.php">Protector</a></li>
         </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Buscar
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"></a></li>
-            <li><a class="dropdown-item" href="buscarMica9d.php">Mica Completa</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="buscaMica9h.php">Mica Normal</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="buscaMica100d.php">Mica privacidad</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="medidas9h.php">Mica Normal medidas</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="buscaMicaCurva.php">Mica Curva</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="buscarCamara.php">Mica Camara</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="buscarProtector.php">Protector</a></li>
-          </ul>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Nuevo
@@ -241,156 +208,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="recargasMenu.php">Recargas</a>
         </li>
-        <hr class="dropdown-divider">
-        </li>
-        <li><a class="dropdown-item" href="ventaMenu_mica9d.php">Mica Completa</a></li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li><a class="dropdown-item" href="ventaMenu_mica9h.php">Mica Normal</a></li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li><a class="dropdown-item" href="ventaMenu_mica100d.php">Mica de privacidad</a></li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li><a class="dropdown-item" href="ventaMenu_micaCurva.php">Mica curva</a></li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li><a class="dropdown-item" href="ventaMenu_micaCamara.php">Mica camara</a></li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li><a class="dropdown-item" href="ventaMenu_protector.php">Protector</a></li>
-        </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Buscar
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"></a></li>
-            <li><a class="dropdown-item" href="buscarMica9d.php">Mica Completa</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="buscaMica9h.php">Mica Normal</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="buscaMica100d.php">Mica privacidad</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="medidas9h.php">Mica Normal medidas</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="buscaMicaCurva.php">Mica Curva</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="buscarCamara.php">Mica Camara</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="buscarProtector.php">Protector</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Nuevo
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"></a></li>
-            <li><a class="dropdown-item" href="nuevoModelo.php">Modelo</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="nuevaMarca.php">Marca</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="nuevaPosicion.php">Posicion</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="nuevoTipoProtector.php">Tipo Protector</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Compatibilidades
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="fusionarMica9h.php">Crear</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="desfusionarMenu.php">Dividir</a></li>
-            <li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Actualizar
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"></a></li>
-            <li><a class="dropdown-item" href="actualizarMica9d.php">Mica Completa</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="actualizarMica9H.php">Mica Normal</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="actualizarMenu_camara.php">Mica camara</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="actualizarMica100d.php">Mica privacidad</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="actualizarMica_curva.php">Micas curvas</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="actualizarProtector.php">Protector</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="existencias.php">Existencias</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="faltantes.php">Faltantes</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Celulares
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="celulares.php">Agregar</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="ventaMenu_celular.php">Vender</a></li>
-            <li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="menuApartados.php">Apartados</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="planes_menu.php">Lineas Telcel</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="recargasMenu.php">Recargas</a>
-        </li>
-        </ul>
+
       </div>
     </div>
   </nav>
