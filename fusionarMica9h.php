@@ -26,7 +26,7 @@ include("mensajesExito/fusiones.php")
             <div class="row g-3">
                 <div id="modelo1" class="col-6 linea">
                     <div class="row text-center">
-                        <h4>Modelo a conservar</h4>
+                        <h4>Modelo en existencia</h4>
                     </div>
 
                     <div class="form-group">
@@ -50,7 +50,7 @@ include("mensajesExito/fusiones.php")
                 </div>
                 <div id="modelo3" class="col-6">
                     <div class="row text-center">
-                        <h4>Modelo fusionado</h4>
+                        <h4>Modelo nuevo</h4>
                     </div>
 
                     <div class="form-group">
