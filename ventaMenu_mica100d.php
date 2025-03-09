@@ -22,8 +22,8 @@ if (isset($_SESSION['error_ventaMica100d'])) {
 ?>
 <div class="container">
     <div class="row justify-content-center mt-3">
-        <form action="registros/ventaMica100d.php" method="POST" class="col-md-3 shadow p-3 align-self-start"
-            id="formulario">
+        <form action="registros/ventaMica100d.php" method="POST"
+            class="col-12 col-sm-8 col-md-6 col-lg-3 mx-auto shadow p-3 align-self-start" id="formulario">
             <div class="row text-center">
                 <h4>Venta mica de privacidad</h4>
             </div>
