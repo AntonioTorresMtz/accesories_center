@@ -5,7 +5,7 @@ include("mensajesExito/fusiones.php")
     ?>
 <div class="container">
     <div class="row justify-content-center mt-3">
-        <form action="registros/fusionar.php" method="POST" class="col-md-6 shadow p-3 align-self-start"
+        <form action="registros/fusionar.php" method="POST" class="col-12 col-sm-12 col-md-10 col-lg-6 shadow p-3 align-self-start"
             id="formulario">
             <div class="row text-center">
                 <h2>Fusionar Modelos</h2>
