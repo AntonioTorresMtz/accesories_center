@@ -35,7 +35,7 @@ if (isset($_SESSION['error_Nombre'])) {
 
 <div class="container">
     <div class="row justify-content-center mt-3">
-        <form action="registros/modeloNuevo.php" method="POST" class="col-md-3 shadow p-3 align-self-start">
+        <form action="registros/modeloNuevo.php" method="POST" class="col-12 col-sm-8 col-md-6 col-lg-3 shadow p-3 align-self-start">
             <div class="row text-center">
                 <h4>Agregar modelo</h4>
             </div>
