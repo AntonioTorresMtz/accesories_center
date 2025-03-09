@@ -28,7 +28,8 @@ $muro = $fila["muro"];
 
 <div class="container">
     <div class="row justify-content-center mt-3">
-        <form action="editar/e_general9d.php" method="POST" class="col-md-3 shadow p-3 align-self-start">
+        <form action="editar/e_general9d.php" method="POST"
+            class="col-12 col-sm-8 col-md-6 col-lg-3 mx-auto shadow p-3 align-self-start">
             <div class="row text-center">
                 <h4>Modificar mica completa</h4>
             </div>
