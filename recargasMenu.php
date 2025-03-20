@@ -94,6 +94,7 @@ include ("mensajesExito/apartadosMensaje.php")
                             <th>Compañia</th>
                             <th>Telefono</th>
                             <th>Fecha</th>
+                            <th>Reimprimir Ticket</th>
                         </tr>
                     </thead>
                     <tbody id="result">
@@ -112,3 +113,4 @@ include ("mensajesExito/apartadosMensaje.php")
 </style>
 
 <script src="js/buscarRecargas.js"></script>
+<script src="js/reimprimirRecarga.js"></script>

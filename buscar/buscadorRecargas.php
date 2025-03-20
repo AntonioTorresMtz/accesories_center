@@ -43,7 +43,8 @@ function buscar()
             "<td>" . $row['FK_compania'] . "</td>" .
             "<td>" . $row['telefono'] . "</td>" .
             "<td>" . $row['fecha_insercion'] . "</td>" .
-            "</tr>";
+            "<td> <button class='btn btn-primary btn-reimprimir' id='" . $row['PK_recarga'] . "' onclick='reimprimir(" . $row['PK_recarga'] . ")'> Reimprimir </button> </td>
+            <tr>";
     }
 }
 
@@ -70,7 +71,8 @@ function defecto()
             "<td>" . $row['FK_compania'] . "</td>" .
             "<td>" . $row['telefono'] . "</td>" .
             "<td>" . $row['fecha_insercion'] . "</td>" .
-            "</tr>";
+            "<td> <button class='btn btn-primary btn-reimprimir' id='" . $row['PK_recarga'] . "' onclick='reimprimir(" . $row['PK_recarga'] . ")'> Reimprimir </button> </td>
+            <tr>";
     }
 }
 
