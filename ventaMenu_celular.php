@@ -27,7 +27,7 @@ include("mensajesExito/celularesMensaje.php")
                     <div class="form-group">
                         <label for="modelo">Precio:</label>
                         <input type="number" class="form-control" id="precio" name="precio"
-                            placeholder="Precio sin descuento" required>
+                           max="100000" placeholder="Precio sin descuento" required>
                     </div>
                 </div>
             </div>
