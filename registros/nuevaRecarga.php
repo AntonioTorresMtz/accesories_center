@@ -10,20 +10,15 @@ date_default_timezone_set('America/Mexico_City');
 
 $numero = $_POST['numero'];
 $monto = $_POST['monto'];
-$tipo = intval($_POST['tipo']);
 $fecha = $_POST['fecha'];
-$concepto = '';
+$tipo = $_POST['tipo'];
+$operador = $_POST['operador'];
 
-if($tipo == 1){
-    $concepto = 'Venta Paquete';
-} elseif($tipo == 2){
-    $concepto = 'Recarga tiempo aire';
-}
 
 
 // Liberar memoria del resultado
 $sp = "SP_INSERTAR_RECARGA";
-$resultado = mysqli_query($connRecargas, "CALL $sp ('$monto', '$tipo', '$numero', '$fecha')");
+$resultado = mysqli_query($connRecargas, "CALL $sp ('$monto', '$tipo', '$numero', '$fecha', '$operador')");
 
 if (!$resultado) {
     echo 'Error consulta al programador ' . $conn->error;
@@ -38,15 +33,16 @@ if (!$resultado) {
     $printer->setJustification(Printer::JUSTIFY_CENTER);
     //$printer->setFontSize(2, 2);
     //Impirmir imagen
-    $image = EscposImage::load("../phone.png");
-    $printer->graphics($image);
+    //$image = EscposImage::load("../phone.png");
+    //$printer->graphics($image);
     $printer->text("Center Accesories\n");
     $printer->text("Hidalgo #151, Ario de Rosales\n");
     $printer->text("\n");
     //$printer->bitImage($logo);
     $printer->text("TICKET DE COMPRA\n");
     $printer->setJustification(Printer::JUSTIFY_LEFT);
-    $printer->text("Concepto: " . $concepto . "\n");
+    $printer->text("Operador: " . $operador . "\n");
+    $printer->text("Concepto: " . $tipo . "\n");
     $printer->text("Monto: " . $monto . "\n");
     $printer->text("Fecha: " . $fecha . "\n");
     $printer->text("Terminal: 460288 ". "\n");
@@ -61,6 +57,7 @@ if (!$resultado) {
 
  }
     // Cerrar la conexión de impresión
+    $printer->cut();
     $printer->close();
 
     $_SESSION['exito'] = "3";

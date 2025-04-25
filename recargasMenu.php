@@ -40,6 +40,15 @@ include ("mensajesExito/apartadosMensaje.php")
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
+                            <label for="imei">Operador:</label>
+                            <input type="text" class="form-control" id="operador" name="operador" required
+                                placeholder="Compañia">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
                             <label for="modelo">Monto:</label>
                             <input type="number" class="form-control" id="monto" name="monto"
                                 placeholder="Monto de la recarga" required>
@@ -51,12 +60,14 @@ include ("mensajesExito/apartadosMensaje.php")
                         <div class="form-group">
                             <label for="tipo" class="form-label">Tipo de recarga:</label>
                             <select class="form-select" name="tipo" id="tipo">
-                                <option value="1">Paquete</option>
-                                <option value="2">Normal</option>
+                                <option value="Paquete">Paquete</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Internet">Internet</option>
                             </select>
                         </div>
                     </div>
                 </div>
+                
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
