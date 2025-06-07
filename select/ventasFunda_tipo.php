@@ -13,7 +13,7 @@ if ($encontrado) {
 }
 
 
-$query = "SELECT b.nombre, a.id_tipo AS tipo , b.id_nombreTipo FROM nombre_tipo_protector b
+$query = "SELECT b.nombre, a.id_tipo AS tipo , b.clave,  b.id_nombreTipo FROM nombre_tipo_protector b
 INNER JOIN tipo_protector a
 ON a.tipo = b.id_nombreTipo
 WHERE a.id_protector = '$id'";
@@ -23,7 +23,7 @@ WHERE a.id_protector = '$id'";
     $html = "<option value='0'>--Selecciona Estilo de Funda--</option>";
     while($row = $resultado->fetch_assoc()){
         $valor = $row["id_nombreTipo"];
-        $html = $html . "<option value='".$valor ."'>".$row["nombre"] . "</option>"; 
+        $html = $html . "<option value='".$valor ."'>".$row["nombre"] . " (" . $row["clave"] .")</option>"; 
     }
     echo $html;
   
