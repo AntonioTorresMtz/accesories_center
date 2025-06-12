@@ -62,7 +62,11 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="micasCamara.php">Mica camara</a></li>
+              <li><a class="dropdown-item" href="micasCamara.php">Mica camara (Completa)</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="micasCamaraIndividual.php">Mica camara (Individual)</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
