@@ -361,6 +361,88 @@ if ($total == 0) {
 
 }
 
+$queryCamara = "SELECT a.nombre, c.cantidad, c.PK_mica_camara, c.notas,
+d.muro, d.nombre AS place FROM modelos a
+INNER JOIN rel_mica_camara_modelo b
+ON b.FK_modelo = a.id_modelo
+INNER JOIN tbl_mica_camara_individual c
+ON c.PK_mica_camara = b.FK_mica_camara_individual
+INNER JOIN  posicion d
+ON c.FK_posicion = d.id_posicion
+WHERE a.id_modelo = '$modelo'";
+
+$resultado = mysqli_query($conn, $queryCamara);
+$total = mysqli_num_rows($resultado);
+if ($total == 0) {
+    $html = $html . "<div class='col-lg-4 mt-4'>
+    <div class='card'>
+        <div class='card-header'>
+            <h5>Micas para camara (Individual)</h5>
+        </div>
+        <div class='row card-body'>
+            <div class='col-6'>                       
+                <p>No hay existencias :(</p>
+            </div>
+        </div>
+    </div>
+</div>";
+} else {
+    $micaCamara = 0;
+
+    $html = $html . "<div class='col-lg-4'>
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Micas para camara (Individual) </h5>
+            </div>
+            ";
+    while ($row = $resultado->fetch_assoc()) {
+        $micaCamara = $row["PK_mica_camara"];
+        $html = $html . "<div class='row card-body'>
+        <div class='col-12'>
+        <a href='edita_micaCamaraIndi.php?id=" . $micaCamara . "'> Editar </a>
+    </div> 
+        <div class='col-4'>
+            <p>Muro: " . $row["muro"] . "</p>
+        </div>
+        <div class='col-4'>
+            <p>Posicion: " . $row["place"] . "</p>
+        </div>              
+    
+        <div class='col-4'>
+            <p>Cantidad: " . $row["cantidad"] . "<p>
+            </div>
+            <hr>             
+            <div class='col-12'>
+                <p>Notas: " . $row["notas"] . "</p>
+            </div> 
+            <hr> 
+            <div class='col'>
+                <p>Compatibles: <br>";
+    }
+
+    $query2 = "SELECT GROUP_CONCAT(m.marca, ' ', b.nombre SEPARATOR ', ') AS nombre FROM modelos b 
+    INNER JOIN rel_mica_camara_modelo a
+    ON b.id_modelo = a.FK_modelo
+    INNER JOIN  tbl_mica_camara_individual c
+    ON a.FK_mica_camara_individual = c.PK_mica_camara
+    INNER JOIN marca m ON m.id_marca = b.marca
+    WHERE c.PK_mica_camara = '$micaCamara'
+    GROUP BY a.FK_mica_camara_individual";
+
+    $resultado = mysqli_query($conn, $query2);
+
+
+    while ($row = $resultado->fetch_assoc()) {
+        $html = $html . $row["nombre"];
+    }
+
+    $html = $html . "</div>
+        </div>
+    </div>
+</div>";
+
+}   
+
 $queryCamara = "SELECT a.nombre, c.cantidad, c.id_micaCamara, c.notas,
 d.muro, d.nombre AS place FROM modelos a
 INNER JOIN nombre_micacamara b

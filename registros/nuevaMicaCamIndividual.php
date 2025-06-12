@@ -6,13 +6,7 @@ $cantidad = $_POST["cantidad"];
 $posicion = $_POST["posicion"];
 $modelos_arreglo = array();
 $modelo = ($_POST['modelo']);
-if (isset($_POST['notas']) && !empty($_POST['notas'])) {
-    // La variable 'nombre' está presente y no está vacía
-    $notas = $_POST['notas'];
-    // Realizar acciones con la variable 'nombre' aquí
-} else {
-    $notas = null;
-}
+$notas = isset($_POST["notas"]) && trim($_POST["notas"]) !== '' ? $_POST["notas"] : null;
 
 while (true) {
     $modelo1 = current($modelo); //Modelo
@@ -26,12 +20,14 @@ while (true) {
 
 $modelos_arreglo = array_unique($modelos_arreglo);
 
-$mica = "INSERT INTO tbl_mica_camara_individual (FK_marca, cantidad, FK_posicion, notas) VALUES ('$marca', '$cantidad','$posicion', '$notas')";
+$stmt = $conn->prepare("INSERT INTO tbl_mica_camara_individual (FK_marca, cantidad, FK_posicion, notas) VALUES (?, ?, ?, ?)");
 
-$resultado = mysqli_query($conn, $mica);
-if (!$resultado) {
-    echo 'Error consulta al programador ' . $conn->error;
-} else {
+// Enlazar parámetros (s = string, i = integer, d = double, b = blob)
+// Aquí usamos: i (marca), i (cantidad), i (posicion), s (notas) — y si es NULL, también se maneja bien
+$stmt->bind_param("iiis", $marca, $cantidad, $posicion, $notas);
+
+// Ejecutar
+if ($stmt->execute()) {
     echo 'Exito mica <br>';
     $modelo = ($_POST['modelo']);
 
@@ -57,7 +53,9 @@ if (!$resultado) {
     header("Location: ../micasCamaraIndividual.php");
     exit();
 
-
+} else {
+    echo "Error al insertar: " . $stmt->error;
 }
+
 
 ?>
