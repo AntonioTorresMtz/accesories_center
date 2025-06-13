@@ -17,7 +17,7 @@ $total = mysqli_num_rows($resultado);
 if ($total == 0) {
     $html = "<div class='row'>
                 <div class='col-lg-4'>
-                    <div class='card'>
+                    <div class='card mt-4'>
                         <div class='card-header'>
                             <h5>Micas Normales</h5>
                         </div>
@@ -32,7 +32,7 @@ if ($total == 0) {
     $mica9h = 0;
     $html = "<div class='row'>
                 <div class='col-lg-4'>
-                    <div class='card'>
+                    <div class='card mt-4'>
                         <div class='card-header'>
                             <h5>Micas Normales</h5>
                         </div>
@@ -375,7 +375,7 @@ $resultado = mysqli_query($conn, $queryCamara);
 $total = mysqli_num_rows($resultado);
 if ($total == 0) {
     $html = $html . "<div class='col-lg-4 mt-4'>
-    <div class='card'>
+    <div class='card mt-4'>
         <div class='card-header'>
             <h5>Micas para camara (Individual)</h5>
         </div>
@@ -390,7 +390,7 @@ if ($total == 0) {
     $micaCamara = 0;
 
     $html = $html . "<div class='col-lg-4'>
-        <div class='card'>
+        <div class='card mt-4'>
             <div class='card-header'>
                 <h5>Micas para camara (Individual) </h5>
             </div>
@@ -441,7 +441,7 @@ if ($total == 0) {
     </div>
 </div>";
 
-}   
+}
 
 $queryCamara = "SELECT a.nombre, c.cantidad, c.id_micaCamara, c.notas,
 d.muro, d.nombre AS place FROM modelos a
@@ -457,9 +457,9 @@ $resultado = mysqli_query($conn, $queryCamara);
 $total = mysqli_num_rows($resultado);
 if ($total == 0) {
     $html = $html . "<div class='col-lg-4 mt-4'>
-    <div class='card'>
+    <div class='card mt-4'>
         <div class='card-header'>
-            <h5>Micas para camara</h5>
+            <h5>Micas para camara (Completa) </h5>
         </div>
         <div class='row card-body'>
             <div class='col-6'>                       
@@ -472,9 +472,9 @@ if ($total == 0) {
     $micaCamara = 0;
 
     $html = $html . "<div class='col-lg-4'>
-        <div class='card'>
+        <div class='card mt-4'>
             <div class='card-header'>
-                <h5>Micas para camara</h5>
+                <h5>Micas para camara (Completa)</h5>
             </div>
             ";
     while ($row = $resultado->fetch_assoc()) {
@@ -539,7 +539,7 @@ $resultado = mysqli_query($conn, $queryCurva);
 $total = mysqli_num_rows($resultado);
 if ($total == 0) {
     $html = $html . "<div class='col-lg-4 mt-4'>
-    <div class='card'>
+    <div class='card mt-4'>
         <div class='card-header'>
             <h5>Micas Curvas</h5>
         </div>
@@ -554,7 +554,7 @@ if ($total == 0) {
     $micaCurva = 0;
 
     $html = $html . "<div class='col-lg-4'>
-        <div class='card'>
+        <div class='card mt-4'>
             <div class='card-header'>
                 <h5>Micas curvas</h5>
             </div>
