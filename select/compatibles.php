@@ -105,7 +105,6 @@ $resultado = mysqli_query($conn, $query9d);
 $total = mysqli_num_rows($resultado);
 if ($total == 0) {
     $html = $html . "<div class='col-lg-4'>
-    <div class='card'>
         <div class='card-header'>
             <h5>Micas Completas</h5>
         </div>

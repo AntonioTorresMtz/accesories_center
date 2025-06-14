@@ -2,7 +2,7 @@
 include("db.php");
 include("includes/header.php");
 include("mensajesExito/celularesMensaje.php")
-    ?>
+?>
 
 <div class="container">
     <h1>Teléfonos</h1>
@@ -81,3 +81,4 @@ include("mensajesExito/celularesMensaje.php")
 </style>
 
 <script src="js/buscarCelular.js"></script>
+<script src="js/validarVentaCelular.js"></script>
