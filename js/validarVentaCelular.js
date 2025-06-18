@@ -1,22 +1,24 @@
+let validando = false;
+
 document.getElementById("formulario").addEventListener("submit", function (e) {
+  if (validando) return; // Permite el envío si ya fue validado
   e.preventDefault(); // Evita el envío inmediato
 
   const imei = document.getElementById("imei").value;
 
-  fetch("../select/verificarImei.php", {
+  fetch("select/verificarImei.php", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: "imei=" + encodeURIComponent(imei),
   })
     .then((res) => res.text())
     .then((data) => {
-      console.log(imei);
       if (data === "existe") {
-        document.getElementById("formulario").submit();
+        validando = true; // Marca que la validación ya pasó
+        document.getElementById("formulario").submit(); // Ahora sí se envía
       } else {
-        //Si no se encuentra el IMEI o ID se muestra un mensaje de advertencia
         Swal.fire({
-          title: "Telefono no encontrado",
+          title: "Teléfono no encontrado",
           text: "¡Verifica si has ingresado el IMEI correcto!",
           icon: "info",
         });
