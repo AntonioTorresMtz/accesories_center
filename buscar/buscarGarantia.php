@@ -26,7 +26,8 @@ function buscar()
     INNER JOIN venta_celular vc ON vc.PK_venta = tg.FK_venta_celular
     INNER JOIN celular c ON c.id_celular = vc.FK_celular
     INNER JOIN marca m  ON c.FK_marca = m.id_marca
-    WHERE  CONCAT(m.marca, ' ', c.modelo, ' ', c.red, 'G ', c.almacenamiento, ' gb', ' ', tg.nombre_dueno) LIKE '%$q%'";
+    WHERE  CONCAT(m.marca, ' ', c.modelo, ' ', c.red, 'G ', c.almacenamiento, ' gb', ' ', tg.nombre_dueno) LIKE '%$q%'
+    ORDER BY PK_ticket_garantia DESC";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
@@ -53,7 +54,8 @@ function defecto()
 tg.nombre_dueno, tg.telefono_dueno, vc.fecha_venta, tg.fecha_recepcion, tg.ticket_compra FROM tbl_ticket_garantia tg
 INNER JOIN venta_celular vc ON vc.PK_venta = tg.FK_venta_celular
 INNER JOIN celular c ON c.id_celular = vc.FK_celular
-INNER JOIN marca m  ON c.FK_marca = m.id_marca;";
+INNER JOIN marca m  ON c.FK_marca = m.id_marca
+ORDER BY PK_ticket_garantia DESC";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
