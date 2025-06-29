@@ -51,18 +51,19 @@ if ($result) {
     $sp = "SP_INSERTAR_VENTA_CELULAR";
     $resultado = mysqli_query($conn, "CALL $sp ('$id', '$precio', '$descuento')");
 
+    $sql = "SELECT PK_venta FROM venta_celular ORDER  BY PK_venta DESC LIMIT 1";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $id_venta = $row["PK_venta"];
+
     if (!$resultado) {
         echo 'Error consulta al programador ' . $conn->error;
-        //printf("Errormessage: %s\n", $conn->error);
     } else {
         // Crear una instancia del conector de impresión de Windows
         $connector = new WindowsPrintConnector("POS58");
 
         // Crear una instancia de la impresora
         $printer = new Printer($connector);
-        //$rutaLogo = "ticket.jpg";
-        //$logo = EscposImage::load('../img/ticket.jpg');
-
 
         // Realizar las operaciones de impresión
         $printer->setJustification(Printer::JUSTIFY_CENTER);
@@ -75,6 +76,7 @@ if ($result) {
         $printer->text("\n");
         $printer->text("TICKET DE COMPRA\n");
         $printer->setJustification(Printer::JUSTIFY_LEFT);
+        $printer->text("Folio: " . $id_venta . "\n");
         $printer->text("Celular: " . $marca . " " . $modelo . "\n");
         $printer->text("Estado del telefono: " . $condicion . "\n");
         $printer->text("IMEI 1: " . $imei1 . "\n");

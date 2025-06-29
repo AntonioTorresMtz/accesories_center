@@ -66,11 +66,11 @@ function consultarVenta($id)
         $precio = $row['precio'];
         $descuento = $row['descuento'];
         $total = $row['total'];
-        imprimirInfo($marca, $modelo, $imei1, $imei2, $condicion, $precio, $descuento, $total, $fecha);
+        imprimirInfo($id, $marca, $modelo, $imei1, $imei2, $condicion, $precio, $descuento, $total, $fecha);
     }
 }
 
-function imprimirInfo($marca, $modelo, $imei1, $imei2, $condicion, $precio, $descuento, $total, $fecha)
+function imprimirInfo($id, $marca, $modelo, $imei1, $imei2, $condicion, $precio, $descuento, $total, $fecha)
 {
     include("../vendor/autoload.php");
     // Crear una instancia del conector de impresión de Windows
@@ -89,6 +89,7 @@ function imprimirInfo($marca, $modelo, $imei1, $imei2, $condicion, $precio, $des
     $printer->text("\n");
     $printer->text("TICKET DE COMPRA\n");
     $printer->setJustification(Printer::JUSTIFY_LEFT);
+    $printer->text("Folio: " . $id . "\n");
     $printer->text("Celular: " . $marca . " " . $modelo . "\n");
     $printer->text("Esatado del telefono: " . $condicion . "\n");
     $printer->text("IMEI 1: " . $imei1 . "\n");
