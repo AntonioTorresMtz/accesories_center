@@ -28,7 +28,7 @@ $id = '';
 
 $sql = "SELECT c.id_celular, m.marca, c.modelo, c.imei1, c.imei2, estado FROM celular c
 INNER JOIN marca m ON  m.id_marca = c.FK_marca
-WHERE id_celular = '$imei' OR imei1 = '$imei';";
+WHERE id_celular = '$imei' OR imei1 = '$imei' OR imei2 = '$imei';";
 
 $result = $conn->query($sql);
 
