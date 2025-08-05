@@ -77,6 +77,15 @@ if (!$resultado) {
     $printer->text("llamar al *264\n");
 
     $printer->text("\n");
+    $printer->text("--// IMPORTTANTE --// \n");
+    $printer->text("\n");
+    $printer->text("En caso de que su pago no se vea reflejado \n");
+    $printer->text("Cuenta con dos dias para venir a hacer su aclaración. \n");
+    $printer->text("En caso de no poder venir a hacer la aclaracion \n");
+    $printer->text("de manera presencial, \n");
+    $printer->text("Puede marcar al número 4251054321 \n");
+
+    $printer->text("\n");
 
     $printer->cut();
 
