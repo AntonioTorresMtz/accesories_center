@@ -1,8 +1,8 @@
 <?php
-include ("db.php");
-include ("includes/header.php");
-include ("mensajesExito/apartadosMensaje.php")
-    ?>
+include("db.php");
+include("includes/header.php");
+include("mensajesExito/apartadosMensaje.php")
+?>
 
 <div class="container">
     <div>
@@ -19,9 +19,9 @@ include ("mensajesExito/apartadosMensaje.php")
 
                     $res = $connRecargas->query($query);
                     $row = $res->fetch_array(MYSQLI_ASSOC);
-                    echo '<p> $' . $row['ventas'] . '</p>';                                                                                 
+                    echo '<p> $' . $row['ventas'] . '</p>';
                     ?>
-                </div>                              
+                </div>
             </div>
             <form action="registros/nuevaRecarga.php" method="POST" id="formulario"
                 class="col-md-12 shadow p-3 align-self-start">
@@ -67,7 +67,7 @@ include ("mensajesExito/apartadosMensaje.php")
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -88,6 +88,15 @@ include ("mensajesExito/apartadosMensaje.php")
         </div>
 
         <div class="col-md-9 ml-5">
+            <div class="col-md-6 text-end">
+                <div class="btn-group" role="group" aria-label="Tipo de tabla">
+                    <input type="radio" class="btn-check" name="tablaTipo" id="recargas" value="recargas" checked>
+                    <label class="btn btn-outline-dark" for="recargas">Recargas</label>
+
+                    <input type="radio" class="btn-check" name="tablaTipo" id="servicios" value="paquetes">
+                    <label class="btn btn-outline-dark" for="paquetes">Servicios</label>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -95,7 +104,7 @@ include ("mensajesExito/apartadosMensaje.php")
                     </div>
                 </div>
             </div>
-            <div class="table-responsive" style="max-height: 600px;">
+            <div class="table-responsive tabla" id="tabla-recargas" style="max-height: 600px;">
                 <table class="table table-striped table-borderless table-hover">
                     <thead>
                         <tr>
@@ -113,6 +122,26 @@ include ("mensajesExito/apartadosMensaje.php")
                     </tbody>
                 </table>
             </div>
+
+            <div class="table-responsive tabla d-none" id="tabla-servicios" style="max-height: 600px;">
+                <table class="table table-striped table-borderless table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tipo Recarga</th>
+                            <th>Monto</th>
+                            <th>Compañia</th>
+                            <th>Telefono</th>
+                            <th>Fecha</th>
+                            <th>Reimprimir Ticket</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultSer">
+
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 </div>
@@ -124,4 +153,19 @@ include ("mensajesExito/apartadosMensaje.php")
 </style>
 
 <script src="js/buscarRecargas.js"></script>
+<script src="js/buscarServicio.js"></script>
 <script src="js/reimprimirRecarga.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const radios = document.querySelectorAll('input[name="tablaTipo"]');
+    radios.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            const tipo = e.target.value;
+            // Ocultar todas las tablas
+            document.querySelectorAll('.tabla').forEach(t => t.classList.add('d-none'));
+            // Mostrar solo la seleccionada
+            document.getElementById(`tabla-${tipo}`).classList.remove('d-none');
+        });
+    });
+});
+</script>
