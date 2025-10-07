@@ -29,13 +29,12 @@ function buscar()
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
-        echo "<tr> <td>" . $row['PK_recarga'] . "</td>" .
-            "<td>" . $row['tipo'] . "</td>" .
-            "<td>" . $row['monto'] . "</td>" .
-            "<td>" . $row['FK_compania'] . "</td>" .
-            "<td>" . $row['telefono'] . "</td>" .
-            "<td>" . $row['fecha_insercion'] . "</td>" .
-            "<td> <button class='btn btn-primary btn-reimprimir' id='" . $row['PK_recarga'] . "' onclick='reimprimir(" . $row['PK_recarga'] . ")'> Reimprimir </button> </td>
+        echo "<tr> <td>" . $row['PK_servicio'] . "</td>" .
+            "<td>" . $row['producto'] . "</td>" .
+            "<td>" . $row['referencia'] . "</td>" .
+            "<td>" . $row['cantidad'] . "</td>" .
+            "<td>" . $row['fecha_plataforma'] . "</td>" .
+            "<td> <button class='btn btn-primary btn-reimprimir' id='" . $row['PK_servicio'] . "' onclick='reimprimir(" . $row['PK_servicio'] . ")'> Reimprimir </button> </td>
             <tr>";
     }
 }
@@ -53,7 +52,7 @@ function defecto()
             "<td>" . $row['referencia'] . "</td>" .
             "<td>" . $row['cantidad'] . "</td>" .
             "<td>" . $row['fecha_plataforma'] . "</td>" .            
-            "<td> <button class='btn btn-primary btn-reimprimir' id='" . $row['PK_servicio'] . "' onclick='reimprimir(" . $row['PK_recarga'] . ")'> Reimprimir </button> </td>
+            "<td> <button class='btn btn-primary btn-reimprimir' id='" . $row['PK_servicio'] . "' onclick='reimprimir(" . $row['PK_servicio'] . ")'> Reimprimir </button> </td>
             <tr>";
     }
 }
