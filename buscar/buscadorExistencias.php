@@ -19,11 +19,13 @@ switch ($producto) {
 function buscarMica9h($maximo)
 {
     $mysqli = getConnexion();
-    $query = "SELECT GROUP_CONCAT(DISTINCT CONCAT(ma.marca, ' ', mo.nombre) SEPARATOR ', ') AS modelos, m.cantidad 
+    $query = "SELECT GROUP_CONCAT(DISTINCT CONCAT(ma.marca, ' ', mo.nombre) SEPARATOR ', ') AS modelos, m.cantidad,
+    CONCAT('Muro ', p.muro, ' ', p.nombre) as posicion
     FROM micas9h m
     INNER JOIN nombre_mica9h nom ON m.id_mica9h = nom.id_mica9h
     INNER JOIN modelos mo ON mo.id_modelo = nom.nombre_modelo
     INNER JOIN marca ma ON ma.id_marca = mo.marca
+    INNER JOIN posicion p ON p.id_posicion = m.posicion
     WHERE m.cantidad <= '$maximo'
     GROUP BY nom.id_mica9h
     ORDER BY ma.marca, mo.nombre";
@@ -37,6 +39,7 @@ function buscarMica9h($maximo)
           }*/
         echo "<tr> <td>" . $row['modelos'] . "</td>" .
             "<td>" . $row['cantidad'] . "</td>" .
+            "<td>" . $row['posicion'] . "</td>" .
             "</tr>";
     }
 }
@@ -51,6 +54,7 @@ function buscarMica9d($maximo)
         INNER JOIN modelos mo ON mo.id_modelo = nom.nombre_modelo
         INNER JOIN marca ma ON ma.id_marca = mo.marca
         INNER JOIN posicion p ON m.posicion = p.id_posicion
+        WHERE m.cantidad <= '$maximo'
         GROUP BY nom.id_mica
         ORDER BY p.nombre, ma.marca, mo.nombre";
 
@@ -71,11 +75,13 @@ function buscarMica9d($maximo)
 function buscarMica100d($maximo)
 {
     $mysqli = getConnexion();
-    $query = "SELECT GROUP_CONCAT(DISTINCT CONCAT(ma.marca, ' ', mo.nombre) SEPARATOR ', ') AS modelos, m.cantidad 
+    $query = "SELECT GROUP_CONCAT(DISTINCT CONCAT(ma.marca, ' ', mo.nombre) SEPARATOR ', ') AS modelos, m.cantidad,
+    CONCAT('Muro ', p.muro, ' ', p.nombre) as posicion
     FROM micas100d m
     INNER JOIN nombre_mica100d nom ON m.id_mica100d = nom.id_mica100d
     INNER JOIN modelos mo ON mo.id_modelo = nom.nombre_modelo
     INNER JOIN marca ma ON ma.id_marca = mo.marca
+    INNER JOIN posicion p ON p.id_posicion = m.posicion
     WHERE m.cantidad <= '$maximo'
     GROUP BY nom.id_mica100d
     ORDER BY ma.marca, mo.nombre";
@@ -89,6 +95,7 @@ function buscarMica100d($maximo)
           }*/
         echo "<tr> <td>" . $row['modelos'] . "</td>" .
             "<td>" . $row['cantidad'] . "</td>" .
+            "<td>" . $row['posicion'] . "</td>" .
             "</tr>";
     }
 }
