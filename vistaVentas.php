@@ -60,14 +60,14 @@ if (isset($_POST['buscar'])) {
                 <?php
                 if (isset($_POST['buscar'])) {
                     $query = "SELECT v.id_venta, p.nombre as producto, n.nombre, m.marca, mo.nombre as model, v.fecha, v.cantidad, v.precio,
-            v.descuento, v.cantidad * v.precio - v.descuento AS total FROM ventas v
-            INNER JOIN productos p ON p.id_producto = v.id_producto
-            INNER JOIN marca m ON m.id_marca = v.marca
-            LEFT JOIN nombre_tipo_protector n ON n.id_nombreTipo = v.id_tipo
-            INNER JOIN modelos mo ON mo.id_modelo = v.nombre_modelo
-            WHERE v.fecha BETWEEN '$inicio' and '$fin'
-            ORDER BY v.id_venta DESC
-            LIMIT 50";
+                    v.descuento, v.cantidad * v.precio - v.descuento AS total FROM ventas v
+                    INNER JOIN productos p ON p.id_producto = v.id_producto
+                    INNER JOIN marca m ON m.id_marca = v.marca
+                    LEFT JOIN nombre_tipo_protector n ON n.id_nombreTipo = v.id_tipo
+                    INNER JOIN modelos mo ON mo.id_modelo = v.nombre_modelo
+                    WHERE v.fecha BETWEEN '$inicio' and '$fin'
+                    ORDER BY v.id_venta DESC
+                    LIMIT 50";
 
                     $res = $conn->query($query);
                     if ($res->num_rows == 0) {
