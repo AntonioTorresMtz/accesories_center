@@ -229,6 +229,10 @@
             <li>
               <hr class="dropdown-divider">
             </li>
+            <li><a class="dropdown-item" href="reparaciones.php">Reparación</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item" href="menuVentasCelulares.php">Lista de ventas</a></li>
             <li>
               <hr class="dropdown-divider">
