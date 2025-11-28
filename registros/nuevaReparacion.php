@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('America/Mexico_City');
 include '../db.php';
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
@@ -16,13 +17,13 @@ $descripcion_problema = empty($_POST['descripcion_problema']) ? null : $_POST['d
 $contrasena = empty($_POST['contrasena']) ? null : $_POST['contrasena'];
 
 $sp = "SP_INSERTAR_REPARACION";
-$stmt = mysqli_prepare($conn, "CALL $sp (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt = mysqli_prepare($conn, "CALL $sp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 $producto = 7;
 if ($stmt) {
     // Asignamos los valores a los parámetros usando bind_param
     mysqli_stmt_bind_param(
         $stmt,
-        "ssiisddss",
+        "ssiisddssi",
         $nombre_cliente,
         $telefono,
         $marca,
@@ -31,13 +32,14 @@ if ($stmt) {
         $presupuesto,
         $abono,
         $descripcion,
-        $contrasena
+        $contrasena,
+        $envio
     );
     // Ejecutamos la consulta
     if (mysqli_stmt_execute($stmt)) {
         $resultado = mysqli_stmt_get_result($stmt);
         mysqli_stmt_close($stmt);
-        // imprimirSeguimiento($FK_venta, $nombre_cliente, $descripcion, $caja, $accesorios, $contrasena, $formateado, $ticket_compra);
+        imprimirTicket($nombre_cliente, $telefono, $modelo, $servicio, $presupuesto, $abono, $descripcion, $envio);
         $_SESSION['exito'] = "4";
         header("Location: ../reparaciones.php");
         exit();
@@ -57,7 +59,7 @@ function convertirBooleano($booleano)
 
 function imprimirTicket($nombre_cliente, $telefono, $modelo, $servicio, $presupuesto, $abono, $descripcion, $envio)
 {
-    $costo_envio = $envio == 0 ? 150 : 0;
+    $costo_envio = $envio == 0 ? 0 : 150;
     include '../db.php';
 
     $sql = "SELECT m.marca, mo.nombre FROM marca m
@@ -82,21 +84,26 @@ function imprimirTicket($nombre_cliente, $telefono, $modelo, $servicio, $presupu
     $printer->text(date('d-m-Y') . "  " . date('H:i:s') . "\n");
     $printer->text("\n");
     //$printer->bitImage($logo);
-    $printer->text("\n");
     $printer->text("NOTA DE RECIBIDO\n");
     $printer->setJustification(Printer::JUSTIFY_LEFT);
     $printer->text("Cliente: " . $nombre_cliente . "\n");
-    $printer->text("Servicio: " . $row["modelo"] . "\n");
-    $printer->text("Modelo: " . $row["marca"] . " " . $row["modelo"] . "\n");
+    $printer->text("Servicio: " . $servicio . "\n");
+    $printer->text("Modelo: " . $row["marca"] . " " . $row["nombre"] . "\n");
     $printer->text("Problema de equipo: " . $telefono . "\n");
-    $printer->text("Cotizacion: " . $presupuesto . "\n");
-    $printer->text("Costo de Envio: " . $costo_envio . "\n");
-    $printer->text("Abono: " . $abono . "\n");
+    $printer->text("Cotizacion: $" . $presupuesto . "\n");
+    $printer->text("Costo de Envio: $" . $costo_envio . "\n");
+    $printer->text("Total: $" . $costo_envio+$presupuesto . "\n");
+    $printer->text("Abono: $" . $abono . "\n");
+    $printer->text("Restante: $" . $costo_envio+$presupuesto-$abono . "\n");
     
     $printer->setJustification(Printer::JUSTIFY_CENTER);
+    $printer->text("\n");
     $printer->text("El cliente cuenta con un mes de garantia en caso de calquier falla por defecto de fabrica en piezas\n");
     $printer->text("Asi mismo tendra 60 dias para recoger su equipo a partir de la fecha en que se haya avisado\n");
     $printer->text("De lo contrario el equipo se rematara para cubrir los costos que genero el equipo.\n");
+    $printer->text("\n");
+    $printer->text("\n");
+    $printer->text("\n");
     $printer->cut();
     // Cerrar la conexión de impresión
     $printer->close();
