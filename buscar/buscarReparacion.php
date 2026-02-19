@@ -49,7 +49,8 @@ function defecto()
     r.nombre_cliente, r.telefono_contacto, r.presupuesto, r.abono, r.contrasena_telefono, r.fecha_recepcion
     FROM tbl_reparacion r
     INNER JOIN modelos m ON m.id_modelo = r.FK_modelo
-    INNER JOIN marca ma ON ma.id_marca = r.FK_marca";
+    INNER JOIN marca ma ON ma.id_marca = r.FK_marca
+    ORDER BY r.PK_reparacion DESC";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
@@ -60,7 +61,7 @@ function defecto()
             "<td>" . $row['abono'] . "</td>" .
             "<td>" . $row['contrasena_telefono'] . "</td>" .
             "<td>" . $row['fecha_recepcion'] . "</td>" .
-            "<td><a href='seguimientoGarantia.php?id=" . $row['PK_reparacion'] . "'> Detalles </a></td>" .
+            "<td><a href='reparacionAbono.php?id=" . $row['PK_reparacion'] . "'> Detalles </a></td>" .
             "</tr>";
     }
 }

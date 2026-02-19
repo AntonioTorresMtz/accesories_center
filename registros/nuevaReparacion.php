@@ -40,6 +40,7 @@ if ($stmt) {
         $resultado = mysqli_stmt_get_result($stmt);
         mysqli_stmt_close($stmt);
         imprimirTicket($nombre_cliente, $telefono, $modelo, $servicio, $presupuesto, $abono, $descripcion, $envio);
+        imprimirTicket($nombre_cliente, $telefono, $modelo, $servicio, $presupuesto, $abono, $descripcion, $envio);
         $_SESSION['exito'] = "4";
         header("Location: ../reparaciones.php");
         exit();
@@ -89,19 +90,26 @@ function imprimirTicket($nombre_cliente, $telefono, $modelo, $servicio, $presupu
     $printer->text("Cliente: " . $nombre_cliente . "\n");
     $printer->text("Servicio: " . $servicio . "\n");
     $printer->text("Modelo: " . $row["marca"] . " " . $row["nombre"] . "\n");
-    $printer->text("Problema de equipo: " . $telefono . "\n");
+    $printer->text("Telefono de Contacto: " . $telefono . "\n");
     $printer->text("Cotizacion: $" . $presupuesto . "\n");
     $printer->text("Costo de Envio: $" . $costo_envio . "\n");
-    $printer->text("Total: $" . $costo_envio+$presupuesto . "\n");
+    $printer->text("Total: $" . $costo_envio + $presupuesto . "\n");
     $printer->text("Abono: $" . $abono . "\n");
-    $printer->text("Restante: $" . $costo_envio+$presupuesto-$abono . "\n");
-    
+    $printer->text("Restante: $" . $costo_envio + $presupuesto - $abono . "\n");
+
     $printer->setJustification(Printer::JUSTIFY_CENTER);
     $printer->text("\n");
     $printer->text("El cliente cuenta con un mes de garantia en caso de calquier falla por defecto de fabrica en piezas\n");
-    $printer->text("Asi mismo tendra 60 dias para recoger su equipo a partir de la fecha en que se haya avisado\n");
+    $printer->text("Asi mismo tendra 60 dias para recoger su equipo a partir de la fecha en que se haya notificado.\n");
     $printer->text("De lo contrario el equipo se rematara para cubrir los costos que genero el equipo.\n");
     $printer->text("\n");
+    $printer->text("\n");
+    $printer->text("\n");
+    $printer->text("\n");
+    $printer->text("\n");
+    $printer->text("\n");
+    $printer->text("__________________________\n");
+    $printer->text("Firma del Cliente");
     $printer->text("\n");
     $printer->text("\n");
     $printer->cut();
