@@ -90,7 +90,7 @@ $notas = $fila["notas"];
             </div>
             <div class="col">
                 <?php
-                $query = "SELECT np.nombre, np.id_nombreTipo, tp.cantidad FROM tipo_protector tp 
+                $query = "SELECT np.nombre, np.id_nombreTipo, tp.cantidad, np.clave FROM tipo_protector tp 
                 RIGHT JOIN nombre_tipo_protector np ON np.id_nombreTipo = tp.tipo
                 INNER JOIN protectores p ON p.id_protector = tp.id_protector
                 WHERE p.id_protector = '$id'";
@@ -104,9 +104,11 @@ $notas = $fila["notas"];
                         $nombre = $row['nombre'];
                         $id_tipo = $row['id_nombreTipo'];
                         $cantidad = $row['cantidad'];
+                        $clave = $row['clave'];
+                        $nombreClave = $nombre . " (" . $clave . ") ";
 
                         // Generar el input dinámico                
-                        echo '<div class="row mb-2"><div class="col-6"><input readonly type="text" name="nombre[]" value="' . $nombre . '" class="form-control"> </div>';
+                        echo '<div class="row mb-2"><div class="col-6"><input readonly type="text" name="nombre[]" value="' . $nombreClave . '" class="form-control"> </div>';
                         echo '<input hidden type="text" name="id_tipo[]" value="' . $id_tipo . '" class="form-control"> ';
                         echo '<div class="col-6"><input type="number" name="cantidad[]" value="' . $cantidad . '" class="form-control"> </div> </div>';
                     }
