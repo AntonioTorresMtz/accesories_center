@@ -43,7 +43,6 @@ function buscar()
             "</tr>";
     }
 
-    $stmt->close();
     $mysqli->close();
 }
 function defecto()

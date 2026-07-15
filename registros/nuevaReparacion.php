@@ -47,7 +47,7 @@ if ($stmt) {
         imprimirTicket($nombre_cliente, $telefono, $modelo, $marca, $modeloNuevo, $servicio, $presupuesto, $abono, $descripcion, $envio, 0);
 
         $_SESSION['exito'] = "4";
-        //header("Location: ../reparaciones.php");
+        header("Location: ../reparaciones.php");
         exit();
     } else {
         //echo "Error ejecutando la consulta: " . mysqli_stmt_error($stmt);
