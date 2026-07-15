@@ -83,7 +83,7 @@ if (!$resultado) {
     $printer->text("Cuenta con dos dias para venir a hacer su aclaración. \n");
     $printer->text("En caso de no poder venir a hacer la aclaracion \n");
     $printer->text("de manera presencial, \n");
-    $printer->text("Puede marcar al número 4251054321 \n");
+    $printer->text("Puede enviar Whatsapp al 4251054321 \n");
 
     $printer->text("\n");
 

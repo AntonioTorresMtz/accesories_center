@@ -61,7 +61,7 @@ function defecto()
     FROM tbl_recargas r
     LEFT JOIN cat_tipo_recarga tp ON tp.PK_tipo_recarga = r.FK_tipo_recarga 
     ORDER BY r.PK_recarga DESC
-    LIMIT 100;";
+    LIMIT 200;";
 
     $res = $mysqli->query($query);
     while ($row = $res->fetch_array(MYSQLI_ASSOC)) {

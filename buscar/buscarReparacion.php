@@ -42,8 +42,10 @@ function buscar()
             "<td><a href='reparacionAbono.php?id=" . $row['PK_reparacion'] . "'> Detalles </a></td>" .
             "</tr>";
     }
-}
 
+    $stmt->close();
+    $mysqli->close();
+}
 function defecto()
 {
     $mysqli = getConnexion();
