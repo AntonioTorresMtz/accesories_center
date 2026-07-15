@@ -8,23 +8,25 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
 $nombre_cliente = $_POST['nombre_cliente'];
 $telefono = empty($_POST['telefono']) ? null : $_POST['telefono'];
-$marca = $_POST['marca'];
-$modelo = $_POST['modelo'];
+$_POST['marca'] == 0 ? $marca = null :  $marca = $_POST['marca'];
+$modelo = ($_POST['marca'] == 0) ? null : ($_POST['modelo'] ?? null);
+
 $servicio = $_POST['servicio'];
 $presupuesto = $_POST['presupuesto'];
 $abono = $_POST['abono'];
 $envio = $_POST['envio'];
+$modeloNuevo = $_POST['modeloNuevo'];
 $descripcion_problema = empty($_POST['descripcion_problema']) ? null : $_POST['descripcion_problema'];
 $contrasena = empty($_POST['contrasena']) ? null : $_POST['contrasena'];
 
 $sp = "SP_INSERTAR_REPARACION";
-$stmt = mysqli_prepare($conn, "CALL $sp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt = mysqli_prepare($conn, "CALL $sp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 $producto = 7;
 if ($stmt) {
     // Asignamos los valores a los parámetros usando bind_param
     mysqli_stmt_bind_param(
         $stmt,
-        "ssiisddssi",
+        "ssiisddssis",
         $nombre_cliente,
         $telefono,
         $marca,
@@ -34,22 +36,24 @@ if ($stmt) {
         $abono,
         $descripcion,
         $contrasena,
-        $envio
+        $envio,
+        $modeloNuevo
     );
     // Ejecutamos la consulta
     if (mysqli_stmt_execute($stmt)) {
         $resultado = mysqli_stmt_get_result($stmt);
         mysqli_stmt_close($stmt);
-        imprimirTicket($nombre_cliente, $telefono, $modelo, $servicio, $presupuesto, $abono, $descripcion, $envio, 1);
-        imprimirTicket($nombre_cliente, $telefono, $modelo, $servicio, $presupuesto, $abono, $descripcion, $envio, 0);
+        imprimirTicket($nombre_cliente, $telefono, $modelo, $marca, $modeloNuevo, $servicio, $presupuesto, $abono, $descripcion, $envio, 1);
+        imprimirTicket($nombre_cliente, $telefono, $modelo, $marca, $modeloNuevo, $servicio, $presupuesto, $abono, $descripcion, $envio, 0);
+
         $_SESSION['exito'] = "4";
-        header("Location: ../reparaciones.php");
+        //header("Location: ../reparaciones.php");
         exit();
     } else {
         //echo "Error ejecutando la consulta: " . mysqli_stmt_error($stmt);
         $_SESSION['error'] = mysqli_error($conn);
         echo $_SESSION['error'];
-        //header("Location: ../garantias_menu.php");
+        header("Location: ../garantias_menu.php");
         exit();
     }
 }
@@ -59,17 +63,32 @@ function convertirBooleano($booleano)
     return $booleano == 1 ? "Si" : "No";
 }
 
-function imprimirTicket($nombre_cliente, $telefono, $modelo, $servicio, $presupuesto, $abono, $descripcion, $envio, $firma)
+function imprimirTicket($nombre_cliente, $telefono, $modelo, $marca, $modeloNuevo, $servicio, $presupuesto, $abono, $descripcion, $envio, $firma)
 {
     $costo_envio = $envio == 0 ? 0 : 150;
     include '../db.php';
 
-    $sql = "SELECT m.marca, mo.nombre FROM marca m
+    $modeloImpreso = "";
+
+    if ($modelo > 0 and $marca > 0) {
+        $sql = "SELECT m.marca, mo.nombre FROM marca m
             INNER JOIN modelos mo ON mo.marca = m.id_marca
             WHERE mo.id_modelo = '$modelo';";
 
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+        $modeloImpreso = $row["marca"] . " " . $row["nombre"];
+    } elseif ($modelo === null and $marca > 0) {
+        $sql = "SELECT marca FROM marca WHERE id_marca = '$marca';";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+        $modeloImpreso = $row["marca"]. " " . $modeloNuevo;
+        echo "Caso 2";
+    } else {
+        $modeloImpreso = $modeloNuevo;
+    }
+
+
 
     //Impresion de ticket:
     include("../vendor/autoload.php");
@@ -90,7 +109,7 @@ function imprimirTicket($nombre_cliente, $telefono, $modelo, $servicio, $presupu
     $printer->setJustification(Printer::JUSTIFY_LEFT);
     $printer->text("Cliente: " . $nombre_cliente . "\n");
     $printer->text("Servicio: " . $servicio . "\n");
-    $printer->text("Modelo: " . $row["marca"] . " " . $row["nombre"] . "\n");
+    $printer->text("Modelo: " . $modeloImpreso . "\n");
     $printer->text("Telefono de Contacto: " . $telefono . "\n");
     $printer->text("Cotizacion: $" . $presupuesto . "\n");
     $printer->text("Costo de Envio: $" . $costo_envio . "\n");

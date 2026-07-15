@@ -2,7 +2,7 @@
 include("db.php");
 include("includes/header.php");
 include("mensajesExito/apartadosMensaje.php")
-    ?>
+?>
 
 <div class="container">
     <div>
@@ -36,7 +36,7 @@ include("mensajesExito/apartadosMensaje.php")
                 <div class="col-12">
                     <label for="marca" class="form-label">Marca:</label>
                     <select name="marca" id="marca" class="form-select">
-                        <option value="0" selected disabled>Selecciona una marca</option>
+                        <option value="0" selected>Selecciona una marca</option>
                         <?php
                         $pos = "SELECT id_marca, marca FROM marca ORDER BY id_marca ASC";
                         $resultado = mysqli_query($conn, $pos);
@@ -50,7 +50,15 @@ include("mensajesExito/apartadosMensaje.php")
             <div class="col-12">
                 <label for="modelo" class="form-label">Modelo:</label>
                 <select class="form-select" name="modelo" id="modelo">
+                <option value="0" selected>Selecciona un modelo</option>
                 </select>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="nombre">Modelo Nuevo:</label>
+                    <input type="text" class="form-control" id="modeloNuevo" name="modeloNuevo"
+                        placeholder="Escribir el modelo unicamente si no esta guardado">
+                </div>
             </div>
             <div class="col-md-12">
                 <div class="form-group">
@@ -73,7 +81,7 @@ include("mensajesExito/apartadosMensaje.php")
             <div class="col-12">
                 <label for="marca" class="form-label">Envio:</label>
                 <select name="envio" id="envio" class="form-select">
-                    <option value="0" selected>No</option>                                                        
+                    <option value="0" selected>No</option>
                     <option value="1">Si</option>
                 </select>
             </div>
@@ -133,5 +141,5 @@ include("mensajesExito/apartadosMensaje.php")
     }
 </style>
 
-<script src="js/agregarModelo.js"></script>
+<script src="js/agregarModeloOn.js"></script>
 <script src="js/buscarReparacion.js"></script>

@@ -5,10 +5,10 @@ include("mensajesExito/apartadosMensaje.php");
 $id = $_GET['id'];
 $query = "SELECT r.PK_reparacion, r.nombre_cliente, r.telefono_contacto,
 m.marca, mo.nombre, r.servicio, r.presupuesto, r.abono, r.descripcion_problema,
-r.contrasena_telefono, r.envio, r.estado,
+r.contrasena_telefono, r.envio, r.estado, r.modelo_nuevo,
 r.fecha_notificacion, r.fecha_recepcion FROM tbl_reparacion r
-INNER JOIN marca m ON m.id_marca = r.FK_marca
-INNER JOIN modelos mo ON mo.id_modelo = r.FK_modelo
+LEFT JOIN marca m ON m.id_marca = r.FK_marca
+LEFT JOIN modelos mo ON mo.id_modelo = r.FK_modelo
 INNER JOIN cat_estado_reparacion e ON e.PK_estado_reparacion = r.estado
 WHERE r.PK_reparacion = '$id';";
 
@@ -18,8 +18,12 @@ $fila = mysqli_fetch_assoc($resultado);
 $folio = $fila["PK_reparacion"];
 $nombre_cliente = $fila["nombre_cliente"];
 $telefono_contacto = $fila["telefono_contacto"];
-$marca = $fila["marca"];
-$modelo = $fila["nombre"];
+//$marca = $fila["marca"];
+$marca = is_null($fila["marca"]) ? "" : $fila["marca"];
+//$modelo = $fila["nombre"];
+$modelo = $fila["modelo"] ?? "";
+//$modelo_nuevo = $fila["modelo_nuevo"];
+$modelo_nuevo = is_null($fila["modelo_nuevo"]) ? "" : $fila["modelo_nuevo"];
 $servicio = $fila["servicio"];
 $presupuesto = $fila["presupuesto"];
 $abono = $fila["abono"];
@@ -31,6 +35,8 @@ $fecha_notificacion = is_null($fila["fecha_notificacion"]) ? "Sin notificar" : $
 $fechaActual = new DateTime();
 $dias_transcurridos = is_null($fila["fecha_notificacion"]) ? "Sin calculo" : $fila["fecha_notificacion"]->diff($fechaActual);;
 $fecha_recepcion = $fila["fecha_recepcion"];
+
+$mostrar_modelo = $modelo . $modelo_nuevo;
 
 
 
@@ -44,7 +50,7 @@ $fecha_recepcion = $fila["fecha_recepcion"];
             <div class="card col-md-12  p-3 align-self-start">
                 <div class="row text-center">
                     <h4>
-                        <?php echo $marca ?> <?php echo $modelo ?>
+                        <?php echo $marca ?> <?php echo $mostrar_modelo ?>
                     </h4>
                 </div>
                 <div class="row text-center">
@@ -90,27 +96,60 @@ $fecha_recepcion = $fila["fecha_recepcion"];
         </div>
 
         <div class="col-md-9 ml-5">
-            <div class="card col-md-12  p-3 align-self-start mb-3">
-                <div class="row text-center">
-                    <h4>
-                        Datos de Telefono
-                    </h4>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>Contraseña:
-                            <?php echo $contrasena_telefono ?>
-                        </p>
+            <div class="row p-2">
+                <div class="card col-md-6  p-3 align-self-start mb-3">
+                    <div class="row text-center">
+                        <h4>
+                            Historial de Pagos
+                        </h4>
+                    </div>
+                    <div class="table-responsive" style="max-height: 600px;">
+                        <table class="table table-striped table-borderless table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody id="result">
+                                <?php
+                                $query = "SELECT p.monto, p.fecha_pago FROM rel_reparacion_abono rel 
+                                    INNER JOIN tbl_reparacion r ON r.PK_reparacion = rel.FK_reparacion
+                                    INNER JOIN tbl_pagos p ON p.PK_pago = rel.FK_pago
+                                    WHERE r.PK_reparacion = '$id';";
+                                $res = $conn->query($query);
+                                while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
+                                    echo "<tr> <td>" . $row['fecha_pago'] . "</td>" .
+                                        "<td> $" . number_format($row['monto'], 2, ".", ",") . "</td>" .
+                                        "</tr>";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>
-                            Descripcion de la Falla: <?php echo $descripcion_problema ?>
+                <div class="card col-md-6  p-3 align-self-start mb-3">
+                    <div class="row text-center">
+                        <h4>
+                            Datos de Telefono
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Contraseña:
+                                <?php echo $contrasena_telefono ?>
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                Descripcion de la Falla: <?php echo $descripcion_problema ?>
 
-                        </p>
+                            </p>
 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -157,7 +196,7 @@ $fecha_recepcion = $fila["fecha_recepcion"];
                             <?php echo $fecha_notificacion ?>
                         </p>
                     </div>
-                     <div class="col-md-4">
+                    <div class="col-md-4">
                         <p>Dias Transcurridos:
                             <?php echo $dias_transcurridos ?>
                         </p>
@@ -167,6 +206,7 @@ $fecha_recepcion = $fila["fecha_recepcion"];
         </div>
     </div>
 </div>
+
 
 <style>
     .negro {

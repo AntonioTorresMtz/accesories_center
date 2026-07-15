@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\EscposImage;
@@ -49,15 +50,37 @@ function convertirBooleano($booleano)
 function imprimirTicket($id_reparado)
 {
     include '../db.php';
-
-    $sql = "SELECT r.nombre_cliente, r.servicio, r.presupuesto, r.envio, r.abono, m.nombre, ma.marca FROM tbl_reparacion r
-            INNER JOIN modelos m ON m.id_modelo = r.FK_modelo
-            INNER JOIN marca ma ON ma.id_marca = r.FK_marca
+    $sql = "SELECT r.modelo_nuevo, r.nombre_cliente, r.servicio, r.presupuesto, r.envio, r.abono, m.nombre, ma.marca,
+            m.id_modelo, ma.id_marca FROM tbl_reparacion r
+            LEFT JOIN modelos m ON m.id_modelo = r.FK_modelo
+            LEFT JOIN marca ma ON ma.id_marca = r.FK_marca
             WHERE r.PK_reparacion = '$id_reparado';";
 
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     $costo_envio = $row["envio"] == 0 ? 0 : 150;
+
+    $cliente = $row['nombre_cliente'];
+    $servicio = $row['servicio'];
+    $presupuesto = $row['presupuesto'];
+    $abono = $row['abono'];
+    $nombre_modelo = $row['nombre'];
+    $nombre_marca = $row['marca'];
+    $id_modelo = $row['id_modelo'];
+    $id_marca = $row['id_marca'];
+    $modelo_nuevo = $row['modelo_nuevo'];
+
+    $modeloImpreso = "";
+
+    if ($id_modelo > 0 and $id_marca > 0) {        
+        $modeloImpreso = $marca . " " . $nombre;
+    } elseif ($id_modelo === null and $id_marca > 0) {
+        $modeloImpreso = $marca . " " . $modeloNuevo;
+        echo "Caso 2";
+    } else {
+        $modeloImpreso = $modeloNuevo;
+    }
+
 
     //Impresion de ticket:
     include("../vendor/autoload.php");
@@ -76,28 +99,28 @@ function imprimirTicket($id_reparado)
     //$printer->bitImage($logo);
     $printer->text("NOTA DE REMISIÓN\n");
     $printer->setJustification(Printer::JUSTIFY_LEFT);
-    $printer->text("Cliente: " . $row["nombre_cliente"] . "\n");
-    $printer->text("Servicio: " . $row["servicio"] . "\n");
-    $printer->text("Modelo: " . $row["marca"] . " " . $row["nombre"] . "\n");
-    $printer->text("Cotizacion: $" . $row["presupuesto"] . "\n");
+    $printer->text("Cliente: " . $cliente . "\n");
+    $printer->text("Servicio: " . $servicio . "\n");
+    $printer->text("Modelo: " . $modeloImpreso . "\n");
+    $printer->text("Cotizacion: $" . $presupuesto . "\n");
     $printer->text("Costo de Envio: $" . $costo_envio . "\n");
-    $printer->text("Total: $" . $costo_envio + $row["presupuesto"] . "\n");
-    $printer->text("Abono: $" . $row["abono"] .  "\n");
-    $printer->text("Restante: $" . $costo_envio + $row["presupuesto"] - $row["abono"] . "\n");
+    $printer->text("Total: $" . $costo_envio + $presupuesto . "\n");
+    $printer->text("Abono: $" . $abono .  "\n");
+    $printer->text("Restante: $" . $costo_envio + $presupuesto - $abono . "\n");
 
     $printer->setJustification(Printer::JUSTIFY_CENTER);
     $printer->text("\n");
     $printer->text("El equipo cuenta con 1 mes de garantia por defecto de la pieza cambiada, remplazada\n");
     $printer->text("o reparada, la cual debe presentarse en \n");
-     $printer->text("buen estado, sin signos de maltratao o mal uso. \n");
+    $printer->text("buen estado, sin signos de maltratao o mal uso. \n");
     $printer->text("En pantallas la garantia cubre defectos de touch (que no responda el tacto en la pantalla), \n");
     $printer->text("lineas y manchas se deben a un problema fisico (golpe o aplastamiento) lo cual no cubre la garantia.\n");
-     $printer->text("\n");
+    $printer->text("\n");
     $printer->text("Equipos mojados no cuenta con garantia ni aquellos que hayan sido manipulados por terceros despues de entregado el equipo.\n");
     $printer->text("\n");
     $printer->text("\n");
-     $printer->text("Necesario conservar este ticket para cualquier\n");
-     $printer->text("aclaracion.\n");
+    $printer->text("Necesario conservar este ticket para cualquier\n");
+    $printer->text("aclaracion.\n");
     $printer->cut();
     // Cerrar la conexión de impresión
     $printer->close();
