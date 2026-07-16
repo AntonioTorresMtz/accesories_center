@@ -58,12 +58,48 @@ if (isset($_POST['buscar'])) {
                             $serviosSuma = "SELECT SUM(cantidad) as total FROM tbl_servicios WHERE DATE(fecha_plataforma) BETWEEN '$inicio' AND '$fin'";
                             $planesSuma = "SELECT SUM(monto) AS ventas FROM tbl_planes WHERE DATE(fecha) BETWEEN '$inicio' AND '$fin'";
                             $pagosSuma = "SELECT SUM(monto) AS ventas FROM tbl_pagos WHERE DATE(fecha_pago)  BETWEEN '$inicio' AND '$fin'";
+                            $pagos = "SELECT
+                                    tp.nombre_pago,
+                                    COALESCE(ap.nombre_cliente, rep.nombre_cliente) AS nombre_cliente,
+                                    p.monto,
+                                    p.fecha_pago,
+                                    COALESCE(ap.producto, rep.servicio) AS descripcion
+                                FROM tbl_pagos p
+                                INNER JOIN cat_tipo_pagos tp
+                                    ON tp.PK_tipo_pago = p.FK_tipo_pago
+                                LEFT JOIN rel_apartado_pago rel_apa
+                                    ON rel_apa.FK_pago = p.PK_pago
+                                LEFT JOIN tbl_apartado ap
+                                    ON ap.PK_apartado = rel_apa.FK_apartado
+                                LEFT JOIN rel_reparacion_abono rel_rep
+                                    ON rel_rep.FK_pago = p.PK_pago
+                                LEFT JOIN tbl_reparacion rep
+                                    ON rep.PK_reparacion = rel_rep.FK_reparacion
+                                WHERE DATE(p.fecha_pago) BETWEEN '$inicio' AND '$fin'";
                         } else {
                             // Si no se ingresaron fechas, mostrar solo el día actual
                             $query = "SELECT SUM(monto) as ventas FROM tbl_recargas WHERE DATE(fecha_insercion) = CURDATE()";
                             $serviosSuma = "SELECT SUM(cantidad) as total FROM tbl_servicios WHERE DATE(fecha_plataforma) = CURDATE();";
                             $planesSuma = "SELECT SUM(monto) AS ventas FROM tbl_planes WHERE CURDATE() = DATE(fecha);";
                             $pagosSuma = "SELECT SUM(monto) AS ventas FROM tbl_pagos WHERE CURDATE() = DATE(fecha_pago);";
+                            $pagos = "SELECT
+                                tp.nombre_pago,
+                                COALESCE(ap.nombre_cliente, rep.nombre_cliente) AS nombre_cliente,
+                                p.monto,
+                                p.fecha_pago,
+                                COALESCE(ap.producto, rep.servicio) AS descripcion
+                                FROM tbl_pagos p
+                                INNER JOIN cat_tipo_pagos tp
+                                ON tp.PK_tipo_pago = p.FK_tipo_pago
+                                LEFT JOIN rel_apartado_pago rel_apa
+                                ON rel_apa.FK_pago = p.PK_pago
+                                LEFT JOIN tbl_apartado ap
+                                ON ap.PK_apartado = rel_apa.FK_apartado
+                                LEFT JOIN rel_reparacion_abono rel_rep
+                                ON rel_rep.FK_pago = p.PK_pago
+                                LEFT JOIN tbl_reparacion rep
+                                ON rep.PK_reparacion = rel_rep.FK_reparacion
+                                WHERE DATE(p.fecha_pago) = CURDATE();";
                         }
                     } else {
                         // Primera carga sin búsqueda
@@ -71,9 +107,25 @@ if (isset($_POST['buscar'])) {
                         $serviosSuma = "SELECT SUM(cantidad) as total FROM tbl_servicios WHERE DATE(fecha_plataforma) = CURDATE();";
                         $planesSuma = "SELECT SUM(monto) AS ventas FROM tbl_planes WHERE CURDATE() = DATE(fecha);";
                         $pagosSuma = "SELECT SUM(monto) AS ventas FROM tbl_pagos WHERE CURDATE() = DATE(fecha_pago);";
+                        $pagos = "SELECT
+                                tp.nombre_pago,
+                                COALESCE(ap.nombre_cliente, rep.nombre_cliente) AS nombre_cliente,
+                                p.monto,
+                                p.fecha_pago,
+                                COALESCE(ap.producto, rep.servicio) AS descripcion
+                                FROM tbl_pagos p
+                                INNER JOIN cat_tipo_pagos tp
+                                ON tp.PK_tipo_pago = p.FK_tipo_pago
+                                LEFT JOIN rel_apartado_pago rel_apa
+                                ON rel_apa.FK_pago = p.PK_pago
+                                LEFT JOIN tbl_apartado ap
+                                ON ap.PK_apartado = rel_apa.FK_apartado
+                                LEFT JOIN rel_reparacion_abono rel_rep
+                                ON rel_rep.FK_pago = p.PK_pago
+                                LEFT JOIN tbl_reparacion rep
+                                ON rep.PK_reparacion = rel_rep.FK_reparacion
+                                WHERE DATE(p.fecha_pago) = CURDATE();";
                     }
-
-
                     $res = $connRecargas->query($query);
                     $row = $res->fetch_array(MYSQLI_ASSOC);
                     echo '<p> $' . $row['ventas'] . '</p>';
@@ -122,17 +174,25 @@ if (isset($_POST['buscar'])) {
                     <table class="table table-striped table-borderless table-hover">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Tipo Recarga</th>
+                                <th>Concepto</th>
+                                <th>Cliente</th>
+                                <th>Descripcion</th>
                                 <th>Monto</th>
-                                <th>Compañia</th>
-                                <th>Telefono</th>
                                 <th>Fecha</th>
-                                <th>Reimprimir Ticket</th>
                             </tr>
                         </thead>
                         <tbody id="result">
-
+                            <?php                            
+                            $res = $conn->query($pagos);
+                            while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
+                                echo "<tr> <td>" . $row['nombre_pago'] . "</td>" .
+                                    "<td>" . $row['nombre_cliente'] . "</td>" .
+                                    "<td>" . $row['descripcion'] . "</td>" .
+                                    "<td> $" . number_format($row['monto'], 2, ".", ",") . "</td>" .
+                                    "<td>" . $row['fecha_pago'] . "</td>" .
+                                    "</tr>";
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -165,7 +225,6 @@ if (isset($_POST['buscar'])) {
         }
     </style>
 
-    <script src="js/buscarRecargas.js"></script>
     <script src="js/buscarServicio.js"></script>
     <script src="js/reimprimirRecarga.js"></script>
     <script>
