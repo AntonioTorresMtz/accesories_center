@@ -42,6 +42,7 @@ if (!$resultado) {
     $printer->text("TICKET DE COMPRA\n");
     $printer->setJustification(Printer::JUSTIFY_LEFT);
     $printer->text("Operador: " . $operador . "\n");
+    $printer->text("Numero: " . $numero . "\n");
     $printer->text("Concepto: " . $tipo . "\n");
     $printer->text("Monto: " . $monto . "\n");
     $printer->text("Fecha: " . $fecha . "\n");
