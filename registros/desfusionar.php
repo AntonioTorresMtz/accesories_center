@@ -1,5 +1,6 @@
 <?php
 include('../db.php');
+$conn = conectar();
 session_start();
 
 $id_mica = $_POST['modelo'];

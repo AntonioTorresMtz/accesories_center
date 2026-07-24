@@ -1,5 +1,4 @@
 <?php
-include("db.php");
 include("includes/header.php");
 include("mensajesExito/apartadosMensaje.php")
     ?>

@@ -1,5 +1,6 @@
 <?php
 include('../db.php');
+$conn = conectar();
 session_start();
 
 $nombre = $_POST["nombre"];

@@ -1,5 +1,6 @@
 <?php
 include '../db.php';
+$conn = conectar();
 $muro = $_POST['muro'];
 
     $query = "SELECT id_posicion, nombre FROM `posicion` WHERE muro = '$muro' ORDER BY nombre ASC";

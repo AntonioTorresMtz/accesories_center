@@ -1,5 +1,6 @@
 <?php
 include('../db.php');
+$conn = conectar();
 // Obtener el ID de venta enviado desde la solicitud AJAX
 $idVenta = $_POST['idVenta'];
 

@@ -1,5 +1,6 @@
 <?php
 include('../db.php');
+$conn = conectar();
 session_start();
 /*Recibimos las variables*/
 $muro = $_POST["muro"];

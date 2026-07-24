@@ -25,7 +25,7 @@ function buscar()
     FROM tbl_reparacion r
     LEFT JOIN modelos m ON m.id_modelo = r.FK_modelo
     LEFT JOIN marca ma ON ma.id_marca = r.FK_marca
-    WHERE  r.nombre_cliente LIKE '%$q%'
+    WHERE  r.nombre_cliente LIKE '%$q%' AND revision = 0
     ORDER BY r.PK_reparacion DESC";
 
    $res = $mysqli->query($query);
@@ -53,6 +53,7 @@ function defecto()
     FROM tbl_reparacion r
     LEFT JOIN modelos m ON m.id_modelo = r.FK_modelo
     LEFT JOIN marca ma ON ma.id_marca = r.FK_marca
+    WHERE revision = 0
     ORDER BY r.PK_reparacion DESC";
 
     $res = $mysqli->query($query);

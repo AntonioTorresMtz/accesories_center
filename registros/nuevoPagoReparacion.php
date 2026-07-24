@@ -7,6 +7,7 @@ use Mike42\Escpos\EscposImage;
 
 include("../vendor/autoload.php");
 include '../db.php';
+$conn = conectar();
 date_default_timezone_set('America/Mexico_City');
 
 $id_reparado = $_POST['id_reparado'];

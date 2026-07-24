@@ -1,5 +1,6 @@
 <?php
 include '../db.php';
+$conn = conectar();
 $modelo = $_POST['model'];
 $producto = intval($_POST['producto']);
 $id_modelo = $_POST['id_modelo'];

@@ -1,5 +1,6 @@
 <?php
 include('db.php');
+$conn = conectar();
 include("includes/header.php");
 
 $id = $_GET['id'];

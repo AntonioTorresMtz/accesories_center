@@ -1,5 +1,6 @@
 <?php
 include '../db.php';
+$conn = conectar();
 $marca = $_POST['producto'];
 
     $query = "SELECT m.nombre, r.FK_mica_camara_individual, m.id_modelo FROM rel_mica_camara_modelo r

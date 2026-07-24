@@ -1,5 +1,6 @@
 <?php
 include 'db.php';
+$conn = conectar();
 $evita = "SELECT * FROM nombre WHERE nombre_modelo = 95";
 $resultado1 = mysqli_query($conn, $evita);
 if( $resultado1 ){

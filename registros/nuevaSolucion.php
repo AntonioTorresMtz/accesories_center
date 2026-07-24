@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../db.php';
+$conn = conectar();
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 

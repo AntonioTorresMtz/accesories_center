@@ -1,5 +1,6 @@
 <?php
 include '../db.php';
+$conn = conectar();
 $marca = $_POST['marca'];
 
 $query = "SELECT a.nombre, a.id_modelo, b.id_protector FROM modelo_funda b

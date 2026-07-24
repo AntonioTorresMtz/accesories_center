@@ -1,6 +1,8 @@
 <?php
 session_start();
 include('../db.php');
+$conn = conectar();
+
 $id = $_POST["id"];
 $cantidad = $_POST["cantidad"];
 $precio = $_POST["precio"];
