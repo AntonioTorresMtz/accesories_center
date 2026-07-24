@@ -6,7 +6,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\EscposImage;
 
 include("../vendor/autoload.php");
-include '../db.php';
+require_once('../db.php');
 $conn = conectar();
 date_default_timezone_set('America/Mexico_City');
 
@@ -50,7 +50,7 @@ function convertirBooleano($booleano)
 
 function imprimirTicket($id_reparado)
 {
-    include '../db.php';
+    $conn = conectar();
     $sql = "SELECT r.modelo_nuevo, r.nombre_cliente, r.servicio, r.presupuesto, r.envio, r.abono, m.nombre, ma.marca,
             m.id_modelo, ma.id_marca FROM tbl_reparacion r
             LEFT JOIN modelos m ON m.id_modelo = r.FK_modelo
@@ -73,7 +73,7 @@ function imprimirTicket($id_reparado)
 
     $modeloImpreso = "";
 
-    if ($id_modelo > 0 and $id_marca > 0) {        
+    if ($id_modelo > 0 and $id_marca > 0) {
         $modeloImpreso = $marca . " " . $nombre;
     } elseif ($id_modelo === null and $id_marca > 0) {
         $modeloImpreso = $marca . " " . $modeloNuevo;
