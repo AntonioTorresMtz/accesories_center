@@ -1,8 +1,8 @@
 <?php
 session_start();
 date_default_timezone_set('America/Mexico_City');
-include '../db.php';
-
+require_once('../db.php');
+$conn = conectar();
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
@@ -10,7 +10,7 @@ $nombre_cliente = $_POST['nombre_cliente'];
 $telefono = empty($_POST['telefono']) ? null : $_POST['telefono'];
 $_POST['marca'] == 0 ? $marca = null :  $marca = $_POST['marca'];
 $modelo = ($_POST['marca'] == 0) ? null : ($_POST['modelo'] ?? null);
-
+$revision = 0;
 $servicio = $_POST['servicio'];
 $presupuesto = $_POST['presupuesto'];
 $abono = $_POST['abono'];
@@ -20,13 +20,13 @@ $descripcion_problema = empty($_POST['descripcion_problema']) ? null : $_POST['d
 $contrasena = empty($_POST['contrasena']) ? null : $_POST['contrasena'];
 
 $sp = "SP_INSERTAR_REPARACION";
-$stmt = mysqli_prepare($conn, "CALL $sp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt = mysqli_prepare($conn, "CALL $sp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 $producto = 7;
 if ($stmt) {
     // Asignamos los valores a los parámetros usando bind_param
     mysqli_stmt_bind_param(
         $stmt,
-        "ssiisddssis",
+        "ssiisddssisi",
         $nombre_cliente,
         $telefono,
         $marca,
@@ -37,7 +37,8 @@ if ($stmt) {
         $descripcion,
         $contrasena,
         $envio,
-        $modeloNuevo
+        $modeloNuevo,
+        $revision
     );
     // Ejecutamos la consulta
     if (mysqli_stmt_execute($stmt)) {
@@ -66,7 +67,7 @@ function convertirBooleano($booleano)
 function imprimirTicket($nombre_cliente, $telefono, $modelo, $marca, $modeloNuevo, $servicio, $presupuesto, $abono, $descripcion, $envio, $firma)
 {
     $costo_envio = $envio == 0 ? 0 : 150;
-    include '../db.php';
+    $conn = conectar();
 
     $modeloImpreso = "";
 

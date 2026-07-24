@@ -229,7 +229,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="reparaciones.php">Reparación</a></li>
+            <li><a class="dropdown-item" href="menuReparacion.php">Reparación</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>

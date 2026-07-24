@@ -1,7 +1,8 @@
 <?php
+require_once('../db.php');
 function mica9h($id_mica, $id_modelo)
 {
-    include('../db.php');
+    $conn = conectar();
     $sp = "SP_FUSIONAR_9H";
     $resultado = mysqli_query($conn, "CALL $sp ('$id_mica', '$id_modelo')");
 
@@ -18,7 +19,7 @@ function mica9h($id_mica, $id_modelo)
 
 function mica9d($id_mica, $id_modelo)
 {
-    include('../db.php');
+    $conn = conectar();
     $sp = "SP_FUSIONAR_9D";
     $resultado = mysqli_query($conn, "CALL $sp ('$id_mica', '$id_modelo')");
 
@@ -35,7 +36,7 @@ function mica9d($id_mica, $id_modelo)
 
 function mica100d($id_mica, $id_modelo)
 {
-    include('../db.php');
+    $conn = conectar();
     $sp = "SP_FUSIONAR_100D";
     $resultado = mysqli_query($conn, "CALL $sp ('$id_mica', '$id_modelo')");
 
@@ -52,7 +53,7 @@ function mica100d($id_mica, $id_modelo)
 
 function micaCamara($id_mica, $id_modelo)
 {
-    include('../db.php');
+    $conn = conectar();
     $sp = "SP_FUSIONAR_CAMARA";
     $resultado = mysqli_query($conn, "CALL $sp ('$id_mica', '$id_modelo')");
 
@@ -69,7 +70,7 @@ function micaCamara($id_mica, $id_modelo)
 
 function micaCurva($id_mica, $id_modelo)
 {
-    include('../db.php');
+    $conn = conectar();
     $sp = "SP_FUSIONAR_CURVA";
     $resultado = mysqli_query($conn, "CALL $sp ('$id_mica', '$id_modelo')");
 
@@ -86,7 +87,7 @@ function micaCurva($id_mica, $id_modelo)
 
 function protector($id_mica, $id_modelo)
 {
-    include('../db.php');
+    $conn = conectar();
     $sp = "SP_FUSIONAR_PROTECTOR";
     $resultado = mysqli_query($conn, "CALL $sp ('$id_mica', '$id_modelo')");
 

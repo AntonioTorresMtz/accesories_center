@@ -1,5 +1,6 @@
 <?php
 include('../db.php');
+$conn = conectar();
 include('../includes/funcionesFusionar.php');
 session_start();
 

@@ -1,6 +1,8 @@
 <?php
 session_start();
 include '../db.php';
+$conn = conectar();
+
 $marca = $_POST["marca"];
 $cantidad = $_POST["cantidad"];
 $posicion = $_POST["posicion"];

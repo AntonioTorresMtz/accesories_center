@@ -1,5 +1,6 @@
 <?php
 include('../db.php');
+$conn = conectar();
 session_start();
 $muro = $_POST['muro'];
 $letra = $_POST['letra'];

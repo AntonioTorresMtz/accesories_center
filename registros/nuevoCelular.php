@@ -1,61 +1,29 @@
 <?php
 session_start();
 include '../db.php';
+$conn = conectar();
 
-$marca = $_POST['marca'];
-$modelo = $_POST['modelo'];
-$estado = $_POST['estado'];
-$red = $_POST['red'];
-$imei1 = $_POST['imei1'];
-$precioCompra = $_POST['precioCompra'];
-$precioSugerido = $_POST['precioSugerido'];
-$fecha_compra = '';
-$garantia = 0;
-$altan_com = $_POST['bait_com'];
+// Asignación con casteo estricto y manejo de NULLs
+$marca          = (int)$_POST['marca'];
+$modelo         = $_POST['modelo'];
+$almacenamiento = !empty($_POST['almacenamiento']) ? (int)$_POST['almacenamiento'] : 0;
+$ram            = !empty($_POST['ram']) ? (int)$_POST['ram'] : 0;
+$red            = (int)$_POST['red'];
+$imei1          = $_POST['imei1'];
+$imei2          = !empty($_POST['imei2']) ? $_POST['imei2'] : null;
+$estado         = (int)$_POST['estado'];
+$producto       = 7;
+$precioCompra   = (float)$_POST['precioCompra'];
+$precioSugerido = (float)$_POST['precioSugerido'];
+$fecha_compra   = !empty($_POST['fecha_compra']) ? $_POST['fecha_compra'] : null;
+$garantia       = !empty($_POST['garantia']) ? (int)$_POST['garantia'] : 0;
+$altan_com      = (int)$_POST['bait_com'];
+$proveedor      = !empty($_POST['proveedor']) ? (int)$_POST['proveedor'] : null;
 
-if (empty($_POST['fecha_compra'])) {
-    $fecha_compra = null;
-} else {
-    $fecha_compra = $_POST['fecha_compra'];
-}
+$sql = "CALL SP_INSERTAR_TELEFONO(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$stmt = mysqli_prepare($conn, $sql);
 
-if (empty($_POST['garantia'])) {
-    $garantia = 0;
-} else {
-    $garantia = $_POST['garantia'];
-}
-
-if (empty($_POST['imei2'])) {
-    $imei2 = 0;
-} else {
-    $imei2 = $_POST['imei2'];
-}
-
-if (empty($_POST['almacenamiento'])) {
-    $almacenamiento = 0;
-} else {
-    $almacenamiento = $_POST['almacenamiento'];
-}
-
-if (empty($_POST['ram'])) {
-    $ram = 0;
-} else {
-    $ram = $_POST['ram'];
-}
-
-if (empty($_POST['proveedor'])) {
-    $proveedor = null;
-} else {
-    $proveedor = $_POST['proveedor'];
-}
-
-echo $estado;
-
-$sp = "SP_INSERTAR_TELEFONO";
-$stmt = mysqli_prepare($conn, "CALL $sp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$producto = 7;
 if ($stmt) {
-    // Asignamos los valores a los parámetros usando bind_param
     mysqli_stmt_bind_param(
         $stmt,
         "isiiissiiddsiii",
@@ -75,19 +43,19 @@ if ($stmt) {
         $altan_com,
         $proveedor
     );
-    // Ejecutamos la consulta
+
     if (mysqli_stmt_execute($stmt)) {
-        $resultado = mysqli_stmt_get_result($stmt);
         mysqli_stmt_close($stmt);
         $_SESSION['exito'] = "1";
         header("Location: ../celulares.php");
         exit();
     } else {
-        //echo "Error ejecutando la consulta: " . mysqli_stmt_error($stmt);
         $_SESSION['error'] = mysqli_error($conn);
         header("Location: ../celulares.php");
         exit();
     }
+} else {
+    die("Error en la preparación de la consulta: " . mysqli_error($conn));
 }
 
 mysqli_close($conn);

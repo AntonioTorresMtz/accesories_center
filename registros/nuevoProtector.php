@@ -1,6 +1,8 @@
 <?php
 session_start();
 include '../db.php';
+$conn = conectar();
+
 $marca = $_POST["marca"];
 $posicion = $_POST["posicion"];
 $muro = $_POST['muro'];

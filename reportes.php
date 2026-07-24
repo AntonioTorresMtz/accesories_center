@@ -1,5 +1,7 @@
 <?php
 include("db.php");
+$conn = conectar();
+$connRecargas = conectarRecargas();
 include("includes/header.php");
 include("mensajesExito/apartadosMensaje.php");
 

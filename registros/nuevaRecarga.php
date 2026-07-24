@@ -6,6 +6,7 @@ use Mike42\Escpos\EscposImage;
 
 include ("../vendor/autoload.php");
 include '../db.php';
+$connRecargas = conectarRecargas();
 date_default_timezone_set('America/Mexico_City');
 
 $numero = $_POST['numero'];
@@ -21,7 +22,7 @@ $sp = "SP_INSERTAR_RECARGA";
 $resultado = mysqli_query($connRecargas, "CALL $sp ('$monto', '$tipo', '$numero', '$fecha', '$operador')");
 
 if (!$resultado) {
-    echo 'Error consulta al programador ' . $conn->error;
+    echo 'Error consulta al programador ' . $connRecargas->error;
     //printf("Errormessage: %s\n", $conn->error);
 } else {
     // Crear una instancia del conector de impresión de Windows

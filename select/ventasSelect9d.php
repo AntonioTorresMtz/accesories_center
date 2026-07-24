@@ -1,5 +1,6 @@
 <?php
 include '../db.php';
+$conn = conectar();
 $producto = $_POST['producto'];
 
     $query = "SELECT a.nombre, b.id_mica, a.id_modelo FROM nombre b

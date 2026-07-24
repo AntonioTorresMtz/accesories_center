@@ -1,5 +1,6 @@
 <?php
 include("db.php");
+$conn = conectar();
 include("includes/header.php");
 if (isset($_SESSION['exito_actual_Mica100d'])) {
     echo "<script type='text/javascript'>Swal.fire(

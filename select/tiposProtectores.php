@@ -1,5 +1,6 @@
 <?php
 include '../db.php';
+$conn = conectar();
 $id_modelo = $_POST['id_modelo'];
 $opcion = $_POST['opc'];
 

@@ -1,5 +1,6 @@
 <?php
 include '../db.php';
+$conn = conectar();
 $modelo = $_POST['modelo'];
 
 $patron = "/^([0-9]+)(-)([0-9]+)$/";

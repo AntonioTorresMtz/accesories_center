@@ -1,6 +1,6 @@
 <?php
 include '../db.php';
-
+$conn = conectar();
 if (isset($_POST['imei'])) {
     $imei = $_POST['imei'];
     $id_celular = intval($imei); // intenta convertir a entero si aplica    

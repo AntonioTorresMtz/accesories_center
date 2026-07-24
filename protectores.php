@@ -1,6 +1,7 @@
 <?php
 include("includes/header.php");
 include("db.php");
+$conn = conectar();
 if (isset($_SESSION['exito_protector'])) {
     echo "<script type='text/javascript'>Swal.fire(
                     'Registro exitoso!',

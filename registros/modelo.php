@@ -1,6 +1,8 @@
 <?php
 session_start();
 include 'db.php';
+$conn = conectar();
+
 $marca = $_POST["marca"];
 $cantidad = $_POST["cantidad"];
 $ancho = $_POST["ancho"];
@@ -19,7 +21,7 @@ if(!$resultado){
 
     $idMica = "SELECT MAX(id_mica9d) FROM micas9d";
     $resultado = mysqli_query($conn, $idMica);
-    $id;
+    $id = 0;
     while($row = mysqli_fetch_assoc($resultado)) {
         $id = $row['MAX(id_mica9d)'];
     }

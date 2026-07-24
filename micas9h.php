@@ -1,6 +1,7 @@
 <?php
 include("db.php");
 include("includes/header.php");
+$conn = conectar();
 if (isset($_SESSION['exito_mica9h'])) {
     echo "<script type='text/javascript'>Swal.fire(
                         'Mica creada!',
