@@ -38,7 +38,7 @@ echo json_encode($response);
 function consultarVenta($id)
 {
     include '../db.php';
-
+    $connRecargas = conectarRecargas();
     $sql = "SELECT monto, FK_tipo_recarga, telefono, FK_compania, fecha_insercion
     FROM tbl_recargas
     WHERE PK_recarga = '$id'";
