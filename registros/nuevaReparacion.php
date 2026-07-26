@@ -9,7 +9,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 $nombre_cliente = $_POST['nombre_cliente'];
 $telefono = empty($_POST['telefono']) ? null : $_POST['telefono'];
 $_POST['marca'] == 0 ? $marca = null :  $marca = $_POST['marca'];
-$modelo = ($_POST['marca'] == 0) ? null : ($_POST['modelo'] ?? null);
+$modelo = ($_POST['modelo'] == 0) ? null : (int)$_POST['modelo'];
 $revision = 0;
 $servicio = $_POST['servicio'];
 $presupuesto = $_POST['presupuesto'];
