@@ -121,8 +121,10 @@ function imprimirTicket($nombre_cliente, $telefono, $modelo, $marca, $modeloNuev
     $printer->setJustification(Printer::JUSTIFY_CENTER);
     $printer->text("\n");
     $printer->text("El cliente cuenta con un mes de garantia en caso de calquier falla por defecto de fabrica en piezas\n");
-    $printer->text("Asi mismo tendra 60 dias para recoger su equipo a partir de la fecha en que se haya notificado.\n");
-    $printer->text("De lo contrario el equipo se rematara para cubrir los costos que genero el equipo.\n");
+    $printer->text("Pantallas unicamente por defecto de touch (lineas, manchas o pantalla fundida son debido\n");
+    $printer->text("a golpes o aplastamiento que no cubre la garantia\n");
+    $printer->text("Asi mismo tendra 21 dias para recoger su equipo a partir de la fecha en que se haya notificado.\n");
+    $printer->text("De lo contrario el equipo se rematara para cubrir los costos que genero la reparacion.\n");
 
     if ($firma == 1) {
         $printer->text("\n");
